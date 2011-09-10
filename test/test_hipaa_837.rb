@@ -477,7 +477,7 @@ ELECTRONIC ROUTE: Billing Provider (sender) to ABC PAYER direct
       end
     end
 
-    ts.L2000A do |l2000a|
+    ts.L2000A.build do |l2000a|
       l2000a.HL do |hl|
         hl.HL01 = ts.increment('HL')
         hl.HL04 = 1
@@ -508,7 +508,7 @@ ELECTRONIC ROUTE: Billing Provider (sender) to ABC PAYER direct
         end
       end
 
-      l2000a.L2000B do |l2000b|
+      l2000a.L2000B.build do |l2000b|
         l2000b.HL do |hl|
           hl.HL01 = ts.increment('HL')
           hl.HL02 = l2000a.HL.HL01
@@ -553,7 +553,7 @@ ELECTRONIC ROUTE: Billing Provider (sender) to ABC PAYER direct
           end
         end
 
-        l2000b.L2300 do |l2300|
+        l2000b.L2300.build do |l2300|
           l2300.CLM do |clm|
             clm.ClaimSubmitterSIdentifier         = '153829140'
             clm.MonetaryAmount                    = '827'
