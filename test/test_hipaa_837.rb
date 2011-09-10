@@ -386,11 +386,287 @@ SE*42*0021~
 EOF
 
     assert_equal published_answer, ts.to_s.split('~').join("~\n") + "~\n"
-
-    #* not printing LX segments for each service line
-    #* HL parent/child references wrong
-    #* HL total segments counts should only be counting direct children
-
   end
 
+  def test_anesthesia
+=begin
+Patient is the same as the subscriber. Payer is Medicare. 
+Encounter is billed directly to Medicare.
+
+SUBSCRIBER/PATIENT: Margaret Jones
+ADDRESS: 123 Rainbow Road, Nashville, TN 37232
+TELEPHONE: 615-555-1212
+SEX: F
+DOB: 03/03/1974
+EMPLOYER: ACME Inc.
+SUBSCRIBER #: 123456789A
+
+SECONDARY COVERAGE
+
+DESTINATION PAYER: ABC Payer
+PAYER ADDRESS: P.O. Box 1465, Nashville, TN, 37232
+PAYER ORGANIZATION ID: 05440
+
+RECEIVER: ABC Payer
+EDI #: 05440
+
+BILLING PROVIDER/SENDER: Provider Medical Group
+ADDRESS: 1234 West End Ave, Nashville, TN, 37232
+NPI#: 2366554859
+TIN: 756473826
+EDI #: N305
+CONTACT PERSON AND PHONE NUMBER: Nina, 615-555-1212 ext.911
+
+RENDERING PROVIDER: Dr. Jacob E. Townsend/Anesthesiologist
+NPI: 5678912345
+MEDICARE PROVIDER ID#: 9741234
+PLACE OF SERVICE: Provider OP Hospital
+PLACE OF SERVICE ADDRESS: 345 Main Drive, Nashville, TN,37232
+PLACE OF SERVICE ID#: 43294867
+
+PATIENT ACCOUNT NUMBER: 543211230
+CASE: Laser Eye Surgery.
+
+VISIT: DOS=1/12/2005 POS=Outpatient Hospital
+SERVICES: Anesthesia for the Laser Eye Surgery
+CHARGES: Anesthesia, 61 minutes = $827.00
+CONCURRENCY: 2 cases
+PHYSICAL STATUS: Normal
+PATIENT CONTROL #: 153829140
+MEDICAL RECORD ID #: 006653794
+
+TOTAL CHARGES: $827.00
+
+ELECTRONIC ROUTE: Billing Provider (sender) to ABC PAYER direct
+=end
+
+    ts = Hippo::TransactionSets::HIPAA_837::Base.new
+
+    ts.ST.TransactionSetControlNumber        = '0001'
+    ts.ST.ImplementationConventionReference  = '005010X222A1'
+
+    ts.BHT do |bht|
+      bht.TransactionSetPurposeCode = '00'
+      bht.ReferenceIdentification   = '0123'
+      bht.Date                      = '20050117'
+      bht.Time                      = '1023'
+      bht.TransactionTypeCode       = 'CH'
+    end
+
+    ts.L1000A do |l1000a|
+      l1000a.NM1 do |nm1|
+        nm1.EntityTypeQualifier        = '2'
+        nm1.NameLastOrOrganizationName = 'PROVIDER MEDICAL GROUP'
+        nm1.IdentificationCode         = 'N305'
+      end
+
+      l1000a.PER do |per|
+        per.Name                            = 'NINA'
+        per.CommunicationNumberQualifier_01 = 'TE'
+        per.CommunicationNumber_01          = '6155551212'
+        per.CommunicationNumberQualifier_02 = 'EX'
+        per.CommunicationNumber_02          = '911'
+      end
+    end
+
+    ts.L1000B do |l1000b|
+      l1000b.NM1 do |nm1|
+        nm1.EntityTypeQualifier        = '2'
+        nm1.NameLastOrOrganizationName = 'ABC PAYER'
+        nm1.IdentificationCode         = '05440'
+      end
+    end
+
+    ts.L2000A do |l2000a|
+      l2000a.HL do |hl|
+        hl.HL01 = ts.increment('HL')
+        hl.HL04 = 1
+      end
+
+      l2000a.L2010AA do |l2010aa|
+
+        l2010aa.NM1 do |nm1|
+          nm1.EntityTypeQualifier           = '2'
+          nm1.NameLastOrOrganizationName    = 'PROVIDER MEDICAL GROUP'
+          nm1.IdentificationCodeQualifier   = 'XX'
+          nm1.IdentificationCode            = '2366554859'
+        end
+
+        l2010aa.N3 do |n3|
+          n3.AddressInformation             = '1234 WEST END AVE'
+        end
+
+        l2010aa.N4 do |n4|
+          n4.CityName                       = 'NASHVILLE'
+          n4.StateOrProvinceCode            = 'TN'
+          n4.PostalCode                     = '37232'
+        end
+
+        l2010aa.REF do |ref|
+          ref.ReferenceIdentificationQualifier = 'EI'
+          ref.ReferenceIdentification          = '756473826'
+        end
+      end
+
+      l2000a.L2000B do |l2000b|
+        l2000b.HL do |hl|
+          hl.HL01 = ts.increment('HL')
+          hl.HL02 = l2000a.HL.HL01
+          hl.HL04 = 0
+        end
+
+        l2000b.SBR do |sbr|
+          sbr.PayerResponsibilitySequenceNumberCode = 'P'
+          sbr.IndividualRelationshipCode            = '18'
+          sbr.ClaimFilingIndicatorCode              = 'MB'
+        end
+
+        l2000b.L2010BA do |l2010ba|
+          l2010ba.NM1 do |nm1|
+            nm1.EntityTypeQualifier         = '1'
+            nm1.NameLastOrOrganizationName  = 'JONES'
+            nm1.NameFirst                   = 'MARGARET'
+            nm1.IdentificationCodeQualifier = 'MI'
+            nm1.IdentificationCode          = '123456789A'
+          end
+
+          l2010ba.N3.AddressInformation     = '123 RAINBOW ROAD'
+
+          l2010ba.N4 do |n4|
+            n4.CityName                     = 'NASHVILLE'
+            n4.StateOrProvinceCode          = 'TN'
+            n4.PostalCode                   = '37232'
+          end
+
+          l2010ba.DMG do |dmg|
+            dmg.DateTimePeriod              = '19740303'
+            dmg.GenderCode                  = 'F'
+          end
+        end
+
+        l2000b.L2010BB do |l2010bb|
+          l2010bb.NM1 do |nm1|
+            nm1.EntityTypeQualifier           = '2'
+            nm1.NameLastOrOrganizationName    = 'ABC PAYER'
+            nm1.IdentificationCodeQualifier   = 'PI'
+            nm1.IdentificationCode            = '05440'
+          end
+        end
+
+        l2000b.L2300 do |l2300|
+          l2300.CLM do |clm|
+            clm.ClaimSubmitterSIdentifier         = '153829140'
+            clm.MonetaryAmount                    = '827'
+            clm.FacilityCodeValue                 = '22'
+            clm.FacilityCodeQualifier             = 'B'
+            clm.ClaimFrequencyTypeCode            = '1'
+            clm.YesNoConditionOrResponseCode      = 'Y'
+            clm.ProviderAcceptAssignmentCode      = 'A'
+            clm.YesNoConditionOrResponseCode_02   = 'Y'
+            clm.ReleaseOfInformationCode          = 'Y'
+          end
+
+          l2300.HI do |hi|
+            hi.CodeListQualifierCode_01 = 'BK'
+            hi.IndustryCode_01          = '36616'
+          end
+
+          l2300.L2310B do |l2310b|
+            l2310b.NM1 do |nm1|
+              nm1.EntityTypeQualifier           = '1'
+              nm1.NameLastOrOrganizationName    = 'TOWNSEND'
+              nm1.NameFirst                     = 'JACOB'
+              nm1.NameMiddle                    = 'E'
+              nm1.IdentificationCodeQualifier   = 'XX'
+              nm1.IdentificationCode            = '5678912345'
+            end
+
+            l2310b.PRV do |prv|
+              prv.ReferenceIdentificationQualifier  = 'ZZ'
+              prv.ReferenceIdentification           = '207L00000X'
+            end
+          end
+
+          l2300.L2310C do |l2310c|
+            l2310c.NM1 do |nm1|
+              nm1.EntityTypeQualifier           = '2'
+              nm1.NameLastOrOrganizationName    = 'PROVIDER OP HOSP'
+              nm1.IdentificationCodeQualifier   = 'XX'
+              nm1.IdentificationCode            = '432198765'
+            end
+
+            l2310c.N3.AddressInformation     = '345 MAIN DRIVE'
+
+            l2310c.N4 do |n4|
+              n4.CityName                     = 'NASHVILLE'
+              n4.StateOrProvinceCode          = 'TN'
+              n4.PostalCode                   = '37232'
+            end
+          end
+
+          l2300.L2400.build do |l2400|
+            l2400.LX.LX01 = l2300.increment('LX')
+
+            l2400.SV1 do |sv1|
+              sv1.ProductServiceIdQualifier     = 'HC'
+              sv1.ProductServiceId              = '00142'
+              sv1.ProcedureModifier_01          = 'QK'
+              sv1.ProcedureModifier_02          = 'QS'
+              sv1.ProcedureModifier_03          = 'P1'
+              sv1.MonetaryAmount                = '827'
+              sv1.UnitOrBasisForMeasurementCode = 'MJ'
+              sv1.Quantity                      = '61'
+              sv1.DiagnosisCodePointer          = 1
+            end
+
+            l2400.DTP('Date - Service Date') do |dtp|
+              dtp.DateTimePeriodFormatQualifier = 'D8'
+              dtp.DateTimePeriod                = '20050112'
+            end
+          end
+        end
+      end
+    end
+
+
+    ts.SE do |se|
+      se.TransactionSetControlNumber = ts.ST.TransactionSetControlNumber
+    end
+
+    ts.SE.NumberOfIncludedSegments    = ts.segment_count
+
+    published_answer = <<EOF
+ST*837*0001*005010X222A1~
+BHT*0019*00*0123*20050117*1023*CH~
+NM1*41*2*PROVIDER MEDICAL GROUP*****46*N305~
+PER*IC*NINA*TE*6155551212*EX*911~
+NM1*40*2*ABC PAYER*****46*05440~
+HL*1**20*1~
+NM1*85*2*PROVIDER MEDICAL GROUP*****XX*2366554859~
+N3*1234 WEST END AVE~
+N4*NASHVILLE*TN*37232~
+REF*EI*756473826~
+HL*2*1*22*0~
+SBR*P*18*******MB~
+NM1*IL*1*JONES*MARGARET****MI*123456789A~
+N3*123 RAINBOW ROAD~
+N4*NASHVILLE*TN*37232~
+DMG*D8*19740303*F~
+NM1*PR*2*ABC PAYER*****PI*05440~
+CLM*153829140*827***22:B:1*Y*A*Y*Y~
+HI*BK:36616~
+NM1*82*1*TOWNSEND*JACOB*E***XX*5678912345~
+PRV*PE*ZZ*207L00000X~
+NM1*77*2*PROVIDER OP HOSP*****XX*432198765~
+N3*345 MAIN DRIVE~
+N4*NASHVILLE*TN*37232~
+LX*1~
+SV1*HC:00142:QK:QS:P1*827*MJ*61***1~
+DTP*472*D8*20050112~
+SE*28*0001~
+EOF
+
+    assert_equal published_answer, ts.to_s.split('~').join("~\n") + "~\n"
+
+  end
 end
