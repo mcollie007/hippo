@@ -44,6 +44,23 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 150
 
+      #Patient Hierarchical Level - Used if the patient is not the subscriber
+      loop    Hippo::TransactionSets::HIPAA_837::L2000C,
+                :name           => 'Patient Hierarchical Level',
+                :identified_by  => {
+                  'HL.HL03' => '23'
+                },
+                :minimum        => 0,
+                :maximum        => nil,
+                :position       => 10
+
+      #Claim Information - Used if the subcriber is the patient
+      loop    Hippo::TransactionSets::HIPAA_837::L2300,
+                :name           => 'Claim Information',
+                :minimum        => 1,
+                :maximum        => 100,
+                :position       => 1300
+
     end
   end
 end

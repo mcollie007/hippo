@@ -49,26 +49,6 @@ module Hippo::TransactionSets
                 :maximum        => nil,
                 :position       => 10
 
-      #Subscriber Hierarchical Level
-      loop    Hippo::TransactionSets::HIPAA_837::L2000B,
-                :name           => 'Subscriber Hierarchical Level',
-                :identified_by  => {
-                  'HL.HL03' => '22'
-                },
-                :minimum        => 1,
-                :maximum        => nil,
-                :position       => 10
-
-      #Patient Hierarchical Level
-      loop    Hippo::TransactionSets::HIPAA_837::L2000C,
-                :name           => 'Patient Hierarchical Level',
-                :identified_by  => {
-                  'HL.HL03' => '23'
-                },
-                :minimum        => 0,
-                :maximum        => nil,
-                :position       => 10
-
       #Transaction Set Trailer
       segment Hippo::Segments::SE,
                 :name           => 'Transaction Set Trailer',

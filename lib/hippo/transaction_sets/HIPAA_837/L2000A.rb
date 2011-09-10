@@ -60,6 +60,16 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 450
 
+      #Subscriber Hierarchical Level
+      loop    Hippo::TransactionSets::HIPAA_837::L2000B,
+                :name           => 'Subscriber Hierarchical Level',
+                :identified_by  => {
+                  'HL.HL03' => '22'
+                },
+                :minimum        => 1,
+                :maximum        => nil,
+                :position       => 10
+
     end
   end
 end
