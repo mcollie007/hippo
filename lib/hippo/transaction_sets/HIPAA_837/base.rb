@@ -46,7 +46,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '20'
                 },
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 10
 
       #Transaction Set Trailer

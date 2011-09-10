@@ -18,7 +18,7 @@ module Hippo::TransactionSets
       segment Hippo::Segments::STC,
                 :name           => 'Information Receiver Status Information',
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 1000
 
       #Total Accepted Quantity

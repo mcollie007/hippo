@@ -29,7 +29,7 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_999::L2110AK2,
                 :name           => 'Implementation Data Element Note',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 600
 
     end

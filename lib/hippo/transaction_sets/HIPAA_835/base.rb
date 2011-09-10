@@ -90,14 +90,14 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_835::L2000,
                 :name           => 'Header Number',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 30
 
       #Provider Adjustment
       segment Hippo::Segments::PLB,
                 :name           => 'Provider Adjustment',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Transaction Set Trailer

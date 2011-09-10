@@ -467,7 +467,7 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_837::L2440,
                 :name           => 'Form Identification Code',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 5510
 
     end

@@ -15,7 +15,7 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_999::L2100AK2,
                 :name           => 'Error Identification',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 400
 
       #Transaction Set Response Trailer

@@ -51,7 +51,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '23'
                 },
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 10
 
       #Claim Information - Used if the subcriber is the patient

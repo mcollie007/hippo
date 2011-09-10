@@ -15,7 +15,7 @@ module Hippo::TransactionSets
       segment Hippo::Segments::STC,
                 :name           => 'Service Line Level Status Information',
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 1900,
                 :defaults => {
                   'STC03' => 'U'

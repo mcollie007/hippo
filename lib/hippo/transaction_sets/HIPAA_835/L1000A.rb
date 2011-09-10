@@ -49,7 +49,7 @@ module Hippo::TransactionSets
       segment Hippo::Segments::PER,
                 :name           => 'Payer Technical Contact Information',
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 1303,
                 :defaults => {
                   'PER01' => 'BL'

@@ -29,7 +29,7 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_835::L2100,
                 :name           => 'Claim Payment Information',
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
     end

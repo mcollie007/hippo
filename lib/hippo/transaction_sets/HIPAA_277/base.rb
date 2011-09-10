@@ -52,7 +52,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '19'
                 },
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Patient Level
@@ -62,7 +62,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => 'PT'
                 },
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Transaction Set Trailer

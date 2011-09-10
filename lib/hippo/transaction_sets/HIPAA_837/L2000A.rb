@@ -67,7 +67,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '22'
                 },
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 10
 
     end

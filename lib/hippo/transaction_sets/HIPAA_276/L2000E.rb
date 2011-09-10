@@ -37,7 +37,7 @@ module Hippo::TransactionSets
                 :name           => 'Claim Status Tracking Number',
                 :identified_by  => {'TRN.TRN01' => '1'},
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 900
 
     end

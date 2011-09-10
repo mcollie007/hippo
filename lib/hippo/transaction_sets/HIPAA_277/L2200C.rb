@@ -18,7 +18,7 @@ module Hippo::TransactionSets
       segment Hippo::Segments::STC,
                 :name           => 'Billing Provider Status Information',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 1000
 
       #Provider Secondary Identifier

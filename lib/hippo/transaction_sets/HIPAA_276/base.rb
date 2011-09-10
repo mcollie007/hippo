@@ -31,7 +31,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '20'
                 },
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Information Receiver Level
@@ -41,7 +41,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '21'
                 },
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Service Provider Level
@@ -51,7 +51,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '19'
                 },
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Subscriber Level
@@ -61,7 +61,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '22'
                 },
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Dependent Level
@@ -71,7 +71,7 @@ module Hippo::TransactionSets
                   'HL.HL03' => '23'
                 },
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 100
 
       #Transaction Set Trailer

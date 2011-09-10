@@ -18,7 +18,7 @@ module Hippo::TransactionSets
       segment Hippo::Segments::STC,
                 :name           => 'Claim Level Status Information',
                 :minimum        => 1,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 1000
 
       #Payer Claim Control Number
@@ -95,7 +95,7 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_277::L2220E,
                 :name           => 'Service Line Information',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 1800
 
     end

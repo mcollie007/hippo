@@ -24,7 +24,7 @@ module Hippo::TransactionSets
       loop    Hippo::TransactionSets::HIPAA_999::L2000AK2,
                 :name           => 'Transaction Set Response Header',
                 :minimum        => 0,
-                :maximum        => nil,
+                :maximum        => 99999,
                 :position       => 300
 
       #Functional Group Response Trailer
