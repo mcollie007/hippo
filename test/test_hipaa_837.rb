@@ -107,7 +107,7 @@ VAN claim identification number = 17312345600006351.
 
     ts.L2000A do |l2000a|
       l2000a.HL do |hl|
-        hl.HL01 = hl.class.increment_sequence_number
+        hl.HL01 = ts.increment('HL')
         hl.HL04 = 1
       end
 
@@ -156,9 +156,9 @@ VAN claim identification number = 17312345600006351.
         end
       end
 
-      ts.L2000B do |l2000b|
+      l2000a.L2000B do |l2000b|
         l2000b.HL do |hl|
-          hl.HL01 = hl.class.increment_sequence_number
+          hl.HL01 = ts.increment('HL')
           hl.HL02 = l2000a.HL.HL01
           hl.HL04 = 1
         end
@@ -199,9 +199,9 @@ VAN claim identification number = 17312345600006351.
           end
         end
 
-        ts.L2000C do |l2000c|
+        l2000b.L2000C do |l2000c|
           l2000c.HL do |hl|
-            hl.HL01 = hl.class.increment_sequence_number
+            hl.HL01 = ts.increment('HL')
             hl.HL02 = l2000b.HL.HL01
             hl.HL04 = 0
           end
@@ -258,7 +258,7 @@ VAN claim identification number = 17312345600006351.
             end
 
             l2300.L2400.build do |l2400|
-              l2400.LX.LX01 = Hippo::Segments::LX.increment_sequence_number
+              l2400.LX.LX01 = l2300.increment('LX')
 
               l2400.SV1 do |sv1|
                 sv1.ProductServiceIdQualifier     = 'HC'
@@ -276,7 +276,7 @@ VAN claim identification number = 17312345600006351.
             end
 
             l2300.L2400.build do |l2400|
-              l2400.LX.LX01 = Hippo::Segments::LX.increment_sequence_number
+              l2400.LX.LX01 = l2300.increment('LX')
 
               l2400.SV1 do |sv1|
                 sv1.ProductServiceIdQualifier     = 'HC'
@@ -294,7 +294,7 @@ VAN claim identification number = 17312345600006351.
             end
 
             l2300.L2400.build do |l2400|
-              l2400.LX.LX01 = Hippo::Segments::LX.increment_sequence_number
+              l2400.LX.LX01 = l2300.increment('LX')
 
               l2400.SV1 do |sv1|
                 sv1.ProductServiceIdQualifier     = 'HC'
@@ -312,7 +312,7 @@ VAN claim identification number = 17312345600006351.
             end
 
             l2300.L2400.build do |l2400|
-              l2400.LX.LX01 = Hippo::Segments::LX.increment_sequence_number
+              l2400.LX.LX01 = l2300.increment('LX')
 
               l2400.SV1 do |sv1|
                 sv1.ProductServiceIdQualifier     = 'HC'

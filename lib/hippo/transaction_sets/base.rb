@@ -20,7 +20,7 @@ module Hippo::TransactionSets
       alias loop add_component
     end
 
-    attr_accessor :values, :parent
+    attr_accessor :values, :parent, :sequences
 
     def initialize(options = {})
       @parent = options.delete(:parent)
@@ -28,6 +28,12 @@ module Hippo::TransactionSets
 
     def values
       @values ||= {}
+    end
+
+    def increment(segment_identifier)
+      @sequences ||= Hash.new(0)
+
+      @sequences[segment_identifier] += 1
     end
 
     def segment_count
