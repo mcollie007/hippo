@@ -34,16 +34,16 @@ module Hippo
 
         # create a new segment object based on the identifier
         segment = Hippo::Segments.const_get(segment_identifier.upcase).new
-        
+
         # populate each field from the original input
         fields.each_with_index do |value, index|
           field = segment.class.fields[index]
-         
+
           # if the field is an array that means it is a
           # composite field
           if field.class == Array
             composite_fields = value.split(Hippo::CompositeSeparator)
-            
+
             # initialize the values hash with a hash for this
             # composite field
             segment.values[index] = {}
@@ -58,10 +58,12 @@ module Hippo
             segment.values[field.sequence] = value
           end
         end
-        
+
         # save the newly created segment to the segments accessor
         segments << segment
       end
+
+      segments
     end
 
     def parse_segments
