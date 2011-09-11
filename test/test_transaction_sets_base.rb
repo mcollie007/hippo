@@ -1,4 +1,4 @@
-require_relative './test_helper'
+require File.join(File.dirname(__FILE__), 'test_helper')
 
 class TestTransactionSetBase < MiniTest::Unit::TestCase
   def test_preset_values_are_set
