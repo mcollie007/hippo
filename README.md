@@ -68,9 +68,14 @@ Below is a small sample of how to create a transaction set.
     end
 
     puts ts.to_s
-    
-    => "ST*837*0021*005010X222A1~BHT*0019*00*244579*20061015*1023*CH~NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~PER*IC*JERRY*TE*3055552222*EX*231~"
-```    
+
+    # Below is the output of ts.to_s (split onto separate lines for readability)
+    #
+    # ST*837*0021*005010X222A1~
+    # BHT*0019*00*244579*20061015*1023*CH~" +
+    # NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~
+    # PER*IC*JERRY*TE*3055552222*EX*231~"
+```
 
 Transaction Set/Loop and Segment DSL
 ------------------------------------
