@@ -31,7 +31,7 @@ Usage
 This is very straight forward. Basically, create an instance of the
 transaction set that you will be working with, and start filling in the
 loops, segments, and fields.  For a complete example from the 222A1 (837-P) implementation
-guide please review [test/test_hipaa_837.rb](/promedical/hippo/test/test_hipaa_837.rb).
+guide please review [test/test_hipaa_837.rb](/promedical/hippo/blob/master/test/test_hipaa_837.rb).
 
 Below is a small sample of how to create a transaction set.
 
