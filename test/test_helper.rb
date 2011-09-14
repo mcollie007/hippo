@@ -2,7 +2,7 @@ require 'rubygems'
 gem 'minitest'
 require 'minitest/autorun'
 
-require File.join(File.dirname(__FILE__), '..','lib','hippo')
+require File.join('.', File.dirname(__FILE__), '..','lib','hippo')
 require 'pp'
 
 module Hippo::Segments
