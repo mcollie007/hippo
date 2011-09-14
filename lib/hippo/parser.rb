@@ -3,8 +3,6 @@ require 'hippo'
 
 module Hippo
   class Parser
-    attr_accessor :raw_data, :segments, :output
-
     def segments
       @segments ||= []
     end
@@ -66,16 +64,26 @@ module Hippo
       segments
     end
 
-    def parse_segments
+    def populate_transaction_sets
+      segments_by_transaction_set = []
+
       @segments.each do |segment|
-        puts segment.to_s
+        if segment.class == Hippo::Segments::ST
+          segments_by_transaction_set << []
+        end
+
+        segments_by_transaction_set.last << segment if segments_by_transaction_set.last
+      end
+
+      segments_by_transaction_set.collect do |transaction_segments|
+        transaction_set = Hippo::TransactionSets.const_get(:"HIPAA_#{transaction_segments.first.ST01}")::Base.new
       end
     end
 
     def parse(filename)
       read_file(filename)
       populate_segments
-      parse_segments
+      populate_transaction_sets
     end
   end
 end
