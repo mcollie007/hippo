@@ -10,25 +10,25 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'HL03' => '21'
                 }
 
       #Information Receiver Name
       loop    Hippo::TransactionSets::HIPAA_277::L2100B,
                 :name           => 'Information Receiver Name',
-                :identified_by  => {'NM1.NM101' => '41'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 500
+                :position       => 500,
+                :identified_by  => {'NM1.NM101' => '41'}
 
       #Information Receiver Application Trace Identifier
       loop    Hippo::TransactionSets::HIPAA_277::L2200B,
                 :name           => 'Information Receiver Application Trace Identifier',
-                :identified_by  => {'TRN.TRN01' => '2'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 900
+                :position       => 900,
+                :identified_by  => {'TRN.TRN01' => '2'}
 
     end
   end

@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 10,
-                :defaults => {
+                :identified_by => {
                   'HL03' => '23',
                   'HL04' => '0'
                 }
@@ -25,10 +25,10 @@ module Hippo::TransactionSets
       #Patient Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010CA,
                 :name           => 'Patient Name',
-                :identified_by  => {'NM1.NM101' => 'QC'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 150
+                :position       => 150,
+                :identified_by  => {'NM1.NM101' => 'QC'}
 
       #Claim Information
       loop    Hippo::TransactionSets::HIPAA_837::L2300,

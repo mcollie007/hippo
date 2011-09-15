@@ -9,7 +9,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'ST01' => '835'
                 }
 
@@ -26,7 +26,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 400,
-                :defaults => {
+                :identified_by => {
                   'TRN01' => '1'
                 }
 
@@ -36,7 +36,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 500,
-                :defaults => {
+                :identified_by => {
                   'CUR01' => 'PR'
                 }
 
@@ -46,7 +46,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 590,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'EV'
                 }
 
@@ -56,7 +56,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 600,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'F2'
                 }
 
@@ -66,25 +66,25 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 700,
-                :defaults => {
+                :identified_by => {
                   'DTM01' => '405'
                 }
 
       #Payer Identification
       loop    Hippo::TransactionSets::HIPAA_835::L1000A,
                 :name           => 'Payer Identification',
-                :identified_by  => {'N1.N101' => 'PR'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 800
+                :position       => 800,
+                :identified_by  => {'N1.N101' => 'PR'}
 
       #Payee Identification
       loop    Hippo::TransactionSets::HIPAA_835::L1000B,
                 :name           => 'Payee Identification',
-                :identified_by  => {'N1.N101' => 'PE'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 1400
+                :position       => 1400,
+                :identified_by  => {'N1.N101' => 'PE'}
 
       #Header Number
       loop    Hippo::TransactionSets::HIPAA_835::L2000,

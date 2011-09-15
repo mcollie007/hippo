@@ -84,7 +84,6 @@ module Hippo::TransactionSets
         # iterate through the hash of defaults
         # and assign them to the component before
         # adding to @values
-        populate_component(component, component_entry[:defaults])
         populate_component(component, component_entry[:identified_by])
     end
 

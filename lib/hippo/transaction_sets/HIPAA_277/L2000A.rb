@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'HL03' => '20',
                   'HL04' => '1'
                 }
@@ -25,10 +25,10 @@ module Hippo::TransactionSets
       #Transmission Receipt Control Identifier
       loop    Hippo::TransactionSets::HIPAA_277::L2200A,
                 :name           => 'Transmission Receipt Control Identifier',
-                :identified_by  => {'TRN.TRN01' => '1'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 900
+                :position       => 900,
+                :identified_by  => {'TRN.TRN01' => '1'}
 
     end
   end

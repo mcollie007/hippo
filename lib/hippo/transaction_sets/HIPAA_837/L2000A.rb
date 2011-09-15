@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 10,
-                :defaults => {
+                :identified_by => {
                   'HL03' => '20',
                   'HL04' => '1'
                 }
@@ -21,7 +21,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 30,
-                :defaults => {
+                :identified_by => {
                   'PRV01' => 'BI',
                   'PRV02' => 'PXC'
                 }
@@ -32,43 +32,41 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'CUR01' => '85'
                 }
 
       #Billing Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010AA,
                 :name           => 'Billing Provider Name',
-                :identified_by  => {'NM1.NM101' => '85'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 150
+                :position       => 150,
+                :identified_by  => {'NM1.NM101' => '85'}
 
       #Pay-to Address Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010AB,
                 :name           => 'Pay-to Address Name',
-                :identified_by  => {'NM1.NM101' => '87'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 150
+                :position       => 150,
+                :identified_by  => {'NM1.NM101' => '87'}
 
       #Pay-To Plan Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010AC,
                 :name           => 'Pay-To Plan Name',
-                :identified_by  => {'NM1.NM101' => 'PE'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 450
+                :position       => 450,
+                :identified_by  => {'NM1.NM101' => 'PE'}
 
       #Subscriber Hierarchical Level
       loop    Hippo::TransactionSets::HIPAA_837::L2000B,
                 :name           => 'Subscriber Hierarchical Level',
-                :identified_by  => {
-                  'HL.HL03' => '22'
-                },
                 :minimum        => 1,
                 :maximum        => 99999,
-                :position       => 10
+                :position       => 10,
+                :identified_by  => {'HL.HL03' => '22'}
 
     end
   end

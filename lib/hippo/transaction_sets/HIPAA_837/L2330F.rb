@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5650,
-                :defaults => {
+                :identified_by => {
                   'NM101' => 'DQ',
                   'NM102' => '1'
                 }

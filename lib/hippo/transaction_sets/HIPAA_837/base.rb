@@ -9,7 +9,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 50,
-                :defaults => {
+                :identified_by => {
                   'ST01' => '837'
                 }
 
@@ -19,35 +19,33 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'BHT01' => '0019'
                 }
 
       #Submitter Name
       loop    Hippo::TransactionSets::HIPAA_837::L1000A,
                 :name           => 'Submitter Name',
-                :identified_by  => {'NM1.NM101' => '41'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 200
+                :position       => 200,
+                :identified_by  => {'NM1.NM101' => '41'}
 
       #Receiver Name
       loop    Hippo::TransactionSets::HIPAA_837::L1000B,
                 :name           => 'Receiver Name',
-                :identified_by  => {'NM1.NM101' => '40'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 500
+                :position       => 500,
+                :identified_by  => {'NM1.NM101' => '40'}
 
       #Billing Provider Hierarchical Level
       loop    Hippo::TransactionSets::HIPAA_837::L2000A,
                 :name           => 'Billing Provider Hierarchical Level',
-                :identified_by  => {
-                  'HL.HL03' => '20'
-                },
                 :minimum        => 1,
                 :maximum        => 99999,
-                :position       => 10
+                :position       => 10,
+                :identified_by  => {'HL.HL03' => '20'}
 
       #Transaction Set Trailer
       segment Hippo::Segments::SE,

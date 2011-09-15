@@ -10,25 +10,25 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'HL03' => '19'
                 }
 
       #Billing Provider Name
       loop    Hippo::TransactionSets::HIPAA_277::L2100C,
                 :name           => 'Billing Provider Name',
-                :identified_by  => {'NM1.NM101' => '85'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 500
+                :position       => 500,
+                :identified_by  => {'NM1.NM101' => '85'}
 
       #Provider of Service Information Trace Identifier
       loop    Hippo::TransactionSets::HIPAA_277::L2200C,
                 :name           => 'Provider of Service Information Trace Identifier',
-                :identified_by  => {'TRN.TRN01' => '1'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 900
+                :position       => 900,
+                :identified_by  => {'TRN.TRN01' => '1'}
 
     end
   end

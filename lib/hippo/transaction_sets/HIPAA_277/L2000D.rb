@@ -10,25 +10,25 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'HL03' => 'PT'
                 }
 
       #Patient Name
       loop    Hippo::TransactionSets::HIPAA_277::L2100D,
                 :name           => 'Patient Name',
-                :identified_by  => {'NM1.NM101' => 'QC'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 500
+                :position       => 500,
+                :identified_by  => {'NM1.NM101' => 'QC'}
 
       #Claim Status Tracking Number
       loop    Hippo::TransactionSets::HIPAA_277::L2200D,
                 :name           => 'Claim Status Tracking Number',
-                :identified_by  => {'TRN.TRN01' => '2'},
                 :minimum        => 1,
                 :maximum        => 99999,
-                :position       => 900
+                :position       => 900,
+                :identified_by  => {'TRN.TRN01' => '2'}
 
     end
   end

@@ -24,7 +24,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4000,
-                :defaults => {
+                :identified_by => {
                   'SV502' => 'DA'
                 }
 
@@ -41,7 +41,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4220,
-                :defaults => {
+                :identified_by => {
                   'PWK01' => 'CT'
                 }
 
@@ -51,7 +51,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4250,
-                :defaults => {
+                :identified_by => {
                   'CR105' => 'DH'
                 }
 
@@ -61,7 +61,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4350,
-                :defaults => {
+                :identified_by => {
                   'CR302' => 'MO'
                 }
 
@@ -71,7 +71,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 3,
                 :position       => 4500,
-                :defaults => {
+                :identified_by => {
                   'CRC01' => '07'
                 }
 
@@ -81,7 +81,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4520,
-                :defaults => {
+                :identified_by => {
                   'CRC01' => '70',
                   'CRC03' => '65'
                 }
@@ -92,7 +92,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4530,
-                :defaults => {
+                :identified_by => {
                   'CRC01' => '09'
                 }
 
@@ -102,7 +102,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 4550,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '472'
                 }
 
@@ -112,7 +112,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4555,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '471',
                   'DTP02' => 'D8'
                 }
@@ -123,7 +123,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4560,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '607',
                   'DTP02' => 'D8'
                 }
@@ -134,7 +134,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4580,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '463',
                   'DTP02' => 'D8'
                 }
@@ -145,7 +145,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4590,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '461',
                   'DTP02' => 'D8'
                 }
@@ -156,7 +156,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 45,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '304',
                   'DTP02' => 'D8'
                 }
@@ -167,7 +167,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 2,
                 :position       => 45,
-                :defaults => {
+                :identified_by => {
                   'DTP02' => 'D8'
                 }
 
@@ -177,7 +177,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 45,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '011',
                   'DTP02' => 'D8'
                 }
@@ -188,7 +188,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 45,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '455',
                   'DTP02' => 'D8'
                 }
@@ -199,7 +199,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 45,
-                :defaults => {
+                :identified_by => {
                   'DTP01' => '454',
                   'DTP02' => 'D8'
                 }
@@ -210,7 +210,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4600,
-                :defaults => {
+                :identified_by => {
                   'QTY01' => 'PT'
                 }
 
@@ -220,7 +220,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4610,
-                :defaults => {
+                :identified_by => {
                   'QTY01' => 'FL'
                 }
 
@@ -244,7 +244,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4700,
-                :defaults => {
+                :identified_by => {
                   'REF01' => '9B'
                 }
 
@@ -254,7 +254,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4710,
-                :defaults => {
+                :identified_by => {
                   'REF01' => '9D'
                 }
 
@@ -264,7 +264,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 5,
                 :position       => 4730,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'G1'
                 }
 
@@ -274,7 +274,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 47,
-                :defaults => {
+                :identified_by => {
                   'REF01' => '6R'
                 }
 
@@ -284,7 +284,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 47,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'EW'
                 }
 
@@ -294,7 +294,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 47,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'X4'
                 }
 
@@ -304,7 +304,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 47,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'F4'
                 }
 
@@ -314,7 +314,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 47,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'BT'
                 }
 
@@ -324,7 +324,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 5,
                 :position       => 47,
-                :defaults => {
+                :identified_by => {
                   'REF01' => '9F'
                 }
 
@@ -334,7 +334,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4810,
-                :defaults => {
+                :identified_by => {
                   'AMT01' => 'T'
                 }
 
@@ -344,7 +344,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4830,
-                :defaults => {
+                :identified_by => {
                   'AMT01' => 'F4'
                 }
 
@@ -368,7 +368,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 4865,
-                :defaults => {
+                :identified_by => {
                   'NTE01' => 'TPO'
                 }
 
@@ -396,42 +396,42 @@ module Hippo::TransactionSets
       #Rendering Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420A,
                 :name           => 'Rendering Provider Name',
-                :identified_by  => {'NM1.NM101' => '82'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5000
+                :position       => 5000,
+                :identified_by  => {'NM1.NM101' => '82'}
 
       #Purchased Service Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420B,
                 :name           => 'Purchased Service Provider Name',
-                :identified_by  => {'NM1.NM101' => 'QB'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5000
+                :position       => 5000,
+                :identified_by  => {'NM1.NM101' => 'QB'}
 
       #Service Facility Location Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420C,
                 :name           => 'Service Facility Location Name',
-                :identified_by  => {'NM1.NM101' => '77'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5000
+                :position       => 5000,
+                :identified_by  => {'NM1.NM101' => '77'}
 
       #Supervising Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420D,
                 :name           => 'Supervising Provider Name',
-                :identified_by  => {'NM1.NM101' => 'DQ'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5000
+                :position       => 5000,
+                :identified_by  => {'NM1.NM101' => 'DQ'}
 
       #Ordering Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420E,
                 :name           => 'Ordering Provider Name',
-                :identified_by  => {'NM1.NM101' => 'DK'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5000
+                :position       => 5000,
+                :identified_by  => {'NM1.NM101' => 'DK'}
 
       #Referring Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420F,
@@ -443,18 +443,18 @@ module Hippo::TransactionSets
       #Ambulance Pick-up Location
       loop    Hippo::TransactionSets::HIPAA_837::L2420G,
                 :name           => 'Ambulance Pick-up Location',
-                :identified_by  => {'NM1.NM101' => 'PW'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5310
+                :position       => 5310,
+                :identified_by  => {'NM1.NM101' => 'PW'}
 
       #Ambulance Drop-off Location
       loop    Hippo::TransactionSets::HIPAA_837::L2420H,
                 :name           => 'Ambulance Drop-off Location',
-                :identified_by  => {'NM1.NM101' => '45'},
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5380
+                :position       => 5380,
+                :identified_by  => {'NM1.NM101' => '45'}
 
       #Line Adjudication Information
       loop    Hippo::TransactionSets::HIPAA_837::L2430,

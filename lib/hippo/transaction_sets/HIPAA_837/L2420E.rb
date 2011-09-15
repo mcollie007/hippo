@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5000,
-                :defaults => {
+                :identified_by => {
                   'NM101' => 'DK',
                   'NM102' => '1'
                 }
@@ -42,7 +42,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5300,
-                :defaults => {
+                :identified_by => {
                   'PER01' => 'IC'
                 }
 

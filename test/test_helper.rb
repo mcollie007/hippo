@@ -58,7 +58,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'Field7' => 'Preset Field 7'
                 }
 
@@ -67,7 +67,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 50,
-                :defaults => {
+                :identified_by => {
                   'TSS01' => 'Last Segment'
                 }
     end
@@ -79,7 +79,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 5,
                 :position       => 50,
-                :defaults => {
+                :identified_by => {
                   'TSS01' => 'Blah'
                 }
 
@@ -88,7 +88,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :defaults => {
+                :identified_by => {
                   'Field7' => 'Preset Field 7'
                 }
 
@@ -97,7 +97,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 50,
-                :defaults => {
+                :identified_by => {
                   'TSS01' => 'Last Segment'
                 }
 

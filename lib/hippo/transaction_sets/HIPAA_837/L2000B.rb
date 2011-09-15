@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 10,
-                :defaults => {
+                :identified_by => {
                   'HL03' => '22'
                 }
 
@@ -31,30 +31,28 @@ module Hippo::TransactionSets
       #Subscriber Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010BA,
                 :name           => 'Subscriber Name',
-                :identified_by  => {'NM1.NM101' => 'IL'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 150
+                :position       => 150,
+                :identified_by  => {'NM1.NM101' => 'IL'}
 
       #Payer Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010BB,
                 :name           => 'Payer Name',
-                :identified_by  => {'NM1.NM101' => 'PR'},
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 150
+                :position       => 150,
+                :identified_by  => {'NM1.NM101' => 'PR'}
 
-      #Patient Hierarchical Level - Used if the patient is not the subscriber
+      #Patient Hierarchical Level
       loop    Hippo::TransactionSets::HIPAA_837::L2000C,
                 :name           => 'Patient Hierarchical Level',
-                :identified_by  => {
-                  'HL.HL03' => '23'
-                },
                 :minimum        => 0,
                 :maximum        => 99999,
-                :position       => 10
+                :position       => 10,
+                :identified_by  => {'HL.HL03' => '23'}
 
-      #Claim Information - Used if the subcriber is the patient
+      #Claim Information
       loop    Hippo::TransactionSets::HIPAA_837::L2300,
                 :name           => 'Claim Information',
                 :minimum        => 1,

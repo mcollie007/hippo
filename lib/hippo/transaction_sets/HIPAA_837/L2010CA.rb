@@ -10,7 +10,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 150,
-                :defaults => {
+                :identified_by => {
                   'NM101' => 'QC',
                   'NM102' => '1'
                 }
@@ -35,7 +35,7 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 320,
-                :defaults => {
+                :identified_by => {
                   'DMG01' => 'D8'
                 }
 
@@ -45,7 +45,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 360,
-                :defaults => {
+                :identified_by => {
                   'REF01' => 'Y4'
                 }
 
@@ -62,7 +62,7 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 400,
-                :defaults => {
+                :identified_by => {
                   'PER01' => 'IC',
                   'PER03' => 'TE'
                 }
