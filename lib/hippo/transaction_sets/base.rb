@@ -12,9 +12,7 @@ module Hippo::TransactionSets
       end
 
       def add_component(klass, options={})
-        options[:maximum] ||= 1
-
-        components << options.merge(:class => klass, :sequence => components.length)
+        components << Component.new(options.merge(:klass => klass, :sequence => components.length))
       end
       alias segment add_component
       alias loop add_component
@@ -58,33 +56,8 @@ module Hippo::TransactionSets
       end
 
       self.class.components.select do |c|
-        c[:class].identifier == identifier
+        c.identifier == identifier
       end[sequence]
-    end
-
-    def populate_component(component, defaults)
-      defaults ||= {}
-
-      defaults.each do |key, value|
-        if key =~ /(\w+)\.(.+)/
-          next_component, next_component_value = component.send($1.to_sym), {$2 => value}
-
-          populate_component(next_component, next_component_value)
-        else
-          component.send((key + '=').to_sym, value)
-        end
-      end
-
-      component
-    end
-
-    def initialize_component(component_entry)
-        component = component_entry[:class].new :parent => self
-
-        # iterate through the hash of defaults
-        # and assign them to the component before
-        # adding to @values
-        populate_component(component, component_entry[:identified_by])
     end
 
     def method_missing(method_name, *args)
@@ -95,47 +68,11 @@ module Hippo::TransactionSets
         raise Hippo::Exceptions::InvalidSegment.new "Invalid segment specified: '#{method_name.to_s}'."
       end
 
-      if values[component_entry[:sequence]].nil?
+      values[component_entry.sequence] ||= component_entry.initialize_component(self)
 
-        component = if component_entry[:maximum] > 1
-                      RepeatingComponent.new(component_entry, self)
-                    else
-                      initialize_component(component_entry)
-                    end
+      yield values[component_entry.sequence] if block_given?
 
-        values[component_entry[:sequence]] = component
-      end
-
-      yield values[component_entry[:sequence]] if block_given?
-      return values[component_entry[:sequence]]
-    end
-
-    class RepeatingComponent < Array
-      def initialize(component_entry, parent)
-        @component_entry = component_entry
-        @parent = parent
-      end
-
-      def build
-        self.push(@parent.initialize_component(@component_entry))
-
-        yield self[-1] if block_given?
-        self[-1]
-      end
-
-      def to_s
-        self.map(&:to_s).join
-      end
-
-      def segment_count
-        self.map(&:segment_count).inject(&:+)
-      end
-
-      def method_missing(method_name, *args, &block)
-        build if self.length == 0
-
-        self.first.send(method_name, *args, &block)
-      end
+      values[component_entry.sequence]
     end
   end
 end
