@@ -23,11 +23,15 @@ module Hippo::TransactionSets
       defaults ||= identified_by
 
       defaults.each do |key, value|
+        value = Array(value)
+
         if key =~ /(\w+)\.(.+)/
           next_component, next_component_value = component.send($1.to_sym), {$2 => value}
 
           populate_component(next_component, next_component_value)
         else
+          next if value.length > 1
+
           component.send((key + '=').to_sym, value)
         end
       end
