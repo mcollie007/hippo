@@ -48,7 +48,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 2100,
                 :identified_by => {
-                  'DTP01' => '472'
+                  'DTP01' => '472',
+                  'DTP02' => ["D8", "RD8"]
                 }
 
     end

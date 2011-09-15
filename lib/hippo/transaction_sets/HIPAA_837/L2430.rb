@@ -16,7 +16,10 @@ module Hippo::TransactionSets
                 :name           => 'Line Adjustment',
                 :minimum        => 0,
                 :maximum        => 5,
-                :position       => 5450
+                :position       => 5450,
+                :identified_by => {
+                  'CAS01' => ["CO", "CR", "OA", "PI", "PR"]
+                }
 
       #Line Check or Remittance Date
       segment Hippo::Segments::DTP,

@@ -101,7 +101,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 1200,
                 :identified_by => {
-                  'DTP01' => '472'
+                  'DTP01' => '472',
+                  'DTP02' => ["D8", "RD8"]
                 }
 
       #Service Line Information

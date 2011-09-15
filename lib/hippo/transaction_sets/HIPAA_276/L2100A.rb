@@ -12,7 +12,8 @@ module Hippo::TransactionSets
                 :position       => 500,
                 :identified_by => {
                   'NM101' => 'PR',
-                  'NM102' => '2'
+                  'NM102' => '2',
+                  'NM108' => ["PI", "XV"]
                 }
 
     end

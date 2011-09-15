@@ -11,6 +11,7 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 2500,
                 :identified_by => {
+                  'NM101' => ["DN", "P3"],
                   'NM102' => '1'
                 }
 
@@ -19,7 +20,10 @@ module Hippo::TransactionSets
                 :name           => 'Referring Provider Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 3,
-                :position       => 2710
+                :position       => 2710,
+                :identified_by => {
+                  'REF01' => ["0B", "1G", "G2"]
+                }
 
     end
   end

@@ -19,7 +19,10 @@ module Hippo::TransactionSets
                 :name           => 'Information Receiver Status Information',
                 :minimum        => 1,
                 :maximum        => 99999,
-                :position       => 1000
+                :position       => 1000,
+                :identified_by => {
+                  'STC03' => ["U", "WQ"]
+                }
 
       #Total Accepted Quantity
       segment Hippo::Segments::QTY,

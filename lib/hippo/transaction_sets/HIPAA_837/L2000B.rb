@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 10,
                 :identified_by => {
-                  'HL03' => '22'
+                  'HL03' => '22',
+                  'HL04' => ["0", "1"]
                 }
 
       #Subscriber Information
@@ -19,7 +20,10 @@ module Hippo::TransactionSets
                 :name           => 'Subscriber Information',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 50
+                :position       => 50,
+                :identified_by => {
+                  'SBR01' => ["A", "B", "C", "D", "E", "F", "G", "H", "P", "S", "T", "U"]
+                }
 
       #Patient Information
       segment Hippo::Segments::PAT,

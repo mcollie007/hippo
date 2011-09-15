@@ -16,7 +16,10 @@ module Hippo::TransactionSets
                 :name           => 'Professional Service',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 3700
+                :position       => 3700,
+                :identified_by => {
+                  'SV103' => ["MJ", "UN"]
+                }
 
       #Durable Medical Equipment Service
       segment Hippo::Segments::SV5,
@@ -25,7 +28,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 4000,
                 :identified_by => {
-                  'SV502' => 'DA'
+                  'SV502' => 'DA',
+                  'SV506' => ["1", "4", "6"]
                 }
 
       #Line Supplemental Information
@@ -33,7 +37,11 @@ module Hippo::TransactionSets
                 :name           => 'Line Supplemental Information',
                 :minimum        => 0,
                 :maximum        => 10,
-                :position       => 4200
+                :position       => 4200,
+                :identified_by => {
+                  'PWK01' => ["03", "04", "05", "06", "07", "08", "09", "10", "11", "13", "15", "21", "A3", "A4", "AM", "AS", "B2", "B3", "B4", "BR", "BS", "BT", "CB", "CK", "CT", "D2", "DA", "DB", "DG", "DJ", "DS", "EB", "HC", "HR", "I5", "IR", "LA", "M1", "MT", "NN", "OB", "OC", "OD", "OE", "OX", "OZ", "P4", "P5", "PE", "PN", "PO", "PQ", "PY", "PZ", "RB", "RR", "RT", "RX", "SG", "V5", "XP"],
+                  'PWK02' => ["AA", "BM", "EL", "EM", "FT", "FX"]
+                }
 
       #Durable Medical Equipment Certificate of Medical Necessity Indicator
       segment Hippo::Segments::PWK,
@@ -42,7 +50,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 4220,
                 :identified_by => {
-                  'PWK01' => 'CT'
+                  'PWK01' => 'CT',
+                  'PWK02' => ["AB", "AD", "AF", "AG", "NS"]
                 }
 
       #Ambulance Transport Information
@@ -52,6 +61,7 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 4250,
                 :identified_by => {
+                  'CR104' => ["A", "B", "C", "D", "E"],
                   'CR105' => 'DH'
                 }
 
@@ -62,6 +72,7 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 4350,
                 :identified_by => {
+                  'CR301' => ["I", "R", "S"],
                   'CR302' => 'MO'
                 }
 
@@ -72,7 +83,9 @@ module Hippo::TransactionSets
                 :maximum        => 3,
                 :position       => 4500,
                 :identified_by => {
-                  'CRC01' => '07'
+                  'CRC01' => '07',
+                  'CRC02' => ["N", "Y"],
+                  'CRC03' => ["01", "04", "05", "06", "07", "08", "09", "12"]
                 }
 
       #Hospice Employee Indicator
@@ -83,6 +96,7 @@ module Hippo::TransactionSets
                 :position       => 4520,
                 :identified_by => {
                   'CRC01' => '70',
+                  'CRC02' => ["N", "Y"],
                   'CRC03' => '65'
                 }
 
@@ -93,7 +107,9 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 4530,
                 :identified_by => {
-                  'CRC01' => '09'
+                  'CRC01' => '09',
+                  'CRC02' => ["N", "Y"],
+                  'CRC03' => ["38", "ZV"]
                 }
 
       #Date - Service Date
@@ -103,7 +119,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 4550,
                 :identified_by => {
-                  'DTP01' => '472'
+                  'DTP01' => '472',
+                  'DTP02' => ["D8", "RD8"]
                 }
 
       #Date - Prescription Date
@@ -168,6 +185,7 @@ module Hippo::TransactionSets
                 :maximum        => 2,
                 :position       => 45,
                 :identified_by => {
+                  'DTP01' => ["738", "739"],
                   'DTP02' => 'D8'
                 }
 
@@ -229,14 +247,21 @@ module Hippo::TransactionSets
                 :name           => 'Test Result',
                 :minimum        => 0,
                 :maximum        => 5,
-                :position       => 4620
+                :position       => 4620,
+                :identified_by => {
+                  'MEA01' => ["OG", "TR"],
+                  'MEA02' => ["HT", "R1", "R2", "R3", "R4"]
+                }
 
       #Contract Information
       segment Hippo::Segments::CN1,
                 :name           => 'Contract Information',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 4650
+                :position       => 4650,
+                :identified_by => {
+                  'CN101' => ["01", "02", "03", "04", "05", "06", "09"]
+                }
 
       #Repriced Line Item Reference Number
       segment Hippo::Segments::REF,
@@ -360,7 +385,10 @@ module Hippo::TransactionSets
                 :name           => 'Line Note',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 4860
+                :position       => 4860,
+                :identified_by => {
+                  'NTE01' => ["ADD", "DCP"]
+                }
 
       #Third Party Organization Notes
       segment Hippo::Segments::NTE,
@@ -384,7 +412,10 @@ module Hippo::TransactionSets
                 :name           => 'Line Pricing/Repricing Information',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 4920
+                :position       => 4920,
+                :identified_by => {
+                  'HCP01' => ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"]
+                }
 
       #Drug Identification
       loop    Hippo::TransactionSets::HIPAA_837::L2410,

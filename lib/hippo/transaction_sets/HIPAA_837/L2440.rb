@@ -9,7 +9,10 @@ module Hippo::TransactionSets
                 :name           => 'Form Identification Code',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 5510
+                :position       => 5510,
+                :identified_by => {
+                  'LQ01' => ["AS", "UT"]
+                }
 
       #Supporting Documentation
       segment Hippo::Segments::FRM,

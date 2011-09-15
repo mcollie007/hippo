@@ -12,7 +12,8 @@ module Hippo::TransactionSets
                 :position       => 150,
                 :identified_by => {
                   'NM101' => 'PR',
-                  'NM102' => '2'
+                  'NM102' => '2',
+                  'NM108' => ["PI", "XV"]
                 }
 
       #Payer Address
@@ -34,14 +35,20 @@ module Hippo::TransactionSets
                 :name           => 'Payer Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 3,
-                :position       => 350
+                :position       => 350,
+                :identified_by => {
+                  'REF01' => ["2U", "EI", "FY", "NF"]
+                }
 
       #Billing Provider Secondary Identification
       segment Hippo::Segments::REF,
                 :name           => 'Billing Provider Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 2,
-                :position       => 370
+                :position       => 370,
+                :identified_by => {
+                  'REF01' => ["G2", "LU"]
+                }
 
     end
   end

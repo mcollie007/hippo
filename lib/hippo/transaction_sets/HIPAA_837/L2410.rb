@@ -9,7 +9,10 @@ module Hippo::TransactionSets
                 :name           => 'Drug Identification',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 4940
+                :position       => 4940,
+                :identified_by => {
+                  'LIN02' => ["EN", "EO", "HI", "N4", "ON", "UK", "UP"]
+                }
 
       #Drug Quantity
       segment Hippo::Segments::CTP,
@@ -23,7 +26,10 @@ module Hippo::TransactionSets
                 :name           => 'Prescription or Compound Drug Association Number',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 4960
+                :position       => 4960,
+                :identified_by => {
+                  'REF01' => ["VY", "XZ"]
+                }
 
     end
   end

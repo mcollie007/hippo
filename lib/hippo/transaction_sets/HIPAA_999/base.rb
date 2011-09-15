@@ -32,7 +32,10 @@ module Hippo::TransactionSets
                 :name           => 'Functional Group Response Trailer',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 900
+                :position       => 900,
+                :identified_by => {
+                  'AK901' => ["A", "E", "M", "P", "R", "W", "X"]
+                }
 
       #Transaction Set Trailer
       segment Hippo::Segments::SE,

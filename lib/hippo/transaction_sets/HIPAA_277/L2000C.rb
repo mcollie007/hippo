@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 100,
                 :identified_by => {
-                  'HL03' => '19'
+                  'HL03' => '19',
+                  'HL04' => ["0", "1"]
                 }
 
       #Billing Provider Name

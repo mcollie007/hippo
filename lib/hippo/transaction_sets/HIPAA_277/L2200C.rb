@@ -19,14 +19,20 @@ module Hippo::TransactionSets
                 :name           => 'Billing Provider Status Information',
                 :minimum        => 0,
                 :maximum        => 99999,
-                :position       => 1000
+                :position       => 1000,
+                :identified_by => {
+                  'STC03' => ["U", "WQ"]
+                }
 
       #Provider Secondary Identifier
       segment Hippo::Segments::REF,
                 :name           => 'Provider Secondary Identifier',
                 :minimum        => 0,
                 :maximum        => 3,
-                :position       => 1100
+                :position       => 1100,
+                :identified_by => {
+                  'REF01' => ["0B", "1G", "G2", "LU", "SY", "TJ"]
+                }
 
       #Total Accepted Quantity
       segment Hippo::Segments::QTY,

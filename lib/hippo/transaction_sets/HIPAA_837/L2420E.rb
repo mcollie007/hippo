@@ -34,7 +34,10 @@ module Hippo::TransactionSets
                 :name           => 'Ordering Provider Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 20,
-                :position       => 5250
+                :position       => 5250,
+                :identified_by => {
+                  'REF01' => ["0B", "1G", "G2"]
+                }
 
       #Ordering Provider Contact Information
       segment Hippo::Segments::PER,
@@ -43,7 +46,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 5300,
                 :identified_by => {
-                  'PER01' => 'IC'
+                  'PER01' => 'IC',
+                  'PER03' => ["EM", "FX", "TE"]
                 }
 
     end

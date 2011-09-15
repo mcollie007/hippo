@@ -9,7 +9,10 @@ module Hippo::TransactionSets
                 :name           => 'Error Identification',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 400
+                :position       => 400,
+                :identified_by => {
+                  'IK304' => ["1", "2", "3", "4", "5", "6", "7", "8", "I4", "I6", "I7", "I8", "I9"]
+                }
 
       #Segment Context
       segment Hippo::Segments::CTX,

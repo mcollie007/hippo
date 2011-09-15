@@ -18,7 +18,12 @@ module Hippo::TransactionSets
                 :name           => 'Financial Information',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 200
+                :position       => 200,
+                :identified_by => {
+                  'BPR01' => ["C", "D", "H", "I", "P", "U", "X"],
+                  'BPR03' => ["C", "D"],
+                  'BPR04' => ["ACH", "BOP", "CHK", "FWT", "NON"]
+                }
 
       #Reassociation Trace Number
       segment Hippo::Segments::TRN,

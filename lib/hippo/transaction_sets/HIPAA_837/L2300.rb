@@ -9,7 +9,13 @@ module Hippo::TransactionSets
                 :name           => 'Claim Information',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 1300
+                :position       => 1300,
+                :identified_by => {
+                  'CLM06' => ["N", "Y"],
+                  'CLM07' => ["A", "B", "C"],
+                  'CLM08' => ["N", "W", "Y"],
+                  'CLM09' => ["I", "Y"]
+                }
 
       #Date - Onset of Current Illness or Symptom
       segment Hippo::Segments::DTP,
@@ -104,7 +110,11 @@ module Hippo::TransactionSets
                 :name           => 'Date - Disability Dates',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 13
+                :position       => 13,
+                :identified_by => {
+                  'DTP01' => ["314", "360", "361"],
+                  'DTP02' => ["D8", "RD8"]
+                }
 
       #Date - Last Worked
       segment Hippo::Segments::DTP,
@@ -157,6 +167,7 @@ module Hippo::TransactionSets
                 :maximum        => 2,
                 :position       => 13,
                 :identified_by => {
+                  'DTP01' => ["090", "091"],
                   'DTP02' => 'D8'
                 }
 
@@ -187,14 +198,21 @@ module Hippo::TransactionSets
                 :name           => 'Claim Supplemental Information',
                 :minimum        => 0,
                 :maximum        => 10,
-                :position       => 1550
+                :position       => 1550,
+                :identified_by => {
+                  'PWK01' => ["03", "04", "05", "06", "07", "08", "09", "10", "11", "13", "15", "21", "A3", "A4", "AM", "AS", "B2", "B3", "B4", "BR", "BS", "BT", "CB", "CK", "CT", "D2", "DA", "DB", "DG", "DJ", "DS", "EB", "HC", "HR", "I5", "IR", "LA", "M1", "MT", "NN", "OB", "OC", "OD", "OE", "OX", "OZ", "P4", "P5", "PE", "PN", "PO", "PQ", "PY", "PZ", "RB", "RR", "RT", "RX", "SG", "V5", "XP"],
+                  'PWK02' => ["AA", "BM", "EL", "EM", "FT", "FX"]
+                }
 
       #Contract Information
       segment Hippo::Segments::CN1,
                 :name           => 'Contract Information',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 1600
+                :position       => 1600,
+                :identified_by => {
+                  'CN101' => ["01", "02", "03", "04", "05", "06", "09"]
+                }
 
       #Patient Amount Paid
       segment Hippo::Segments::AMT,
@@ -358,7 +376,10 @@ module Hippo::TransactionSets
                 :name           => 'Claim Note',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 1900
+                :position       => 1900,
+                :identified_by => {
+                  'NTE01' => ["ADD", "CER", "DCP", "DGN", "TPO"]
+                }
 
       #Ambulance Transport Information
       segment Hippo::Segments::CR1,
@@ -367,6 +388,7 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 1950,
                 :identified_by => {
+                  'CR104' => ["A", "B", "C", "D", "E"],
                   'CR105' => 'DH'
                 }
 
@@ -375,7 +397,10 @@ module Hippo::TransactionSets
                 :name           => 'Spinal Manipulation Service Information',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 2000
+                :position       => 2000,
+                :identified_by => {
+                  'CR208' => ["A", "C", "D", "E", "F", "G", "M"]
+                }
 
       #Ambulance Certification
       segment Hippo::Segments::CRC,
@@ -384,7 +409,9 @@ module Hippo::TransactionSets
                 :maximum        => 3,
                 :position       => 2200,
                 :identified_by => {
-                  'CRC01' => '07'
+                  'CRC01' => '07',
+                  'CRC02' => ["N", "Y"],
+                  'CRC03' => ["01", "04", "05", "06", "07", "08", "09", "12"]
                 }
 
       #Patient Condition Information: Vision
@@ -392,7 +419,12 @@ module Hippo::TransactionSets
                 :name           => 'Patient Condition Information: Vision',
                 :minimum        => 0,
                 :maximum        => 3,
-                :position       => 2210
+                :position       => 2210,
+                :identified_by => {
+                  'CRC01' => ["E1", "E2", "E3"],
+                  'CRC02' => ["N", "Y"],
+                  'CRC03' => ["L1", "L2", "L3", "L4", "L5"]
+                }
 
       #Homebound Indicator
       segment Hippo::Segments::CRC,
@@ -413,7 +445,9 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 2230,
                 :identified_by => {
-                  'CRC01' => 'ZZ'
+                  'CRC01' => 'ZZ',
+                  'CRC02' => ["N", "Y"],
+                  'CRC03' => ["AV", "NU", "S2", "ST"]
                 }
 
       #Health Care Diagnosis Code
@@ -442,7 +476,10 @@ module Hippo::TransactionSets
                 :name           => 'Claim Pricing/Repricing Information',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 2410
+                :position       => 2410,
+                :identified_by => {
+                  'HCP01' => ["00", "01", "02", "03", "04", "05", "07", "08", "09", "10", "11", "12", "13", "14"]
+                }
 
       #Referring Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2310A,

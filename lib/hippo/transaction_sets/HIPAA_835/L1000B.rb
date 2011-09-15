@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 1400,
                 :identified_by => {
-                  'N101' => 'PE'
+                  'N101' => 'PE',
+                  'N103' => ["FI", "XV", "XX"]
                 }
 
       #Payee Address
@@ -33,14 +34,20 @@ module Hippo::TransactionSets
                 :name           => 'Payee Additional Identification',
                 :minimum        => 0,
                 :maximum        => 99999,
-                :position       => 1800
+                :position       => 1800,
+                :identified_by => {
+                  'REF01' => ["0B", "D3", "PQ", "TJ"]
+                }
 
       #Remittance Delivery Method
       segment Hippo::Segments::RDM,
                 :name           => 'Remittance Delivery Method',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 2000
+                :position       => 2000,
+                :identified_by => {
+                  'RDM01' => ["BM", "EM", "FT", "OL"]
+                }
 
     end
   end

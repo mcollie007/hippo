@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 150,
                 :identified_by => {
-                  'NM101' => 'IL'
+                  'NM101' => 'IL',
+                  'NM102' => ["1", "2"]
                 }
 
       #Subscriber Address
@@ -35,7 +36,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 320,
                 :identified_by => {
-                  'DMG01' => 'D8'
+                  'DMG01' => 'D8',
+                  'DMG03' => ["F", "M", "U"]
                 }
 
       #Subscriber Secondary Identification

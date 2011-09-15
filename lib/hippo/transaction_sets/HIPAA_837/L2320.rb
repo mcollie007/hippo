@@ -9,14 +9,21 @@ module Hippo::TransactionSets
                 :name           => 'Other Subscriber Information',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 2900
+                :position       => 2900,
+                :identified_by => {
+                  'SBR01' => ["A", "B", "C", "D", "E", "F", "G", "H", "P", "S", "T", "U"],
+                  'SBR02' => ["01", "18", "19", "20", "21", "39", "40", "53", "G8"]
+                }
 
       #Claim Level Adjustments
       segment Hippo::Segments::CAS,
                 :name           => 'Claim Level Adjustments',
                 :minimum        => 0,
                 :maximum        => 5,
-                :position       => 2950
+                :position       => 2950,
+                :identified_by => {
+                  'CAS01' => ["CO", "CR", "OA", "PI", "PR"]
+                }
 
       #Coordination of Benefits (COB) Payer Paid Amount
       segment Hippo::Segments::AMT,
@@ -53,7 +60,11 @@ module Hippo::TransactionSets
                 :name           => 'Other Insurance Coverage Information',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 3110
+                :position       => 3110,
+                :identified_by => {
+                  'OI03' => ["N", "W", "Y"],
+                  'OI06' => ["I", "Y"]
+                }
 
       #Outpatient Adjudication Information
       segment Hippo::Segments::MOA,

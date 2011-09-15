@@ -12,7 +12,8 @@ module Hippo::TransactionSets
                 :position       => 3250,
                 :identified_by => {
                   'NM101' => 'PR',
-                  'NM102' => '2'
+                  'NM102' => '2',
+                  'NM108' => ["PI", "XV"]
                 }
 
       #Other Payer Address
@@ -45,7 +46,10 @@ module Hippo::TransactionSets
                 :name           => 'Other Payer Secondary Identifier',
                 :minimum        => 0,
                 :maximum        => 2,
-                :position       => 3550
+                :position       => 3550,
+                :identified_by => {
+                  'REF01' => ["2U", "EI", "FY", "NF"]
+                }
 
       #Other Payer Prior Authorization Number
       segment Hippo::Segments::REF,

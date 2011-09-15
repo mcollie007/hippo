@@ -34,7 +34,10 @@ module Hippo::TransactionSets
                 :name           => 'Service Facility Location Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 3,
-                :position       => 5250
+                :position       => 5250,
+                :identified_by => {
+                  'REF01' => ["G2", "LU"]
+                }
 
     end
   end

@@ -20,7 +20,9 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 100,
                 :identified_by => {
-                  'BHT01' => '0019'
+                  'BHT01' => '0019',
+                  'BHT02' => ["00", "18"],
+                  'BHT06' => ["31", "CH", "RP"]
                 }
 
       #Submitter Name

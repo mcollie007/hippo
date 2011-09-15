@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 150,
                 :identified_by => {
-                  'NM101' => '87'
+                  'NM101' => '87',
+                  'NM102' => ["1", "2"]
                 }
 
       #Pay-to Address - ADDRESS

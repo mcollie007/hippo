@@ -12,7 +12,8 @@ module Hippo::TransactionSets
                 :position       => 450,
                 :identified_by => {
                   'NM101' => 'PE',
-                  'NM102' => '2'
+                  'NM102' => '2',
+                  'NM108' => ["PI", "XV"]
                 }
 
       #Pay-to Plan Address
@@ -34,7 +35,10 @@ module Hippo::TransactionSets
                 :name           => 'Pay-to Plan Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 650
+                :position       => 650,
+                :identified_by => {
+                  'REF01' => ["2U", "FY", "NF"]
+                }
 
       #Pay-To Plan Tax Identification Number
       segment Hippo::Segments::REF,

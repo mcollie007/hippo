@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 100,
                 :identified_by => {
-                  'HL03' => '22'
+                  'HL03' => '22',
+                  'HL04' => ["0", "1"]
                 }
 
       #Subscriber Demographic Information

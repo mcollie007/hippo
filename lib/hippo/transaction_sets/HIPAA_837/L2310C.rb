@@ -34,7 +34,10 @@ module Hippo::TransactionSets
                 :name           => 'Service Facility Location Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 3,
-                :position       => 2710
+                :position       => 2710,
+                :identified_by => {
+                  'REF01' => ["0B", "G2", "LU"]
+                }
 
       #Service Facility Contact Information
       segment Hippo::Segments::PER,

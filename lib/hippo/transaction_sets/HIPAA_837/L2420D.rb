@@ -20,7 +20,10 @@ module Hippo::TransactionSets
                 :name           => 'Supervising Provider Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 20,
-                :position       => 5250
+                :position       => 5250,
+                :identified_by => {
+                  'REF01' => ["0B", "1G", "G2", "LU"]
+                }
 
     end
   end

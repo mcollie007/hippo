@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 150,
                 :identified_by => {
-                  'NM101' => '85'
+                  'NM101' => '85',
+                  'NM102' => ["1", "2"]
                 }
 
       #Billing Provider Address
@@ -33,14 +34,20 @@ module Hippo::TransactionSets
                 :name           => 'Billing Provider Tax Identification',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 350
+                :position       => 350,
+                :identified_by => {
+                  'REF01' => ["EI", "SY"]
+                }
 
       #Billing Provider UPIN/License Information
       segment Hippo::Segments::REF,
                 :name           => 'Billing Provider UPIN/License Information',
                 :minimum        => 0,
                 :maximum        => 2,
-                :position       => 360
+                :position       => 360,
+                :identified_by => {
+                  'REF01' => ["0B", "1G"]
+                }
 
       #Billing Provider Contact Information
       segment Hippo::Segments::PER,
@@ -49,7 +56,8 @@ module Hippo::TransactionSets
                 :maximum        => 2,
                 :position       => 400,
                 :identified_by => {
-                  'PER01' => 'IC'
+                  'PER01' => 'IC',
+                  'PER03' => ["EM", "FX", "TE"]
                 }
 
     end

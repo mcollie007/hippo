@@ -33,7 +33,10 @@ module Hippo::TransactionSets
                 :name           => 'Additional Payer Identification',
                 :minimum        => 0,
                 :maximum        => 4,
-                :position       => 1200
+                :position       => 1200,
+                :identified_by => {
+                  'REF01' => ["2U", "EO", "HI", "NF"]
+                }
 
       #Payer Business Contact Information
       segment Hippo::Segments::PER,

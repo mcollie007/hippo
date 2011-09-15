@@ -36,7 +36,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 320,
                 :identified_by => {
-                  'DMG01' => 'D8'
+                  'DMG01' => 'D8',
+                  'DMG03' => ["F", "M", "U"]
                 }
 
       #Property and Casualty Claim Number
@@ -54,7 +55,10 @@ module Hippo::TransactionSets
                 :name           => 'Property and Casualty Patient Identifier',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 362
+                :position       => 362,
+                :identified_by => {
+                  'REF01' => ["1W", "SY"]
+                }
 
       #Property and Casualty Patient Contact Information
       segment Hippo::Segments::PER,

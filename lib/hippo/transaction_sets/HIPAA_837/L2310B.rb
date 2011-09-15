@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 2500,
                 :identified_by => {
-                  'NM101' => '82'
+                  'NM101' => '82',
+                  'NM102' => ["1", "2"]
                 }
 
       #Rendering Provider Specialty Information
@@ -30,7 +31,10 @@ module Hippo::TransactionSets
                 :name           => 'Rendering Provider Secondary Identification',
                 :minimum        => 0,
                 :maximum        => 4,
-                :position       => 2710
+                :position       => 2710,
+                :identified_by => {
+                  'REF01' => ["0B", "1G", "G2", "LU"]
+                }
 
     end
   end

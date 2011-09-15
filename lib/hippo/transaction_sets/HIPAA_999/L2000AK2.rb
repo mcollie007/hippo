@@ -23,7 +23,10 @@ module Hippo::TransactionSets
                 :name           => 'Transaction Set Response Trailer',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 800
+                :position       => 800,
+                :identified_by => {
+                  'IK501' => ["A", "E", "M", "R", "W", "X"]
+                }
 
     end
   end

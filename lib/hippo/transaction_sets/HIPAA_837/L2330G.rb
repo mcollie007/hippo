@@ -11,7 +11,8 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 6350,
                 :identified_by => {
-                  'NM101' => '85'
+                  'NM101' => '85',
+                  'NM102' => ["1", "2"]
                 }
 
       #Other Payer Billing Provider Secondary Identification
@@ -19,7 +20,10 @@ module Hippo::TransactionSets
                 :name           => 'Other Payer Billing Provider Secondary Identification',
                 :minimum        => 1,
                 :maximum        => 2,
-                :position       => 6600
+                :position       => 6600,
+                :identified_by => {
+                  'REF01' => ["G2", "LU"]
+                }
 
     end
   end

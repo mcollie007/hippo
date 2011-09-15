@@ -11,7 +11,9 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 3250,
                 :identified_by => {
-                  'NM101' => 'IL'
+                  'NM101' => 'IL',
+                  'NM102' => ["1", "2"],
+                  'NM108' => ["II", "MI"]
                 }
 
       #Other Subscriber Address
