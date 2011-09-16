@@ -30,7 +30,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 500,
-                :identified_by  => {'NM1.NM101' => 'QC'}
+                :identified_by => {
+                  'NM1.NM101' => 'QC',
+                  'NM1.NM102' => '1'
+                }
 
       #Claim Status Tracking Number
       loop    Hippo::TransactionSets::HIPAA_276::L2200E,
@@ -38,7 +41,9 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 99999,
                 :position       => 900,
-                :identified_by  => {'TRN.TRN01' => '1'}
+                :identified_by => {
+                  'TRN.TRN01' => '1'
+                }
 
     end
   end

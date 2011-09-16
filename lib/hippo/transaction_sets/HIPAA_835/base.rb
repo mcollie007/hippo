@@ -81,7 +81,9 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 800,
-                :identified_by  => {'N1.N101' => 'PR'}
+                :identified_by => {
+                  'N1.N101' => 'PR'
+                }
 
       #Payee Identification
       loop    Hippo::TransactionSets::HIPAA_835::L1000B,
@@ -89,7 +91,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 1400,
-                :identified_by  => {'N1.N101' => 'PE'}
+                :identified_by => {
+                  'N1.N101' => 'PE',
+                  'N1.N103' => ["FI", "XV", "XX"]
+                }
 
       #Header Number
       loop    Hippo::TransactionSets::HIPAA_835::L2000,

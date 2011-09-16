@@ -30,7 +30,11 @@ module Hippo::TransactionSets
                 :name           => 'Claim Payment Information',
                 :minimum        => 1,
                 :maximum        => 99999,
-                :position       => 100
+                :position       => 100,
+                :identified_by => {
+                  'CLP.CLP02' => ["1", "2", "3", "4", "19", "20", "21", "22", "23", "25"],
+                  'CLP.CLP06' => ["12", "13", "14", "15", "16", "17", "AM", "CH", "DS", "HM", "LM", "MA", "MB", "MC", "OF", "TV", "VA", "WC", "ZZ"]
+                }
 
     end
   end

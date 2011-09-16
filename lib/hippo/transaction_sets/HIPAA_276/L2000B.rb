@@ -21,7 +21,11 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 500,
-                :identified_by  => {'NM1.NM101' => '41'}
+                :identified_by => {
+                  'NM1.NM101' => '41',
+                  'NM1.NM102' => ["1", "2"],
+                  'NM1.NM108' => '46'
+                }
 
     end
   end

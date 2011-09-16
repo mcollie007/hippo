@@ -38,7 +38,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 150,
-                :identified_by  => {'NM1.NM101' => 'IL'}
+                :identified_by => {
+                  'NM1.NM101' => 'IL',
+                  'NM1.NM102' => ["1", "2"]
+                }
 
       #Payer Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010BB,
@@ -46,7 +49,11 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 150,
-                :identified_by  => {'NM1.NM101' => 'PR'}
+                :identified_by => {
+                  'NM1.NM101' => 'PR',
+                  'NM1.NM102' => '2',
+                  'NM1.NM108' => ["PI", "XV"]
+                }
 
       #Patient Hierarchical Level
       loop    Hippo::TransactionSets::HIPAA_837::L2000C,
@@ -54,14 +61,23 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 99999,
                 :position       => 10,
-                :identified_by  => {'HL.HL03' => '23'}
+                :identified_by => {
+                  'HL.HL03' => '23',
+                  'HL.HL04' => '0'
+                }
 
       #Claim Information
       loop    Hippo::TransactionSets::HIPAA_837::L2300,
                 :name           => 'Claim Information',
                 :minimum        => 1,
                 :maximum        => 100,
-                :position       => 1300
+                :position       => 1300,
+                :identified_by => {
+                  'CLM.CLM06' => ["N", "Y"],
+                  'CLM.CLM07' => ["A", "B", "C"],
+                  'CLM.CLM08' => ["N", "W", "Y"],
+                  'CLM.CLM09' => ["I", "Y"]
+                }
 
     end
   end

@@ -20,7 +20,12 @@ module Hippo::TransactionSets
                 :name           => 'Information Source Name',
                 :minimum        => 1,
                 :maximum        => 1,
-                :position       => 500
+                :position       => 500,
+                :identified_by => {
+                  'NM1.NM101' => ["AY", "PR"],
+                  'NM1.NM102' => '2',
+                  'NM1.NM108' => ["46", "FI", "PI", "XV"]
+                }
 
       #Transmission Receipt Control Identifier
       loop    Hippo::TransactionSets::HIPAA_277::L2200A,
@@ -28,7 +33,9 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 900,
-                :identified_by  => {'TRN.TRN01' => '1'}
+                :identified_by => {
+                  'TRN.TRN01' => '1'
+                }
 
     end
   end

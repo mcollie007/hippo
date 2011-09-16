@@ -30,7 +30,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '20'}
+                :identified_by => {
+                  'HL.HL03' => '20',
+                  'HL.HL04' => '1'
+                }
 
       #Information Receiver Level
       loop    Hippo::TransactionSets::HIPAA_276::L2000B,
@@ -38,7 +41,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '21'}
+                :identified_by => {
+                  'HL.HL03' => '21',
+                  'HL.HL04' => '1'
+                }
 
       #Service Provider Level
       loop    Hippo::TransactionSets::HIPAA_276::L2000C,
@@ -46,7 +52,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '19'}
+                :identified_by => {
+                  'HL.HL03' => '19',
+                  'HL.HL04' => '1'
+                }
 
       #Subscriber Level
       loop    Hippo::TransactionSets::HIPAA_276::L2000D,
@@ -54,7 +63,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '22'}
+                :identified_by => {
+                  'HL.HL03' => '22',
+                  'HL.HL04' => ["0", "1"]
+                }
 
       #Dependent Level
       loop    Hippo::TransactionSets::HIPAA_276::L2000E,
@@ -62,7 +74,9 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '23'}
+                :identified_by => {
+                  'HL.HL03' => '23'
+                }
 
       #Transaction Set Trailer
       segment Hippo::Segments::SE,

@@ -31,7 +31,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '20'}
+                :identified_by => {
+                  'HL.HL03' => '20',
+                  'HL.HL04' => '1'
+                }
 
       #Information Receiver Level
       loop    Hippo::TransactionSets::HIPAA_277::L2000B,
@@ -39,7 +42,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '21'}
+                :identified_by => {
+                  'HL.HL03' => '21',
+                  'HL.HL04' => ["0", "1"]
+                }
 
       #Billing Provider of Service Level
       loop    Hippo::TransactionSets::HIPAA_277::L2000C,
@@ -47,7 +53,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => '19'}
+                :identified_by => {
+                  'HL.HL03' => '19',
+                  'HL.HL04' => ["0", "1"]
+                }
 
       #Patient Level
       loop    Hippo::TransactionSets::HIPAA_277::L2000D,
@@ -55,7 +64,9 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 99999,
                 :position       => 100,
-                :identified_by  => {'HL.HL03' => 'PT'}
+                :identified_by => {
+                  'HL.HL03' => 'PT'
+                }
 
       #Transaction Set Trailer
       segment Hippo::Segments::SE,

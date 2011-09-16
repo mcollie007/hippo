@@ -31,14 +31,23 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 150,
-                :identified_by  => {'NM1.NM101' => 'QC'}
+                :identified_by => {
+                  'NM1.NM101' => 'QC',
+                  'NM1.NM102' => '1'
+                }
 
       #Claim Information
       loop    Hippo::TransactionSets::HIPAA_837::L2300,
                 :name           => 'Claim Information',
                 :minimum        => 1,
                 :maximum        => 100,
-                :position       => 1300
+                :position       => 1300,
+                :identified_by => {
+                  'CLM.CLM06' => ["N", "Y"],
+                  'CLM.CLM07' => ["A", "B", "C"],
+                  'CLM.CLM08' => ["N", "W", "Y"],
+                  'CLM.CLM09' => ["I", "Y"]
+                }
 
     end
   end

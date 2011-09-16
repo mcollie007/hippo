@@ -33,7 +33,10 @@ module Hippo::TransactionSets
                 :name           => 'Implementation Data Element Note',
                 :minimum        => 0,
                 :maximum        => 99999,
-                :position       => 600
+                :position       => 600,
+                :identified_by => {
+                  'IK4.IK403' => ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "I10", "I11", "I12", "I13", "I6", "I9"]
+                }
 
     end
   end

@@ -21,7 +21,11 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 500,
-                :identified_by  => {'NM1.NM101' => '85'}
+                :identified_by => {
+                  'NM1.NM101' => '85',
+                  'NM1.NM102' => ["1", "2"],
+                  'NM1.NM108' => ["FI", "XX"]
+                }
 
       #Provider of Service Information Trace Identifier
       loop    Hippo::TransactionSets::HIPAA_277::L2200C,
@@ -29,7 +33,9 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 900,
-                :identified_by  => {'TRN.TRN01' => '1'}
+                :identified_by => {
+                  'TRN.TRN01' => '1'
+                }
 
     end
   end

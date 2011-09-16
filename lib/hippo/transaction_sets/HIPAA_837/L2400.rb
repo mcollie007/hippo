@@ -422,7 +422,10 @@ module Hippo::TransactionSets
                 :name           => 'Drug Identification',
                 :minimum        => 0,
                 :maximum        => 1,
-                :position       => 4940
+                :position       => 4940,
+                :identified_by => {
+                  'LIN.LIN02' => ["EN", "EO", "HI", "N4", "ON", "UK", "UP"]
+                }
 
       #Rendering Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420A,
@@ -430,7 +433,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5000,
-                :identified_by  => {'NM1.NM101' => '82'}
+                :identified_by => {
+                  'NM1.NM101' => '82',
+                  'NM1.NM102' => ["1", "2"]
+                }
 
       #Purchased Service Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420B,
@@ -438,7 +444,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5000,
-                :identified_by  => {'NM1.NM101' => 'QB'}
+                :identified_by => {
+                  'NM1.NM101' => 'QB',
+                  'NM1.NM102' => ["1", "2"]
+                }
 
       #Service Facility Location Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420C,
@@ -446,7 +455,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5000,
-                :identified_by  => {'NM1.NM101' => '77'}
+                :identified_by => {
+                  'NM1.NM101' => '77',
+                  'NM1.NM102' => '2'
+                }
 
       #Supervising Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420D,
@@ -454,7 +466,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5000,
-                :identified_by  => {'NM1.NM101' => 'DQ'}
+                :identified_by => {
+                  'NM1.NM101' => 'DQ',
+                  'NM1.NM102' => '1'
+                }
 
       #Ordering Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420E,
@@ -462,14 +477,21 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5000,
-                :identified_by  => {'NM1.NM101' => 'DK'}
+                :identified_by => {
+                  'NM1.NM101' => 'DK',
+                  'NM1.NM102' => '1'
+                }
 
       #Referring Provider Name
       loop    Hippo::TransactionSets::HIPAA_837::L2420F,
                 :name           => 'Referring Provider Name',
                 :minimum        => 0,
                 :maximum        => 2,
-                :position       => 5000
+                :position       => 5000,
+                :identified_by => {
+                  'NM1.NM101' => ["DN", "P3"],
+                  'NM1.NM102' => '1'
+                }
 
       #Ambulance Pick-up Location
       loop    Hippo::TransactionSets::HIPAA_837::L2420G,
@@ -477,7 +499,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5310,
-                :identified_by  => {'NM1.NM101' => 'PW'}
+                :identified_by => {
+                  'NM1.NM101' => 'PW',
+                  'NM1.NM102' => '2'
+                }
 
       #Ambulance Drop-off Location
       loop    Hippo::TransactionSets::HIPAA_837::L2420H,
@@ -485,7 +510,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 5380,
-                :identified_by  => {'NM1.NM101' => '45'}
+                :identified_by => {
+                  'NM1.NM101' => '45',
+                  'NM1.NM102' => '2'
+                }
 
       #Line Adjudication Information
       loop    Hippo::TransactionSets::HIPAA_837::L2430,
@@ -499,7 +527,10 @@ module Hippo::TransactionSets
                 :name           => 'Form Identification Code',
                 :minimum        => 0,
                 :maximum        => 99999,
-                :position       => 5510
+                :position       => 5510,
+                :identified_by => {
+                  'LQ.LQ01' => ["AS", "UT"]
+                }
 
     end
   end

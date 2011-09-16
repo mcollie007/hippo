@@ -42,7 +42,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 1,
                 :position       => 150,
-                :identified_by  => {'NM1.NM101' => '85'}
+                :identified_by => {
+                  'NM1.NM101' => '85',
+                  'NM1.NM102' => ["1", "2"]
+                }
 
       #Pay-to Address Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010AB,
@@ -50,7 +53,10 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 150,
-                :identified_by  => {'NM1.NM101' => '87'}
+                :identified_by => {
+                  'NM1.NM101' => '87',
+                  'NM1.NM102' => ["1", "2"]
+                }
 
       #Pay-To Plan Name
       loop    Hippo::TransactionSets::HIPAA_837::L2010AC,
@@ -58,7 +64,11 @@ module Hippo::TransactionSets
                 :minimum        => 0,
                 :maximum        => 1,
                 :position       => 450,
-                :identified_by  => {'NM1.NM101' => 'PE'}
+                :identified_by => {
+                  'NM1.NM101' => 'PE',
+                  'NM1.NM102' => '2',
+                  'NM1.NM108' => ["PI", "XV"]
+                }
 
       #Subscriber Hierarchical Level
       loop    Hippo::TransactionSets::HIPAA_837::L2000B,
@@ -66,7 +76,10 @@ module Hippo::TransactionSets
                 :minimum        => 1,
                 :maximum        => 99999,
                 :position       => 10,
-                :identified_by  => {'HL.HL03' => '22'}
+                :identified_by => {
+                  'HL.HL03' => '22',
+                  'HL.HL04' => ["0", "1"]
+                }
 
     end
   end
