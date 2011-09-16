@@ -82,4 +82,24 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
 
     assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Segment*Boo~TSS*Foo*SubBar~TCS*:SubBarBlah**Foo2~TSS*Last Segment*SubBarRepeater~', ts.to_s
   end
+
+  def test_intializing_with_segment_array_populates_transaction_set
+    tss = Hippo::Segments::TestSimpleSegment.new
+    tss.TSS01 = 'Blah'
+
+    tcs = Hippo::Segments::TestCompoundSegment.new
+    tcs.Field7 = 'Preset Field 7'
+
+    tss2 = Hippo::Segments::TestSimpleSegment.new
+    tss2.TSS01 = 'Last Segment'
+
+    # start L0001 segments
+    tss3 = Hippo::Segments::TestSimpleSegment.new
+    tss3.TSS01 = 'Foo'
+
+    segment_array = [tss, tcs, tss2, tss3]
+
+    assert_equal segment_array.map(&:to_s).join, Hippo::TransactionSets::Test::Base.new(:segments => segment_array).to_s
+    assert_empty segment_array
+  end
 end

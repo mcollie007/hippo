@@ -11,12 +11,16 @@ module Hippo::TransactionSets
       @options        = options
     end
 
-    def identifier
-      @klass.identifier
-    end
-
     def repeating?
       @maximum > 1
+    end
+
+    def loop?
+      @klass.ancestors.include? Hippo::TransactionSets::Base
+    end
+
+    def identifier
+      @klass.identifier
     end
 
     def populate_component(component, defaults = nil)
@@ -44,6 +48,32 @@ module Hippo::TransactionSets
         RepeatingComponent.new(self, parent)
       else
         populate_component(@klass.new(:parent => parent))
+      end
+    end
+
+    def valid?(segment)
+      if klass.ancestors.include? Hippo::Segments::Base
+        valid_segment?(segment)
+      else
+        valid_entry_segment?(segment)
+      end
+    end
+
+    def valid_segment?(segment)
+      segment.identifier == identifier && identified_by.all? {|k, v| Array(v).include?(segment.send(k.to_sym))}
+    end
+
+    def valid_entry_segment?(segment)
+      if identified_by.empty?
+        initial_segment_id = @klass.components.first.identifier
+
+        segment.identifier == initial_segment_id
+      else
+        path, value = identified_by.first
+        # TODO: handle arbitrary depth in loop identified_by parsing
+        segment_id, field_name = path.split('.')
+
+        segment.identifier == segment_id && Array(value).include?(segment.send(field_name))
       end
     end
   end

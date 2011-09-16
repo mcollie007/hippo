@@ -76,7 +76,7 @@ module Hippo
       end
 
       segments_by_transaction_set.collect do |transaction_segments|
-        transaction_set = Hippo::TransactionSets.const_get(:"HIPAA_#{transaction_segments.first.ST01}")::Base.new
+        Hippo::TransactionSets.const_get(:"HIPAA_#{transaction_segments.first.ST01}")::Base.new(:segments => transaction_segments)
       end
     end
 

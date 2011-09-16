@@ -22,6 +22,79 @@ module Hippo::TransactionSets
 
     def initialize(options = {})
       @parent = options.delete(:parent)
+
+      if options[:segments]
+        pp options[:segments]
+        populate options[:segments]
+      end
+    end
+
+    def populate(segments)
+      self.class.components.each_with_index do |component, component_index|
+        if component.klass.ancestors.include? Hippo::Segments::Base
+          # segments
+          segments_found = []
+
+          segments.each do |segment|
+            next unless component.valid? segment
+
+            if component.repeating?
+              values[component.sequence] ||= component.initialize_component(self)
+              values[component.sequence] << segment
+            else
+              values[component.sequence] = segment
+            end
+
+            segments_found << segment
+          end
+
+          segments -= segments_found
+        else
+          # loops
+          while true do
+            found_next_segment  = false
+            starting_index      = nil
+            length              = 0
+
+            segments.each_with_index do |segment, segment_index|
+              next unless component.valid? segment
+
+              starting_index = segment_index
+            end
+
+            # if we don't find anything break out of the loop
+            break unless starting_index
+
+            remaining_components = self.class.components.slice(component_index + 1, self.class.components.length - 1)
+
+            remaining_components.each do |next_component|
+              break if found_next_segment
+              length = 0
+
+              segments.each_with_index do |segment, segment_index|
+                found_next_segment = next_component.valid? segment
+                break if found_next_segment
+
+                length += 1
+              end
+            end
+
+            length = segments.length - starting_index if length == 0
+
+            subcomponent = component.initialize_component(self)
+            subcomponent.populate(segments.slice!(starting_index, length))
+
+            if component.repeating?
+              values[component.sequence] = component.initialize_component(self)
+              values[component.sequence] << subcomponent
+            else
+              values[component.sequence] = subcomponent
+            end
+          end
+        end
+      end
+
+      puts "Remaining Segments(#{self.class.identifier}): " + segments.inspect unless segments.empty?
     end
 
     def values
@@ -62,17 +135,17 @@ module Hippo::TransactionSets
 
     def method_missing(method_name, *args)
       component_name, component_sequence = method_name.to_s.split('_')
-      component_entry = get_component(component_name, component_sequence)
+      component = get_component(component_name, component_sequence)
 
-      if component_entry.nil?
+      if component.nil?
         raise Hippo::Exceptions::InvalidSegment.new "Invalid segment specified: '#{method_name.to_s}'."
       end
 
-      values[component_entry.sequence] ||= component_entry.initialize_component(self)
+      values[component.sequence] ||= component.initialize_component(self)
 
-      yield values[component_entry.sequence] if block_given?
+      yield values[component.sequence] if block_given?
 
-      values[component_entry.sequence]
+      values[component.sequence]
     end
   end
 end
