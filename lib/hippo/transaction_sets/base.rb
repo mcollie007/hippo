@@ -24,7 +24,6 @@ module Hippo::TransactionSets
       @parent = options.delete(:parent)
 
       if options[:segments]
-        pp options[:segments]
         populate options[:segments]
       end
     end
@@ -48,7 +47,7 @@ module Hippo::TransactionSets
             segments_found << segment
           end
 
-          segments -= segments_found
+          segments_found.each {|s| segments.delete(s)}
         else
           # loops
           while true do
