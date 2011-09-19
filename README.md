@@ -230,3 +230,9 @@ The same technique can be used to reference fields within a segment that have th
 ```
 
 For more example please review the test suite.
+
+License
+-------
+Copyright 2011 by ProMedical, and licensed under the Modified BSD License. See included
+[LICENSE](/promedical/hippo/blob/master/LICENSE) file for
+details.
