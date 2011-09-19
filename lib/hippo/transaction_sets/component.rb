@@ -36,7 +36,7 @@ module Hippo::TransactionSets
         else
           next if value.length > 1
 
-          component.send((key + '=').to_sym, value)
+          component.send((key + '=').to_sym, value.first)
         end
       end
 

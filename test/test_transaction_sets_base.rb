@@ -29,7 +29,6 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
     ts.L0001 {|l0001| }
 
     assert_equal 'TSS*Foo~', ts.to_s
-
   end
 
   def test_accessing_sements_with_same_segment_id
