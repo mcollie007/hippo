@@ -6,7 +6,7 @@ require File.expand_path(File.join('..','lib','hippo'), File.dirname(__FILE__))
 require 'pp'
 
 module Hippo::Segments
-  class TestSimpleSegment < Hippo::Segments::Base
+  class TSS < Hippo::Segments::Base
     segment_identifier 'TSS'
 
     field :name => 'Field1'
@@ -17,7 +17,7 @@ module Hippo::Segments
     field :name => 'CommonName'
   end
 
-  class TestCompoundSegment < Hippo::Segments::Base
+  class TCS < Hippo::Segments::Base
     segment_identifier 'TCS'
 
     composite_field 'CompositeField' do
@@ -43,7 +43,7 @@ module Hippo::TransactionSets
     class L0001 < Hippo::TransactionSets::Base
       loop_name 'L0001'
 
-      segment Hippo::Segments::TestSimpleSegment,
+      segment Hippo::Segments::TSS,
                 :name           => 'Test Simple Segment #1',
                 :minimum        => 1,
                 :maximum        => 1,
@@ -53,7 +53,7 @@ module Hippo::TransactionSets
     class L0002 < Hippo::TransactionSets::Base
       loop_name 'L0002'
 
-      segment Hippo::Segments::TestCompoundSegment,
+      segment Hippo::Segments::TCS,
                 :name           => 'Test Compound Segment #4',
                 :minimum        => 1,
                 :maximum        => 1,
@@ -62,7 +62,7 @@ module Hippo::TransactionSets
                   'Field7' => 'Preset Field 7'
                 }
 
-      segment Hippo::Segments::TestSimpleSegment,
+      segment Hippo::Segments::TSS,
                 :name           => 'Test Simple Segment #5',
                 :minimum        => 1,
                 :maximum        => 1,
@@ -74,7 +74,12 @@ module Hippo::TransactionSets
 
     class Base < Hippo::TransactionSets::Base
 
-      segment Hippo::Segments::TestSimpleSegment,
+      segment Hippo::Segments::ST,
+        :identified_by => {
+        'ST01' => 'Test'
+      }
+
+      segment Hippo::Segments::TSS,
                 :name           => 'Test Simple Segment #1',
                 :minimum        => 1,
                 :maximum        => 5,
@@ -83,7 +88,7 @@ module Hippo::TransactionSets
                   'TSS01' => 'Blah'
                 }
 
-      segment Hippo::Segments::TestCompoundSegment,
+      segment Hippo::Segments::TCS,
                 :name           => 'Test Compound Segment #2',
                 :minimum        => 1,
                 :maximum        => 1,
@@ -92,7 +97,7 @@ module Hippo::TransactionSets
                   'Field7' => 'Preset Field 7'
                 }
 
-      segment Hippo::Segments::TestSimpleSegment,
+      segment Hippo::Segments::TSS,
                 :name           => 'Test Simple Segment #3',
                 :minimum        => 1,
                 :maximum        => 1,

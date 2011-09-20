@@ -9,7 +9,8 @@ module Hippo
   autoload :CompositeField,   'hippo/composite_field'
   autoload :Parser,           'hippo/parser'
 
-  FieldSeparator = '*'
-  CompositeSeparator = ':'
-  SegmentSeparator = '~'
+  FieldSeparator        = '*'
+  CompositeSeparator    = ':'
+  SegmentSeparator      = '~'
+  RepetitionSeparator   = '^'
 end
