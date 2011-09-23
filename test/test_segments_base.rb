@@ -5,13 +5,13 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   def teardown; end;
 
   def test_empty_segment
-    seg = Hippo::Segments::TestSimpleSegment.new
+    seg = Hippo::Segments::TSS.new
 
     assert_equal 'TSS~', seg.to_s
   end
 
   def test_basic_populated_segment
-    seg = Hippo::Segments::TestSimpleSegment.new
+    seg = Hippo::Segments::TSS.new
 
     seg.Field1 = 'TestField1'
     seg.Field2 = 'TestField2'
@@ -22,7 +22,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   end
 
   def test_empty_field_in_segment
-    seg = Hippo::Segments::TestSimpleSegment.new
+    seg = Hippo::Segments::TSS.new
 
     seg.Field2 = 'TestField2'
     seg.Field3 = 'TestField3'
@@ -30,7 +30,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
 
     assert_equal 'TSS**TestField2*TestField3*TestField4~', seg.to_s
 
-    seg = Hippo::Segments::TestSimpleSegment.new
+    seg = Hippo::Segments::TSS.new
 
     seg.Field2 = 'TestField2'
 
@@ -38,7 +38,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   end
 
   def test_segment_orders_properly
-    seg = Hippo::Segments::TestSimpleSegment.new
+    seg = Hippo::Segments::TSS.new
 
     seg.Field3 = 'TestField3'
     seg.Field2 = 'TestField2'
@@ -49,7 +49,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   end
 
   def test_assign_values_with_same_field_names
-    seg = Hippo::Segments::TestSimpleSegment.new
+    seg = Hippo::Segments::TSS.new
     seg.CommonName = 'Value1'
     seg.CommonName_02 = 'Value2'
 
@@ -62,7 +62,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   end
 
   def test_compound_segment
-    seg = Hippo::Segments::TestCompoundSegment.new
+    seg = Hippo::Segments::TCS.new
 
     seg.Field1  = 'Comp1Field1'
     seg.Field2  = 'Comp1Field2'
@@ -75,7 +75,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   end
 
   def test_compound_segment_with_empty_initial_fields
-    seg = Hippo::Segments::TestCompoundSegment.new
+    seg = Hippo::Segments::TCS.new
 
     seg.Field2  = 'Comp1Field2'
 
@@ -84,7 +84,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
 
   def test_compound_segment_assign_values_with_same_field_names
 
-    seg = Hippo::Segments::TestCompoundSegment.new
+    seg = Hippo::Segments::TCS.new
 
     seg.CompositeCommonName = 'CompVal1'
     seg.CompositeCommonName_02 = 'CompVal2'

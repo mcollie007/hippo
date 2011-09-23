@@ -83,17 +83,17 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
   end
 
   def test_intializing_with_segment_array_populates_transaction_set
-    tss = Hippo::Segments::TestSimpleSegment.new
+    tss = Hippo::Segments::TSS.new
     tss.TSS01 = 'Blah'
 
-    tcs = Hippo::Segments::TestCompoundSegment.new
+    tcs = Hippo::Segments::TCS.new
     tcs.Field7 = 'Preset Field 7'
 
-    tss2 = Hippo::Segments::TestSimpleSegment.new
+    tss2 = Hippo::Segments::TSS.new
     tss2.TSS01 = 'Last Segment'
 
     # start L0001 segments
-    tss3 = Hippo::Segments::TestSimpleSegment.new
+    tss3 = Hippo::Segments::TSS.new
     tss3.TSS01 = 'Foo'
 
     segment_array = [tss, tcs, tss2, tss3]
