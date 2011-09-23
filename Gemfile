@@ -8,4 +8,6 @@ group :development do
   gem 'growl_notify'
   gem 'guard-minitest'
   gem 'pry'
+  gem 'ruby-debug', :platforms => [:mri_18, :jruby]
+  gem 'ruby-debug19', :require => 'ruby-debug', :platforms => :mri_19
 end
