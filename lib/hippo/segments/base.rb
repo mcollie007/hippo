@@ -1,5 +1,7 @@
 module Hippo::Segments
   class Base
+    include Hippo::Separator
+
     class << self
       attr_accessor :fields, :identifier, :fixed_width
 
@@ -20,7 +22,7 @@ module Hippo::Segments
         f.maximum  = field[:maximum]
         f.options = field[:options]
         f.restrictions = field[:restrictions]
-        f.separator = field[:separator] || @default_separator || Hippo::FieldSeparator
+        f.separator = field[:separator] || @default_separator || :field_separator
 
         if @composite_block
           f.composite = true
@@ -34,10 +36,10 @@ module Hippo::Segments
 
       def composite_field(field_name)
         @composite_block = true
-        @default_separator = Hippo::CompositeSeparator
+        @default_separator = :composite_separator
         fields << []
         yield
-        @default_separator = Hippo::FieldSeparator
+        @default_separator = :field_separator
         @composite_block = false
       end
 
@@ -59,6 +61,8 @@ module Hippo::Segments
 
     def initialize(options = {})
       @parent = options.delete(:parent)
+
+      setup_separators(options)
     end
 
     def values
@@ -84,7 +88,7 @@ module Hippo::Segments
     end
 
     def to_s
-      output = self.class.identifier + Hippo::FieldSeparator
+      output = self.class.identifier + @field_separator
 
       self.class.fields.each_with_index do |field, index|
         if field.class == Array # this is a composite field
@@ -98,15 +102,15 @@ module Hippo::Segments
                           end
             field_value = field_value.ljust(comp_field.maximum) if self.class.fixed_width
 
-            output += field_value + comp_field.separator
+            output += field_value + @composite_separator
           end
 
-          output += Hippo::FieldSeparator
+          output += @field_separator
         else # standard field
           field_value = values[field.sequence].to_s
           field_value = field_value.ljust(field.maximum) if self.class.fixed_width
 
-          output += field_value + field.separator
+          output += field_value + @field_separator
         end
       end
 
@@ -115,10 +119,9 @@ module Hippo::Segments
         output = output.gsub(/:{2,}\*/,'*').gsub(/:\*/,'*')
       end
 
-      output += Hippo::SegmentSeparator
+      output += @segment_separator
       output = output.gsub(/\*+~/,'~')
     end
-
 
     def identifier
       self.class.identifier

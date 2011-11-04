@@ -1,5 +1,7 @@
 module Hippo::TransactionSets
   class Base
+    include Hippo::Separator
+
     class << self
       attr_accessor :components, :identifier
 
@@ -21,11 +23,11 @@ module Hippo::TransactionSets
     attr_accessor :values, :parent, :sequences
 
     def initialize(options = {})
-      @parent = options.delete(:parent)
+      @parent               = options[:parent]
 
-      if options[:segments]
-        populate options[:segments]
-      end
+      setup_separators(options)
+
+      populate options[:segments] if options[:segments]
     end
 
     def populate(segments)

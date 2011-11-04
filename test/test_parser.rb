@@ -5,17 +5,6 @@ class TestParser < MiniTest::Unit::TestCase
     @parser = Hippo::Parser.new
   end
 
-  def test_populate_segments_returns_array_of_segments
-    @parser.read_file('samples/005010X221A1_business_scenario_1.edi')
-    @parser.populate_segments
-
-    assert_instance_of Array, @parser.segments
-
-    @parser.segments.each do |segment|
-      assert_kind_of Hippo::Segments::Base, segment
-    end
-  end
-
   def test_parse_returns_array_of_transaction_sets
     transaction_sets = @parser.parse('samples/005010X221A1_business_scenario_1.edi')
 
@@ -47,7 +36,6 @@ class TestParser < MiniTest::Unit::TestCase
     #'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Segment*Boo~TSS*Foo*SubBar~TCS*:SubBarBlah**Foo2~TSS*Last Segment*SubBarRepeater~', ts.to_s
 
     @parser.raw_data = ts.to_s
-    @parser.populate_segments
     ts_result = @parser.populate_transaction_sets.first
 
     puts ts.inspect
