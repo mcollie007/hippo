@@ -12,11 +12,10 @@ module Hippo
 
     def read_file(filename)
       @raw_data = File.read(filename)
+      parse_separators(@raw_data)
     end
 
     def initialize_segment(input)
-      parse_separators(@raw_data)
-
       fields = input.split(@field_separator)
 
       segment_identifier = fields.shift
@@ -47,8 +46,6 @@ module Hippo
     end
 
     def populate_transaction_sets
-      setup_separators
-
       raw_transaction_sets = []
 
       @raw_data.split(@segment_separator).each do |segment_string|
@@ -58,7 +55,7 @@ module Hippo
           raw_transaction_sets << []
         end
 
-        raw_transaction_sets.last << initialize_segment(segment_string) unless raw_transaction_sets.empty?
+        raw_transaction_sets.last << initialize_segment(segment_string)
       end
 
       raw_transaction_sets.collect do |segments|
@@ -71,7 +68,6 @@ module Hippo
 
     def parse(filename)
       read_file(filename)
-      setup_separators
       populate_transaction_sets
     end
   end
