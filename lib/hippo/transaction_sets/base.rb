@@ -23,11 +23,11 @@ module Hippo::TransactionSets
     attr_accessor :values, :parent, :sequences
 
     def initialize(options = {})
-      @parent               = options[:parent]
+      @parent = options[:parent]
 
       setup_separators(options)
 
-      populate options[:segments] if options[:segments]
+      populate(options[:segments]) if options[:segments]
     end
 
     def populate(segments)
@@ -85,12 +85,7 @@ module Hippo::TransactionSets
             subcomponent = component.initialize_component(self)
             subcomponent.populate(segments.slice!(starting_index, length))
 
-            if component.repeating?
-              values[component.sequence] = component.initialize_component(self)
-              values[component.sequence] << subcomponent
-            else
-              values[component.sequence] = subcomponent
-            end
+            values[component.sequence] = subcomponent
           end
         end
       end
