@@ -1,9 +1,10 @@
 require 'rubygems'
 gem 'minitest'
 require 'minitest/autorun'
+require 'pp'
+require 'pry'
 
 require File.expand_path(File.join('..','lib','hippo'), File.dirname(__FILE__))
-require 'pp'
 
 module Hippo::Segments
   class TSS < Hippo::Segments::Base
