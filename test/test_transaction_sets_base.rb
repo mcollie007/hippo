@@ -37,7 +37,7 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
     ts.TCS.Field1 = 'Foo'
     ts.TSS_02.Field2 = 'Baz'
 
-    assert_equal 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~TSS*Last Segment*Baz~', ts.to_s
+    assert_equal 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~TSS*Last Standalone Segment*Baz~', ts.to_s
   end
 
   def test_assigning_segment_values_with_block_syntax
@@ -57,7 +57,7 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
       tss.Field2 = 'Boo'
     end
 
-    assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Segment*Boo~', ts.to_s
+    assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Standalone Segment*Boo~', ts.to_s
 
     # test nexted block syntax on non-looping component
     ts.L0001 do |l0001|
@@ -66,7 +66,7 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
       end
     end
 
-    assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Segment*Boo~TSS*Foo*SubBar~', ts.to_s
+    assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Standalone Segment*Boo~TSS*Foo*SubBar~', ts.to_s
 
     # test nexted block syntax on non-looping component
     ts.L0002 do |l0002|
@@ -79,7 +79,7 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
       end
     end
 
-    assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Segment*Boo~TSS*Foo*SubBar~TCS*:SubBarBlah**Foo2~TSS*Last Segment*SubBarRepeater~', ts.to_s
+    assert_equal 'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Standalone Segment*Boo~TSS*Foo*SubBar~TCS*:SubBarBlah**Foo2~TSS*Last Segment*SubBarRepeater~', ts.to_s
   end
 
   def test_intializing_with_segment_array_populates_transaction_set
@@ -90,7 +90,7 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
     tcs.Field7 = 'Preset Field 7'
 
     tss2 = Hippo::Segments::TSS.new
-    tss2.TSS01 = 'Last Segment'
+    tss2.TSS01 = 'Last Standalone Segment'
 
     # start L0001 segments
     tss3 = Hippo::Segments::TSS.new

@@ -24,10 +24,10 @@ class TestParser < MiniTest::Unit::TestCase
     ts.TCS.CompositeCommonName_02 = 'CNBlah'
     ts.TSS_02.Field2 = 'Boo'
 
-    # test nexted block syntax on non-looping component
+    # test nested block syntax on non-looping component
     ts.L0001.TSS.Field2 = 'SubBar'
 
-    # test nexted block syntax on non-looping component
+    # test nested block syntax on non-looping component
     ts.L0002 do |l0002|
       l0002.TCS.Field2 = 'SubBarBlah'
       l0002.TSS.Field2 = 'SubBarRepeater'

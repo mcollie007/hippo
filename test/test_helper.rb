@@ -103,7 +103,7 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 50,
                 :identified_by => {
-                  'TSS01' => 'Last Segment'
+                  'TSS01' => 'Last Standalone Segment'
                 }
 
       loop Hippo::TransactionSets::Test::L0001,
