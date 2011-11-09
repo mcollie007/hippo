@@ -1,8 +1,14 @@
+0.0.6 - 2011/11/09
+  * Add Separator module for handling segment, field, composite, and
+    repetition separators the same.
+  * Respect 'parent's separators when building/initializing components.
+  * Fixed parsing logic to properly handle nested groups.
+
 0.0.5 - 2011/09/16
-	* Add ability to parse transaction sets.
+  * Add ability to parse transaction sets.
 
 0.0.4
-	* Fix issue when no values are set in any subfield of a composite field.
-	* Add more segment tests.
-	* Import all segments and loops from the X12 CSV Table Data
-	* Intial version.
+  * Fix issue when no values are set in any subfield of a composite field.
+  * Add more segment tests.
+  * Import all segments and loops from the X12 CSV Table Data
+  * Intial version.
