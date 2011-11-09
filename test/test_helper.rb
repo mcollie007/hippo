@@ -60,7 +60,7 @@ module Hippo::TransactionSets
                 :maximum        => 1,
                 :position       => 100,
                 :identified_by => {
-                  'Field7' => 'Preset Field 7'
+                  'Field7' => ['Preset Field 7', 'Foo2']
                 }
 
       segment Hippo::Segments::TSS,
