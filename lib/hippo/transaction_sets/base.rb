@@ -137,8 +137,11 @@ module Hippo::TransactionSets
                   end
 
       self.class.components.select do |c|
-        puts c.options.inspect
-        c.options[:name] == name
+        if name.class == Regexp
+          c.options[:name] =~ name
+        else
+          c.options[:name] == name  
+        end
       end[sequence]
     end
 

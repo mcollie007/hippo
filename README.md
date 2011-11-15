@@ -222,10 +222,16 @@ TSS_02 instead.
 
 Obviously, this could get somewhat tedious when operating on a TransactionSet with many segments
 with the same identifier.  As an alternative you can also access a particular segment/loop based
-on the name provided in the TransactionSet definition.
+on the name provided in the TransactionSet definition.  You can either pass the actual name or
+a Regexp to search with.
 
 ```ruby
     ts.find\_by\_name('Test Simple Segment #1') do |tss|
+      tss.Field2 = 'Baz'
+    end
+
+    # which is essentially equivilent (because the search occurs in order of declaration)
+    ts.find\_by\_name(/Segment/) do |tss|
       tss.Field2 = 'Baz'
     end
 

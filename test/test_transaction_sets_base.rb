@@ -49,6 +49,15 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
     assert_equal 'TSS*Blah*Baz~', ts.to_s
   end
 
+  def test_accessing_segments_by_name_regexp
+    ts = Hippo::TransactionSets::Test::Base.new
+    ts.find_by_name(/Segment/) do |tss|
+      tss.Field2 = 'Baz'
+    end
+
+    assert_equal 'TSS*Blah*Baz~', ts.to_s
+  end
+  
   def test_assigning_segment_values_with_block_syntax
     ts = Hippo::TransactionSets::Test::Base.new
 
