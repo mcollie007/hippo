@@ -1,9 +1,9 @@
 Hippo
 =====
 
-The Hippo library is an attempt at creating a simple DSL to generate and parse HIPAA 
-transaction sets.  HIPAA or the Health Insurance Portability Accountability Act is a 
-series of regulations which place restrictions and requirements on the way transaction 
+The Hippo library is an attempt at creating a simple DSL to generate and parse HIPAA
+transaction sets.  HIPAA or the Health Insurance Portability Accountability Act is a
+series of regulations which place restrictions and requirements on the way transaction
 sets  (ie. Claims, Remittances, Eligibility, Claim Status, etc.) must be formatted.
 
 The HIPAA required transactions sets are created by the X12
@@ -12,7 +12,7 @@ effective 2012/01/01 all organizations must be migrated to using version
 5010.
 
 To obtain copies of the implementation guides you must purchase them from the X12
-organization. The implementation data is also available in tabular format (CSV).  The 
+organization. The implementation data is also available in tabular format (CSV).  The
 transaction sets, loops, and segments in Hippo were created from the X12 CSV Table Data.
 
 More information can be found at the following sites:
@@ -85,7 +85,7 @@ Transaction Sets/Loops and Segments are defined with a very straight forward DSL
     module Hippo::Segments
       class TestSimpleSegment < Hippo::Segments::Base
         segment_identifier 'TSS'
-    
+
         field :name => 'Field1'
         field :name => 'Field2'
         field :name => 'Field3'
@@ -93,32 +93,32 @@ Transaction Sets/Loops and Segments are defined with a very straight forward DSL
         field :name => 'CommonName'
         field :name => 'CommonName'
       end
-    
+
       class TestCompoundSegment < Hippo::Segments::Base
         segment_identifier 'TCS'
-    
+
         composite_field 'CompositeField' do
           field :name => 'Field1'
           field :name => 'Field2'
           field :name => 'Field3'
           field :name => 'CompositeCommonName'
         end
-    
+
         composite_field 'CompositeField' do
           field :name => 'Field4'
           field :name => 'Field5'
           field :name => 'Field6'
           field :name => 'CompositeCommonName'
         end
-    
+
         field :name => 'Field7'
       end
     end
-    
+
     module Hippo::TransactionSets
       module Test
         class Base < Hippo::TransactionSets::Base
-    
+
           segment Hippo::Segments::TestSimpleSegment,
                     :name           => 'Test Simple Segment #1',
                     :minimum        => 1,
@@ -127,7 +127,7 @@ Transaction Sets/Loops and Segments are defined with a very straight forward DSL
                     :defaults => {
                       'TSS01' => 'Blah'
                     }
-    
+
           segment Hippo::Segments::TestCompoundSegment,
                     :name           => 'Test Compound Segment #2',
                     :minimum        => 1,
@@ -136,7 +136,7 @@ Transaction Sets/Loops and Segments are defined with a very straight forward DSL
                     :defaults => {
                       'Field7' => 'Preset Field 7'
                     }
-    
+
           segment Hippo::Segments::TestSimpleSegment,
                     :name           => 'Test Simple Segment #3',
                     :minimum        => 1,
@@ -176,7 +176,7 @@ do not call #build.)
     ts.TSS.build
 ```
 
-The code above produces the following string output (notice how the values from 
+The code above produces the following string output (notice how the values from
 :defaults are prefilled, and the output is automatically sorted based on the order
 that the segments were declared):
 
@@ -196,11 +196,11 @@ on the segment or by passing a block to the segment.
     ts.TCS do |tcs|
       tcs.Field1 = 'Foo'
     end
-    
+
     ts.TSS do |tss|
       tss.Field2 = 'Bar'
     end
-    
+
     # both of the mechanisms above have the same string representation:
     #
     # ts.to_s => 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~'
@@ -218,6 +218,18 @@ TSS_02 instead.
     ts.TSS_02.Field2 = 'Baz'
 
     # ts.to_s => 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~TSS*Last Segment*Baz~'
+```
+
+Obviously, this could get somewhat tedious when operating on a TransactionSet with many segments
+with the same identifier.  As an alternative you can also access a particular segment/loop based
+on the name provided in the TransactionSet definition.
+
+```ruby
+    ts.find\_by\_name('Test Simple Segment #1') do |tss|
+      tss.Field2 = 'Baz'
+    end
+
+    # ts.to_s => 'TSS*Blah*Baz~'
 ```
 
 The same technique can be used to reference fields within a segment that have the same name.
