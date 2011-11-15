@@ -31,13 +31,22 @@ class TestTransactionSetBase < MiniTest::Unit::TestCase
     assert_equal 'TSS*Foo~', ts.to_s
   end
 
-  def test_accessing_sements_with_same_segment_id
+  def test_accessing_segments_with_same_segment_id
     ts = Hippo::TransactionSets::Test::Base.new
     ts.TSS.Field2 = 'Bar'
     ts.TCS.Field1 = 'Foo'
     ts.TSS_02.Field2 = 'Baz'
 
     assert_equal 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~TSS*Last Standalone Segment*Baz~', ts.to_s
+  end
+
+  def test_accessing_segments_by_name
+    ts = Hippo::TransactionSets::Test::Base.new
+    ts.find_by_name('Test Simple Segment #1') do |tss|
+      tss.Field2 = 'Baz'
+    end
+
+    assert_equal 'TSS*Blah*Baz~', ts.to_s
   end
 
   def test_assigning_segment_values_with_block_syntax

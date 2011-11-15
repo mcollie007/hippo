@@ -129,9 +129,26 @@ module Hippo::TransactionSets
       end[sequence]
     end
 
+    def get_component_by_name(name, sequence = nil)
+      sequence =  if sequence.nil?
+                    0
+                  else
+                    sequence.to_i - 1
+                  end
+
+      self.class.components.select do |c|
+        puts c.options.inspect
+        c.options[:name] == name
+      end[sequence]
+    end
+
     def method_missing(method_name, *args)
-      component_name, component_sequence = method_name.to_s.split('_')
-      component = get_component(component_name, component_sequence)
+      component = if method_name == :find_by_name
+                    get_component_by_name(args[0], args[1])
+                  else
+                    component_name, component_sequence = method_name.to_s.split('_')
+                    get_component(component_name, component_sequence)
+                  end
 
       if component.nil?
         raise Hippo::Exceptions::InvalidSegment.new "Invalid segment specified: '#{method_name.to_s}'."
