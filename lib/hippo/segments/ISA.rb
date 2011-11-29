@@ -4,92 +4,133 @@ module Hippo::Segments
     segment_identifier  'ISA'
     segment_fixed_width
 
-    field   :name     => 'AuthorizationInformationQualifier',
-            :datatype => :list,
-            :list     => [ '00','01','02','03','04','05','06'],
-            :maximum  => 2,
-            :required => false
+    field   :name                 => 'AuthorizationInformationQualifier',
+            :sequence             => 1,
+            :datatype             => :string,
+            :minimum              => 2,
+            :maximum              => 2,
+            :required             => true,
+            :data_element_number  => 'I01'
 
-    field   :name     => 'AuthorizationInformation',
-            :datatype => :alpha_numeric,
-            :maximum  => 10,
-            :required => false
+    field   :name                 => 'AuthorizationInformation',
+            :sequence             => 2,
+            :datatype             => :string,
+            :minimum              => 10,
+            :maximum              => 10,
+            :required             => true,
+            :data_element_number  => 'I02'
 
-    field   :name     => 'SecurityInformationQualifier',
-            :datatype => :list,
-            :list     => [ '00','01'],
-            :maximum  => 2,
-            :required => false
+    field   :name                 => 'SecurityInformationQualifier',
+            :sequence             => 3,
+            :datatype             => :string,
+            :minimum              => 2,
+            :maximum              => 2,
+            :required             => true,
+            :data_element_number  => 'I03'
 
-    field   :name     => 'SecurityInformation',
-            :datatype => :alpha_numeric,
-            :maximum  => 10,
-            :required => false
+    field   :name                 => 'SecurityInformation',
+            :sequence             => 4,
+            :datatype             => :string,
+            :minimum              => 10,
+            :maximum              => 10,
+            :required             => true,
+            :data_element_number  => 'I04'
 
-    field   :name     => 'InterchangeIdQualifier1',
-            :datatype => :list,
-            :list     => [ '01','02','03','04','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','AM','NR','SN','ZZ'],
-            :maximum  => 2,
-            :required => false
+    field   :name                 => 'InterchangeIdQualifier',
+            :sequence             => 5,
+            :datatype             => :string,
+            :minimum              => 2,
+            :maximum              => 2,
+            :required             => true,
+            :data_element_number  => 'I05'
 
-    field   :name     => 'InterchangeSenderId',
-            :datatype => :alpha_numeric,
-            :maximum  => 15,
-            :required => false
+    field   :name                 => 'InterchangeSenderId',
+            :sequence             => 6,
+            :datatype             => :string,
+            :minimum              => 15,
+            :maximum              => 15,
+            :required             => true,
+            :data_element_number  => 'I06'
 
-    field   :name     => 'InterchangeIdQualifier2',
-            :datatype => :alpha_numeric,
-            :maximum  => 2,
-            :required => false
+    field   :name                 => 'InterchangeIdQualifier',
+            :sequence             => 7,
+            :datatype             => :string,
+            :minimum              => 2,
+            :maximum              => 2,
+            :required             => true,
+            :data_element_number  => 'I05'
 
-    field   :name     => 'InterchangeReceiverId',
-            :datatype => :alpha_numeric,
-            :maximum  => 15,
-            :required => false
+    field   :name                 => 'InterchangeReceiverId',
+            :sequence             => 8,
+            :datatype             => :string,
+            :minimum              => 15,
+            :maximum              => 15,
+            :required             => true,
+            :data_element_number  => 'I07'
 
-    field   :name     => 'InterchangeDate',
-            :datatype => :alpha_numeric,
-            :maximum  => 6,
-            :required => false
+    field   :name                 => 'InterchangeDate',
+            :sequence             => 9,
+            :datatype             => :string,
+            :minimum              => 6,
+            :maximum              => 6,
+            :required             => true,
+            :data_element_number  => 'I08'
 
-    field   :name     => 'InterchangeTime',
-            :datatype => :alpha_numeric,
-            :maximum  => 4,
-            :required => false
+    field   :name                 => 'InterchangeTime',
+            :sequence             => 10,
+            :datatype             => :string,
+            :minimum              => 4,
+            :maximum              => 4,
+            :required             => true,
+            :data_element_number  => 'I09'
 
-    field   :name     => 'InterchangeControlStandardsIdentifier',
-            :datatype => :list,
-            :list     => [ 'U'],
-            :maximum  => 1,
-            :required => false
+    field   :name                 => 'RepetitionSeparator',
+            :sequence             => 11,
+            :datatype             => :string,
+            :minimum              => 1,
+            :maximum              => 1,
+            :required             => true,
+            :data_element_number  => 'I65'
 
-    field   :name     => 'InterchangeControlVersionNumber',
-            :datatype => :list,
-            :list     => [ '00200','00201','00204','00300','00301','00302','00303','00304','00305','00306','00307','00400','00401','00402'],
-            :maximum  => 5,
-            :required => false
+    field   :name                 => 'InterchangeControlVersionNumber',
+            :sequence             => 12,
+            :datatype             => :string,
+            :minimum              => 5,
+            :maximum              => 5,
+            :required             => true,
+            :data_element_number  => 'I11'
 
-    field   :name     => 'InterchangeControlNumber',
-            :datatype => :alpha_numeric,
-            :maximum  => 9,
-            :required => false
+    field   :name                 => 'InterchangeControlNumber',
+            :sequence             => 13,
+            :datatype             => :string,
+            :minimum              => 9,
+            :maximum              => 9,
+            :required             => true,
+            :data_element_number  => 'I12'
 
-    field   :name     => 'AcknowledgmentRequested',
-            :datatype => :list,
-            :list     => [ '0','1'],
-            :maximum  => 1,
-            :required => false
+    field   :name                 => 'AcknowledgmentRequested',
+            :sequence             => 14,
+            :datatype             => :string,
+            :minimum              => 1,
+            :maximum              => 1,
+            :required             => true,
+            :data_element_number  => 'I13'
 
-    field   :name     => 'UsageIndicator',
-            :datatype => :list,
-            :list     => [ 'I','P','T'],
-            :maximum  => 1,
-            :required => false
+    field   :name                 => 'InterchangeUsageIndicator',
+            :sequence             => 15,
+            :datatype             => :string,
+            :minimum              => 1,
+            :maximum              => 1,
+            :required             => true,
+            :data_element_number  => 'I14'
 
-    field   :name     => 'ComponentElementSeparator',
-            :datatype => :alpha_numeric,
-            :maximum  => 1,
-            :required => false
+    field   :name                 => 'ComponentElementSeparator',
+            :sequence             => 16,
+            :datatype             => :string,
+            :minimum              => 1,
+            :maximum              => 1,
+            :required             => true,
+            :data_element_number  => 'I15'
 
   end
 end
