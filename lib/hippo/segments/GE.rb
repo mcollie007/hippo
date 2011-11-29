@@ -3,17 +3,21 @@ module Hippo::Segments
 
     segment_identifier  'GE'
 
-    field   :name     => 'NumberOfTransactionSetsIncluded',
-            :datatype => :alpha_numeric,
-            :minimum  => 1,
-            :maximum  => 6,
-            :required => false
+    field   :name                 => 'NumberOfTransactionSetsIncluded',
+            :sequence             => 1,
+            :datatype             => :string,
+            :minimum              => 1,
+            :maximum              => 6,
+            :required             => true,
+            :data_element_number  => 97
 
-    field   :name     => 'GroupControlNumber',
-            :datatype => :alpha_numeric,
-            :minimum  => 1,
-            :maximum  => 9,
-            :required => false
+    field   :name                 => 'GroupControlNumber',
+            :sequence             => 2,
+            :datatype             => :string,
+            :minimum              => 1,
+            :maximum              => 9,
+            :required             => true,
+            :data_element_number  => 28
 
   end
 end
