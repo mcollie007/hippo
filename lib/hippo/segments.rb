@@ -81,5 +81,10 @@ module Hippo
     autoload :TS2,       'hippo/segments/TS2'
     autoload :TS3,       'hippo/segments/TS3'
     autoload :UR,        'hippo/segments/UR'
+
+    autoload :ISA,       'hippo/segments/ISA'
+    autoload :GS,        'hippo/segments/GS'
+    autoload :GE,        'hippo/segments/GE'
+    autoload :IEA,       'hippo/segments/IEA'
   end
 end
