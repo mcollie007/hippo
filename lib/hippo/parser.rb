@@ -10,6 +10,12 @@ module Hippo
       setup_separators(options)
     end
 
+    def read_string(input)
+      @raw_data = input
+      remove_base_control_characters
+      parse_separators(@raw_data)
+    end
+
     def read_file(filename)
       @raw_data = File.read(filename)
       remove_base_control_characters
@@ -51,6 +57,7 @@ module Hippo
     end
 
     def populate_transaction_sets
+      #envelope             = {:isa => nil, :gs => nil, :ge => nil, :iea => nil}
       raw_transaction_sets = []
       inside_transaction   = false
 
@@ -75,8 +82,14 @@ module Hippo
       end
     end
 
-    def parse(filename)
+    def parse_file(filename)
       read_file(filename)
+      populate_transaction_sets
+    end
+    alias :parse :parse_file
+
+    def parse_string(input)
+      read_string(input)
       populate_transaction_sets
     end
   end

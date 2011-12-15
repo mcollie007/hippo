@@ -38,9 +38,25 @@ class TestParser < MiniTest::Unit::TestCase
     @parser.raw_data = ts.to_s
     ts_result = @parser.populate_transaction_sets.first
 
-    puts ts.inspect
-    puts ts_result.inspect
-
     assert_equal ts.values.inspect, ts_result.values.inspect
+  end
+
+  def test_reads_separators_from_isa
+    @parser.parse('samples/005010X231A1_01.edi')
+
+    assert_equal @parser.field_separator,       '*'
+    assert_equal @parser.repetition_separator,  '^'
+    assert_equal @parser.composite_separator,   ':'
+    assert_equal @parser.segment_separator,     '~'
+
+    @parser = Hippo::Parser.new
+    transaction_set = @parser.parse('samples/005010X231A1_02.edi')
+
+    assert_equal @parser.field_separator,       '!'
+    assert_equal @parser.repetition_separator,  '@'
+    assert_equal @parser.composite_separator,   '~'
+    assert_equal @parser.segment_separator,     '^'
+
+    assert_equal transaction_set.first.ST.ST01, '999'
   end
 end
