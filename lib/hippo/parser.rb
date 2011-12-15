@@ -56,29 +56,49 @@ module Hippo
       segment
     end
 
+    def find_first_segment(segments, identifier, reverse = false)
+      segments.reverse! if reverse
+
+      if index = segments.index{|o| o.identifier == identifier}
+        segments[index]
+      else
+        nil
+      end
+    end
+
     def populate_transaction_sets
-      #envelope             = {:isa => nil, :gs => nil, :ge => nil, :iea => nil}
-      raw_transaction_sets = []
-      inside_transaction   = false
+      raw_transaction_sets  = []
+      segments              = []
+      inside_transaction    = false
 
       @raw_data.split(@segment_separator).each do |segment_string|
         next if segment_string.strip.empty?
 
-        if segment_string =~ /\AST/
-          raw_transaction_sets << []
+        segments << initialize_segment(segment_string)
+      end
+
+      segments.each_with_index do |segment, index|
+
+        if segment.identifier =~ /\AST/
+          raw_transaction_sets << {:segments  => [],
+                                   :ISA       => find_first_segment(segments[0,index + 1], 'ISA', true),
+                                   :GS        => find_first_segment(segments[0,index + 1], 'GS', true),
+                                   :GE        => find_first_segment(segments[index + 1,segments.length - index + 1], 'GE'),
+                                   :IEA       => find_first_segment(segments[index + 1,segments.length - index + 1], 'IEA')}
+
           inside_transaction = true
         end
 
-        raw_transaction_sets.last << initialize_segment(segment_string) if inside_transaction
+        raw_transaction_sets.last[:segments] << segment if inside_transaction
 
-        inside_transaction = false if segment_string =~ /\ASE/
+        inside_transaction = false if segment.identifier =~ /\ASE/
       end
 
-      raw_transaction_sets.collect do |segments|
-        transaction_set_id = segments.first.ST01
+      raw_transaction_sets.collect do |transaction|
+        transaction_set_id = transaction[:segments].first.ST01
         transaction_set = Hippo::TransactionSets.constants.select{|c| c.to_s.end_with?(transaction_set_id) }.first
 
-        Hippo::TransactionSets.const_get(transaction_set)::Base.new(separators.merge(:segments => segments))
+        Hippo::TransactionSets.const_get(transaction_set)::Base.new(separators.merge(transaction))
       end
     end
 

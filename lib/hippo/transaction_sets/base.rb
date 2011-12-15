@@ -20,10 +20,14 @@ module Hippo::TransactionSets
       alias loop add_component
     end
 
-    attr_accessor :values, :parent, :sequences
+    attr_accessor :values, :parent, :sequences, :ISA, :GS, :GE, :IEA
 
     def initialize(options = {})
       @parent = options[:parent]
+      @ISA    = options[:ISA]
+      @GS     = options[:GS]
+      @GE     = options[:GE]
+      @IEA    = options[:IEA]
 
       setup_separators(options)
 
@@ -140,7 +144,7 @@ module Hippo::TransactionSets
         if name.class == Regexp
           c.options[:name] =~ name
         else
-          c.options[:name] == name  
+          c.options[:name] == name
         end
       end[sequence]
     end

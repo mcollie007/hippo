@@ -44,19 +44,26 @@ class TestParser < MiniTest::Unit::TestCase
   def test_reads_separators_from_isa
     @parser.parse('samples/005010X231A1_01.edi')
 
-    assert_equal @parser.field_separator,       '*'
-    assert_equal @parser.repetition_separator,  '^'
-    assert_equal @parser.composite_separator,   ':'
-    assert_equal @parser.segment_separator,     '~'
+    assert_equal '*', @parser.field_separator
+    assert_equal '^', @parser.repetition_separator
+    assert_equal ':', @parser.composite_separator
+    assert_equal '~', @parser.segment_separator
 
     @parser = Hippo::Parser.new
     transaction_set = @parser.parse('samples/005010X231A1_02.edi')
 
-    assert_equal @parser.field_separator,       '!'
-    assert_equal @parser.repetition_separator,  '@'
-    assert_equal @parser.composite_separator,   '~'
-    assert_equal @parser.segment_separator,     '^'
+    assert_equal '!', @parser.field_separator
+    assert_equal '@', @parser.repetition_separator
+    assert_equal '~', @parser.composite_separator
+    assert_equal '^', @parser.segment_separator
 
     assert_equal transaction_set.first.ST.ST01, '999'
+  end
+
+  def test_adds_enveloping_to_transaction_set
+    transaction_set = @parser.parse('samples/005010X231A1_01.edi').first
+
+    assert_equal '445289179', transaction_set.ISA.ISA13
+    assert_equal '1', transaction_set.GS.GS06
   end
 end
