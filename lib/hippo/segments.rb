@@ -86,5 +86,6 @@ module Hippo
     autoload :GS,        'hippo/segments/GS'
     autoload :GE,        'hippo/segments/GE'
     autoload :IEA,       'hippo/segments/IEA'
+    autoload :TA1,       'hippo/segments/TA1'
   end
 end
