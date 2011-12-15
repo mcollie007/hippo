@@ -57,15 +57,14 @@ module Hippo
       @raw_data.split(@segment_separator).each do |segment_string|
         next if segment_string.strip.empty?
 
-        case segment_string
-        when /\AST/
+        if segment_string =~ /\AST/
           raw_transaction_sets << []
           inside_transaction = true
-        when /\ASE/
-          inside_transaction = false
         end
 
         raw_transaction_sets.last << initialize_segment(segment_string) if inside_transaction
+
+        inside_transaction = false if segment_string =~ /\ASE/
       end
 
       raw_transaction_sets.collect do |segments|
