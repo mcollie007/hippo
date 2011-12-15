@@ -12,7 +12,12 @@ module Hippo
 
     def read_file(filename)
       @raw_data = File.read(filename)
+      remove_base_control_characters
       parse_separators(@raw_data)
+    end
+
+    def remove_base_control_characters
+      @raw_data.gsub!(/[\a\e\f\n\r\t\v]/,'')
     end
 
     def initialize_segment(input)
@@ -47,15 +52,20 @@ module Hippo
 
     def populate_transaction_sets
       raw_transaction_sets = []
+      inside_transaction   = false
 
       @raw_data.split(@segment_separator).each do |segment_string|
         next if segment_string.strip.empty?
 
-        if segment_string =~ /\AST/
+        case segment_string
+        when /\AST/
           raw_transaction_sets << []
+          inside_transaction = true
+        when /\ASE/
+          inside_transaction = false
         end
 
-        raw_transaction_sets.last << initialize_segment(segment_string)
+        raw_transaction_sets.last << initialize_segment(segment_string) if inside_transaction
       end
 
       raw_transaction_sets.collect do |segments|
