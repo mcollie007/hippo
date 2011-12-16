@@ -71,7 +71,6 @@ module Hippo::TransactionSets
             break unless starting_index
 
             remaining_components = self.class.components.slice(component_index + 1, self.class.components.length - 1)
-
             remaining_components.each do |next_component|
               break if found_next_segment
               length = 0
@@ -86,10 +85,17 @@ module Hippo::TransactionSets
 
             length = segments.length - starting_index if length == 0
 
-            subcomponent = component.initialize_component(self)
-            subcomponent.populate(segments.slice!(starting_index, length))
+            if component.repeating?
+              values[component.sequence] ||= component.initialize_component(self)
+              values[component.sequence].build do |subcomponent|
+                subcomponent.populate(segments.slice!(starting_index, length))
+              end
+            else
+              subcomponent = component.initialize_component(self)
+              subcomponent.populate(segments.slice!(starting_index, length))
 
-            values[component.sequence] = subcomponent
+              values[component.sequence] = subcomponent
+            end
           end
         end
       end

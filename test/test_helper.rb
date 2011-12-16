@@ -119,6 +119,11 @@ module Hippo::TransactionSets
                 :identified_by  => {
                   'TCS.Field7'   => 'Foo2'
                 }
+
+      segment Hippo::Segments::SE,
+        :identified_by => {
+          'SE02' => 'Test'
+      }
     end
   end
 end

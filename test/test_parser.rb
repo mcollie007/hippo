@@ -35,8 +35,7 @@ class TestParser < MiniTest::Unit::TestCase
 
     #'TSS*Blah*Bar*Baz~TCS*Blah*:::CNBlah*Preset Field 7~TSS*Last Segment*Boo~TSS*Foo*SubBar~TCS*:SubBarBlah**Foo2~TSS*Last Segment*SubBarRepeater~', ts.to_s
 
-    @parser.raw_data = ts.to_s
-    ts_result = @parser.populate_transaction_sets.first
+    ts_result = @parser.parse_string(ts.to_s).first
 
     assert_equal ts.values.inspect, ts_result.values.inspect
   end
@@ -65,5 +64,23 @@ class TestParser < MiniTest::Unit::TestCase
 
     assert_equal '445289179', transaction_set.ISA.ISA13
     assert_equal '1', transaction_set.GS.GS06
+  end
+
+  def test_parses_repeating_loops
+    ts = Hippo::TransactionSets::Test::Base.new
+    ts.ST
+    [1,2,3,4,5].each do |i|
+      ts.TSS.build do |tss|
+        tss.Field2 = 'Bar' + i.to_s
+        tss.Field3 = 'Baz' + i.to_s
+      end
+    end
+
+    ts.TCS.Field1    = 'Blah'
+    ts.TSS_02.Field2 = 'Boo'
+    ts.SE
+
+    # ST*Test~TSS*Blah*Bar1*Baz1~TSS*Blah*Bar2*Baz2~TSS*Blah*Bar3*Baz3~TSS*Blah*Bar4*Baz4~TSS*Blah*Bar5*Baz5~TCS*Blah**Preset Field 7~TSS*Last Standalone Segment*Boo~SE**Test
+    assert_equal ts.values.inspect, @parser.parse_string(ts.to_s).first.values.inspect
   end
 end
