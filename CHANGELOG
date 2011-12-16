@@ -5,6 +5,13 @@
   * Add ISA, GS, GE, and IEA to TransactionSets::Base, and populate them
     when parsing.  This allows the client application to access each
     transaction sets individual envelope.
+  * Added common code lists including:
+    - Claim Adjustment Reason Codes
+    - Claim Status Category Codes
+    - Claim Status Codes
+    - Remittance Advice Remark Codes
+    - Service Type Codes
+    - Taxonomy Codes
 0.0.10 - 2011/11/29
   * Fix autoload issue with enveloping structures.
 0.0.9 - 2011/11/29

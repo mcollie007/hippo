@@ -9,6 +9,7 @@ module Hippo
   autoload :Field,            'hippo/field'
   autoload :CompositeField,   'hippo/composite_field'
   autoload :Parser,           'hippo/parser'
+  autoload :CodeLists,        'hippo/code_lists'
 
   DEFAULT_FIELD_SEPARATOR        = '*'
   DEFAULT_COMPOSITE_SEPARATOR    = ':'
