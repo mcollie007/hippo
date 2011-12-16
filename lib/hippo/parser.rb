@@ -79,7 +79,7 @@ module Hippo
 
       segments.each_with_index do |segment, index|
 
-        if segment.identifier =~ /\AST/
+        if segment.identifier == 'ST'
           raw_transaction_sets << {:segments  => [],
                                    :ISA       => find_first_segment(segments[0,index + 1], 'ISA', true),
                                    :GS        => find_first_segment(segments[0,index + 1], 'GS', true),
@@ -91,7 +91,7 @@ module Hippo
 
         raw_transaction_sets.last[:segments] << segment if inside_transaction
 
-        inside_transaction = false if segment.identifier =~ /\ASE/
+        inside_transaction = false if segment.identifier == 'SE'
       end
 
       raw_transaction_sets.collect do |transaction|
