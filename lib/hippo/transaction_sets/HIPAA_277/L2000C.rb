@@ -37,6 +37,16 @@ module Hippo::TransactionSets
                   'TRN.TRN01' => '1'
                 }
 
+      #Patient Level
+      loop    Hippo::TransactionSets::HIPAA_277::L2000D,
+                :name           => 'Patient Level',
+                :minimum        => 0,
+                :maximum        => 99999,
+                :position       => 100,
+                :identified_by => {
+                  'HL.HL03' => 'PT'
+                }
+
     end
   end
 end
