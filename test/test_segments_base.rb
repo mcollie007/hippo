@@ -100,6 +100,8 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
     seg.TCS02_04 = 'CompVal6'
 
     assert_equal 'TCS*:::CompVal5*:::CompVal6~', seg.to_s
+
+    assert_equal 'CompVal5', seg.TCS01_04
   end
 
   def test_assign_invalid_field_throws_error

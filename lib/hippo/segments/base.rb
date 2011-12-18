@@ -148,7 +148,11 @@ module Hippo::Segments
           self.values[field.sequence] = args[0]
         end
       else
-        self.values[field.sequence]
+        if field.composite
+          self.values[field.composite_sequence][field.sequence]
+        else
+          self.values[field.sequence]
+        end
       end
     end
   end
