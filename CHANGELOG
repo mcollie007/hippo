@@ -13,6 +13,8 @@
     - Service Type Codes
     - Taxonomy Codes
   * Fix issue preventing repeating loops from being parsed properly.
+  * Allow accessing composite fields via shorthand notation. (e.g
+    SV101_01 = SV1.ProductServiceIdQualifier)
 0.0.10 - 2011/11/29
   * Fix autoload issue with enveloping structures.
 0.0.9 - 2011/11/29

@@ -74,8 +74,12 @@ module Hippo::Segments
     end
 
     def get_field(field)
-      if field.class == Numeric || field =~ /\A#{self.class.identifier}(?:(\d+)(?:_(\d+)){0,1})\z/
-        self.class.fields[$1.to_i - 1]
+      if field =~ /\A#{self.class.identifier}(?:(\d+)(?:_(\d+)){0,1})\z/
+        if $2 && self.class.fields[$1.to_i - 1].class == Array
+          self.class.fields[$1.to_i - 1][$2.to_i - 1]
+        else
+          self.class.fields[$1.to_i - 1]
+        end
       else
         fields = self.class.fields.flatten.select{|f| f.name == field.gsub(/_\d{1,2}\z/,'')}
 

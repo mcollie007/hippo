@@ -173,7 +173,13 @@ instance for each repeat. (You will be returned the first instance each time if 
 do not call #build.)
 
 ```ruby
-    ts.TSS.build
+    tss = ts.TSS.build
+
+    # or
+
+    ts.TSS.build do |tss|
+      # do something here...
+    end
 ```
 
 The code above produces the following string output (notice how the values from
@@ -184,8 +190,10 @@ that the segments were declared):
     # ts.to_s => 'TSS*Blah~TCS***Preset Field 7~'
 ```
 
-To set field values on a given segment you can access it either by calling the field directly
-on the segment or by passing a block to the segment.
+You can set the field values on a given segment a few different ways.
+
+First you must access the segment that the field belongs to. You can
+either access the fields directly on the segment or use the block syntax.
 
 ```ruby
     # this is one way to populate the fields
@@ -200,10 +208,19 @@ on the segment or by passing a block to the segment.
     ts.TSS do |tss|
       tss.Field2 = 'Bar'
     end
+```
 
-    # both of the mechanisms above have the same string representation:
-    #
-    # ts.to_s => 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~'
+Once you have access to the segment you can set the field values by either
+calling the field name or using its relative position in the segment. If the
+field name is used more than once in a segment or if you are accessing a
+composite field you can optionally pass the index of the field to access.
+```ruby
+    ts.TCS do |tcs|
+      tcs.Field1    = 'Foo'     # use the field name
+      tcs.TCS01_01  = 'Bar'     # use shorthand notation:
+                                #   TCS01 refers to the composite field
+                                #   _01 refers to the first field within the composite
+    end
 ```
 
 If you read the transaction set declaration from above you will notice that the TSS segment
