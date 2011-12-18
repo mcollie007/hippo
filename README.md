@@ -214,6 +214,7 @@ Once you have access to the segment you can set the field values by either
 calling the field name or using its relative position in the segment. If the
 field name is used more than once in a segment or if you are accessing a
 composite field you can optionally pass the index of the field to access.
+
 ```ruby
     ts.TCS do |tcs|
       tcs.Field1    = 'Foo'     # use the field name
