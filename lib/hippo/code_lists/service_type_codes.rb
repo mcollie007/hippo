@@ -1,5 +1,9 @@
 module Hippo::CodeLists
-  class ServiceTypeCodes < Hippo::CodeLists::Base
+  class ServiceTypeCodes
+    def self.[](key)
+      @@codes[key]
+    end
+
     @@codes = {
       "1"=>
       {:code=>"1",

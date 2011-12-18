@@ -1,5 +1,9 @@
 module Hippo::CodeLists
-  class ClaimAdjustmentReasonCodes < Hippo::CodeLists::Base
+  class ClaimAdjustmentReasonCodes
+    def self.[](key)
+      @@codes[key]
+    end
+
       @@codes = {
       "1"  => { :code  =>"1",
          :description  => "Deductible Amount",

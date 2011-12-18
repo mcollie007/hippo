@@ -1,5 +1,8 @@
 module Hippo::CodeLists
-  class ClaimStatusCodes < Hippo::CodeLists::Base
+  class ClaimStatusCodes
+    def self.[](key)
+      @@codes[key]
+    end
 
     @@codes = {
       "0"=>

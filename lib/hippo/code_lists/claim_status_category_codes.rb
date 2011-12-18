@@ -1,6 +1,10 @@
 module Hippo::CodeLists
-  class ClaimStatusCategoryCodes < Hippo::CodeLists::Base
-    @codes = {
+  class ClaimStatusCategoryCodes
+    def self.[](key)
+      @@codes[key]
+    end
+
+    @@codes = {
     "X0"=>
     {:code=>"X0",
     :description=>"Supplemental Messages",

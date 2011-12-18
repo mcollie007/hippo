@@ -1,5 +1,9 @@
 module Hippo::CodeLists
-  class TaxonomyCodes < Hippo::CodeLists::Base
+  class TaxonomyCodes
+    def self.[](key)
+      @@codes[key]
+    end
+
     @@codes = {
       "101Y00000X"=>
       {:code=>"101Y00000X",

@@ -1,5 +1,8 @@
 module Hippo::CodeLists
-  class RemittanceAdviceRemarkCodes < Hippo::CodeLists::Base
+  class RemittanceAdviceRemarkCodes
+    def self.[](key)
+      @@codes[key]
+    end
 
     @@codes = {
       "M1"=>

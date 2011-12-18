@@ -1,6 +1,5 @@
 module Hippo
   module CodeLists
-    autoload :Base,                         'hippo/code_lists/base'
     autoload :ClaimAdjustmentReasonCodes,   'hippo/code_lists/claim_adjustment_reason_codes'
     autoload :ClaimStatusCategoryCodes,     'hippo/code_lists/claim_status_category_codes'
     autoload :ClaimStatusCodes,             'hippo/code_lists/claim_status_codes'
