@@ -22,6 +22,10 @@ More information can be found at the following sites:
 * [5010 Implementation Timeline](https://www.cms.gov/ElectronicBillingEDITrans/18_5010D0.asp)
 * [X12 Store](https://store.x12.org)
 
+Sample scripts using Hippo:
+
+* [277CA Parser](https://gist.github.com/1492492)
+
 Installation
 ------------
     gem install hippo
