@@ -1,4 +1,4 @@
-0.0.11 - TBD
+0.0.11 - 2011/12/18
   * Ignore Base Control Set when parsing input files.
   * Make sure to only append a segment when we are within a transaction.
   * Added TA1 segment.
