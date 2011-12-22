@@ -58,31 +58,22 @@ module Hippo::TransactionSets
           while true do
             found_next_segment  = false
             starting_index      = nil
+            ending_index        = nil
             length              = 0
 
-            segments.each_with_index do |segment, segment_index|
-              next unless component.valid? segment
-
-              starting_index = segment_index
-            end
+            starting_index = segments.find_index{|segment| component.valid? segment}
 
             # if we don't find anything break out of the loop
             break unless starting_index
 
-            remaining_components = self.class.components.slice(component_index + 1, self.class.components.length - 1)
+            remaining_components = self.class.components.slice(component_index, self.class.components.length - component_index)
             remaining_components.each do |next_component|
-              break if found_next_segment
-              length = 0
+              break if ending_index
 
-              segments.each_with_index do |segment, segment_index|
-                found_next_segment = next_component.valid? segment
-                break if found_next_segment
-
-                length += 1
-              end
+              ending_index = segments.find_index{|segment| segment != segments[starting_index] && next_component.valid?(segment)}
             end
 
-            length = segments.length - starting_index if length == 0
+            length = (ending_index || segments.length) - starting_index
 
             if component.repeating?
               values[component.sequence] ||= component.initialize_component(self)
