@@ -38,10 +38,11 @@ module Hippo::TransactionSets
       self.class.components.each_with_index do |component, component_index|
         if component.klass.ancestors.include? Hippo::Segments::Base
           # segments
-          segments_found = []
+          while true do
+            segment = segments.first
 
-          segments.each do |segment|
-            next unless component.valid? segment
+            break unless segment
+            break unless component.valid?(segment)
 
             if component.repeating?
               values[component.sequence] ||= component.initialize_component(self)
@@ -50,10 +51,8 @@ module Hippo::TransactionSets
               values[component.sequence] = segment
             end
 
-            segments_found << segment
+            segments.delete(segment)
           end
-
-          segments_found.each {|s| segments.delete(s)}
         else
           # loops
           while true do
