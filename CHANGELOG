@@ -1,3 +1,10 @@
+0.0.12 - 2011/12/22
+  * Fix a number of parsing errors.
+    * Ensure that we only evaluate the first segment when matching
+      against non-loop components.
+    * Fix issue causing sub-loops to be reversed on parsing.
+    * Fix issue preventing proper recursion when parsing a repeating
+      component inside TransactionSet::Base.
 0.0.11 - 2011/12/18
   * Ignore Base Control Set when parsing input files.
   * Make sure to only append a segment when we are within a transaction.
