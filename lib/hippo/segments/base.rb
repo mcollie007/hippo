@@ -1,6 +1,8 @@
 module Hippo::Segments
   class Base
     include Hippo::Separator
+    include Hippo::Outputters::HTML::Segment
+    include Hippo::Outputters::PDF::Segment
 
     class << self
       attr_accessor :fields, :identifier, :fixed_width

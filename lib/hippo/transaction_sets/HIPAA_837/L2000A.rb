@@ -2,6 +2,8 @@ module Hippo::TransactionSets
   module HIPAA_837
 
     class L2000A < Hippo::TransactionSets::Base
+      include Hippo::Outputters::PaperClaim
+
       loop_name 'L2000A'    #Billing Provider Hierarchical Level
 
       #Billing Provider Hierarchical Level

@@ -1,6 +1,8 @@
 module Hippo::TransactionSets
   class Base
     include Hippo::Separator
+    include Hippo::Outputters::HTML::TransactionSet
+    include Hippo::Outputters::PDF::TransactionSet
 
     class << self
       attr_accessor :components, :identifier

@@ -2,7 +2,6 @@ module Hippo::TransactionSets
   module HIPAA_837
 
     class Base < Hippo::TransactionSets::Base
-
       #Transaction Set Header
       segment Hippo::Segments::ST,
                 :name           => 'Transaction Set Header',

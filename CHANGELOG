@@ -1,3 +1,7 @@
+0.0.13 - TBD
+  * Add concept of Outputters.
+  * Create PDF and HTML outputters.
+  * Create PaperClaim outputter for HIPAA_837::L2000A.
 0.0.12 - 2011/12/22
   * Fix a number of parsing errors.
     * Ensure that we only evaluate the first segment when matching
