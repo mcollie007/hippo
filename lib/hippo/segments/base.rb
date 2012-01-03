@@ -1,6 +1,7 @@
 module Hippo::Segments
   class Base
     include Hippo::Separator
+    include Hippo::Parser::Segment
     include Hippo::Outputters::HTML::Segment
     include Hippo::Outputters::PDF::Segment
 

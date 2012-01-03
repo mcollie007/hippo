@@ -2,6 +2,8 @@
   * Add concept of Outputters.
   * Create PDF and HTML outputters.
   * Create PaperClaim outputter for HIPAA_837::L2000A.
+  * Refactor parsing so any descendant of TransactionSet::Base is
+    able to parse a string representation of itself.
 0.0.12 - 2011/12/22
   * Fix a number of parsing errors.
     * Ensure that we only evaluate the first segment when matching
@@ -40,10 +42,8 @@
     repetition separators the same.
   * Respect 'parent's separators when building/initializing components.
   * Fixed parsing logic to properly handle nested groups.
-
 0.0.5 - 2011/09/16
   * Add ability to parse transaction sets.
-
 0.0.4
   * Fix issue when no values are set in any subfield of a composite field.
   * Add more segment tests.

@@ -1,6 +1,7 @@
 module Hippo::TransactionSets
   class Base
     include Hippo::Separator
+    include Hippo::Parser::TransactionSet
     include Hippo::Outputters::HTML::TransactionSet
     include Hippo::Outputters::PDF::TransactionSet
 
