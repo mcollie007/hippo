@@ -65,7 +65,7 @@ module Hippo::Segments
     def initialize(options = {})
       @parent = options.delete(:parent)
 
-      setup_separators(options)
+      super
     end
 
     def values

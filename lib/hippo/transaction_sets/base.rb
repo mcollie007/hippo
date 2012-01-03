@@ -32,7 +32,7 @@ module Hippo::TransactionSets
       @GE     = options[:GE]
       @IEA    = options[:IEA]
 
-      setup_separators(options)
+      super
 
       populate(options[:segments]) if options[:segments]
     end

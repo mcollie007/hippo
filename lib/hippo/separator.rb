@@ -2,7 +2,7 @@ module Hippo
   module Separator
     attr_accessor :field_separator, :composite_separator, :repetition_separator, :segment_separator
 
-    def setup_separators(options = {})
+    def initialize(options = {})
       [:field_separator, :repetition_separator, :composite_separator, :segment_separator].each do |sym|
         value = options[sym] || parent_or_default_separator(sym)
 

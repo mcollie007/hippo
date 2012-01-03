@@ -4,6 +4,8 @@
   * Create PaperClaim outputter for HIPAA_837::L2000A.
   * Refactor parsing so any descendant of TransactionSet::Base is
     able to parse a string representation of itself.
+  * Refactor Separator module to use super instead of a custom
+    function call to initialize the separators.
 0.0.12 - 2011/12/22
   * Fix a number of parsing errors.
     * Ensure that we only evaluate the first segment when matching
