@@ -4,8 +4,5 @@ source "http://rubygems.org"
 gemspec
 
 group :development do
-  gem 'rb-fsevent'
-  gem 'growl_notify'
-  gem 'guard-minitest'
   gem 'pry'
 end
