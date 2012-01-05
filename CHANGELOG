@@ -1,4 +1,4 @@
-0.0.13 - TBD
+0.1.0 - 2012/01/05
   * Add concept of Outputters.
   * Create PDF and HTML outputters.
   * Create PaperClaim outputter for HIPAA_837::L2000A.
