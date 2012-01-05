@@ -1,5 +1,5 @@
-require 'hippo/parser/segment'
-require 'hippo/parser/transaction_set'
+require_relative 'parser/segment'
+require_relative 'parser/transaction_set'
 
 module Hippo
   class Parser

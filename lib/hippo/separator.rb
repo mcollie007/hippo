@@ -1,4 +1,9 @@
 module Hippo
+  DEFAULT_FIELD_SEPARATOR        = '*'
+  DEFAULT_COMPOSITE_SEPARATOR    = ':'
+  DEFAULT_SEGMENT_SEPARATOR      = '~'
+  DEFAULT_REPETITION_SEPARATOR   = '^'
+
   module Separator
     attr_accessor :field_separator, :composite_separator, :repetition_separator, :segment_separator
 

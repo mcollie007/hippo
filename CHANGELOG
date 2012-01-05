@@ -6,6 +6,8 @@
     able to parse a string representation of itself.
   * Refactor Separator module to use super instead of a custom
     function call to initialize the separators.
+  * Fix project so that we do not modify $LOAD_PATH.
+  * Only use autoload for Segments and TransactionSets that are optional.
 0.0.12 - 2011/12/22
   * Fix a number of parsing errors.
     * Ensure that we only evaluate the first segment when matching

@@ -1,13 +1,13 @@
+require_relative 'transaction_sets/base'
+require_relative 'transaction_sets/component'
+require_relative 'transaction_sets/repeating_component'
+
 module Hippo
   module TransactionSets
-
-    autoload :Base,                 'hippo/transaction_sets/base'
-    autoload :Component,            'hippo/transaction_sets/component'
-    autoload :RepeatingComponent,   'hippo/transaction_sets/repeating_component'
-    autoload :HIPAA_276,            'hippo/transaction_sets/HIPAA_276'
-    autoload :HIPAA_277,            'hippo/transaction_sets/HIPAA_277'
-    autoload :HIPAA_835,            'hippo/transaction_sets/HIPAA_835'
-    autoload :HIPAA_837,            'hippo/transaction_sets/HIPAA_837'
-    autoload :HIPAA_999,            'hippo/transaction_sets/HIPAA_999'
+    autoload_relative :HIPAA_276, 'transaction_sets/HIPAA_276'
+    autoload_relative :HIPAA_277, 'transaction_sets/HIPAA_277'
+    autoload_relative :HIPAA_835, 'transaction_sets/HIPAA_835'
+    autoload_relative :HIPAA_837, 'transaction_sets/HIPAA_837'
+    autoload_relative :HIPAA_999, 'transaction_sets/HIPAA_999'
   end
 end

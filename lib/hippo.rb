@@ -1,19 +1,10 @@
-libdir = File.dirname(__FILE__)
-$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
+require File.expand_path('hippo/utilities', File.dirname(__FILE__))
 
-module Hippo
-  autoload :Exceptions,       'hippo/exceptions'
-  autoload :Separator,        'hippo/separator'
-  autoload :Segments,         'hippo/segments'
-  autoload :TransactionSets,  'hippo/transaction_sets'
-  autoload :Field,            'hippo/field'
-  autoload :CompositeField,   'hippo/composite_field'
-  autoload :Parser,           'hippo/parser'
-  autoload :CodeLists,        'hippo/code_lists'
-  autoload :Outputters,       'hippo/outputters'
-
-  DEFAULT_FIELD_SEPARATOR        = '*'
-  DEFAULT_COMPOSITE_SEPARATOR    = ':'
-  DEFAULT_SEGMENT_SEPARATOR      = '~'
-  DEFAULT_REPETITION_SEPARATOR   = '^'
-end
+require_relative 'hippo/exceptions'
+require_relative 'hippo/separator'
+require_relative 'hippo/field'
+require_relative 'hippo/parser'
+require_relative 'hippo/outputters'
+require_relative 'hippo/segments'
+require_relative 'hippo/transaction_sets'
+require_relative 'hippo/code_lists'
