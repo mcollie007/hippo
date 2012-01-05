@@ -37,7 +37,7 @@ class TestParser < MiniTest::Unit::TestCase
 
     ts_result = @parser.parse_string(ts.to_s).first
 
-    assert_equal ts.values.inspect, ts_result.values.inspect
+    assert_equal ts.values.to_s, ts_result.values.to_s
   end
 
   def test_reads_separators_from_isa
@@ -81,7 +81,7 @@ class TestParser < MiniTest::Unit::TestCase
     ts.SE
 
     # ST*Test~TSS*Blah*Bar1*Baz1~TSS*Blah*Bar2*Baz2~TSS*Blah*Bar3*Baz3~TSS*Blah*Bar4*Baz4~TSS*Blah*Bar5*Baz5~TCS*Blah**Preset Field 7~TSS*Last Standalone Segment*Boo~SE**Test
-    assert_equal ts.values.inspect, @parser.parse_string(ts.to_s).first.values.inspect
+    assert_equal ts.values.to_s, @parser.parse_string(ts.to_s).first.values.to_s
   end
 
   def test_parses_partial_transaction_set
@@ -95,6 +95,6 @@ class TestParser < MiniTest::Unit::TestCase
     ts_02 = Hippo::TransactionSets::Test::L0002.new
     ts_02.parse(ts_01.to_s)
 
-    assert_equal ts_01.L0002.values.inspect, ts_02.values.inspect
+    assert_equal ts_01.L0002.values.to_s, ts_02.values.to_s
   end
 end
