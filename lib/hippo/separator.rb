@@ -25,10 +25,10 @@ module Hippo
 
     def parse_separators(input)
       if input =~ /\AISA/
-        @field_separator      = input[3]
-        @repetition_separator = input[82]
-        @composite_separator  = input[104]
-        @segment_separator    = input[105]
+        @field_separator      = input[3,1]
+        @repetition_separator = input[82,1]
+        @composite_separator  = input[104,1]
+        @segment_separator    = input[105,1]
       end
     end
 
