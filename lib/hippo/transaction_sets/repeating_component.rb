@@ -18,6 +18,8 @@ module Hippo::TransactionSets
     end
 
     def segment_count
+      return 0 unless self.length != 0
+
       self.map(&:segment_count).inject(&:+)
     end
 
