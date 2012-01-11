@@ -43,7 +43,7 @@ module Hippo
       parse_transaction_sets.collect do |transaction|
         transaction_set_id = transaction[:segments].first.ST01
         transaction_set = Hippo::TransactionSets.constants.select{|c| c.to_s.end_with?(transaction_set_id) }.first
-        binding.pry if transaction_set.nil?
+
         Hippo::TransactionSets.const_get(transaction_set)::Base.new(separators.merge(transaction))
       end
     end
