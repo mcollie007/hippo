@@ -59,35 +59,26 @@ module Hippo::TransactionSets
         else
           # loops
           while true do
-            found_next_segment  = false
-            starting_index      = nil
-            ending_index        = nil
-            length              = 0
+            initial_segment = segments.first
 
-            starting_index = segments.find_index{|segment| component.valid? segment}
+            break unless initial_segment
+            break unless component.valid?(initial_segment)
 
-            # if we don't find anything break out of the loop
-            break unless starting_index
-
-            remaining_components = self.class.components.slice(component_index, self.class.components.length - component_index)
+            ending_index    = nil
+            starting_index  = component.repeating? ? component_index : component_index + 1
+            remaining_components = self.class.components.slice(starting_index, self.class.components.length - starting_index)
             remaining_components.each do |next_component|
               break if ending_index
 
-              ending_index = segments.find_index{|segment| segment != segments[starting_index] && next_component.valid?(segment)}
+              ending_index = segments.find_index{|segment| segment != segments.first && next_component.valid?(segment)}
             end
 
-            length = (ending_index || segments.length) - starting_index
-
+            child_segments = segments.slice!(0, ending_index || segments.length)
+            values[component.sequence] ||= component.initialize_component(self)
             if component.repeating?
-              values[component.sequence] ||= component.initialize_component(self)
-              values[component.sequence].build do |subcomponent|
-                subcomponent.populate(segments.slice!(starting_index, length))
-              end
+              values[component.sequence].build {|comp| comp.populate(child_segments) }
             else
-              subcomponent = component.initialize_component(self)
-              subcomponent.populate(segments.slice!(starting_index, length))
-
-              values[component.sequence] = subcomponent
+              values[component.sequence].populate(child_segments)
             end
           end
         end
