@@ -84,7 +84,9 @@ module Hippo::TransactionSets
         end
       end
 
-      puts "Remaining Segments(#{self.class.identifier}): " + segments.inspect unless segments.empty?
+      unless segments.empty?
+        raise Hippo::Exceptions::ParseError.new "Remaining Segments for #{self.class.identifier} after parsing was completed. Segments remaining: \n" + segments.map(&:to_s).join("\n")
+      end
     end
 
     def values

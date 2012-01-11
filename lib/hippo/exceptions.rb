@@ -4,5 +4,6 @@ module Hippo
 
     class InvalidField    < Exception; end
     class InvalidSegment  < Exception; end
+    class ParseError     < Exception; end
   end
 end
