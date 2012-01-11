@@ -33,6 +33,7 @@ module Hippo
       def parse(input)
         read(input)
         populate(segments)
+        self
       end
     end
   end
