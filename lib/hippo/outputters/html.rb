@@ -16,7 +16,7 @@ module Hippo::Outputters
             output += component.to_html
             output += '</fieldset>'
           else
-            output += %Q{<span class="hippo-segment-name">#{component_definition.options[:name]}</span> - <span class="hippo-segment-data">#{component.to_s}</span><br/>}
+            output += %Q{<span class="hippo-segment-name">#{component_definition.options[:name]}</span><span class="hippo-segment-data">#{component.to_s}</span><br/>}
           end
         end
 
