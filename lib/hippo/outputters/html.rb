@@ -1,4 +1,4 @@
-module Hippo::Outputters
+ module Hippo::Outputters
   module HTML
     module TransactionSet
       def to_html
@@ -21,6 +21,12 @@ module Hippo::Outputters
         end
 
         output + (initial_call ? '</fieldset>' : '')
+      end
+    end
+
+    module RepeatingComponent
+      def to_html
+        each {|component| component.to_html}
       end
     end
 

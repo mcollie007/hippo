@@ -5,6 +5,11 @@ module Hippo::Outputters
       end
     end
 
+    module RepeatingComponent
+      def to_pdf
+      end
+    end
+
     module Segment
       def to_pdf
       end
