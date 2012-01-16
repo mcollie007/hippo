@@ -26,7 +26,7 @@
 
     module RepeatingComponent
       def to_html
-        each {|component| component.to_html}
+       map{|component| component.to_html}.join
       end
     end
 
