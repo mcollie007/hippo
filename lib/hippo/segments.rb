@@ -4,6 +4,9 @@ module Hippo
   module Segments
     autoload_relative :AK1,   'segments/AK1'
     autoload_relative :AK2,   'segments/AK2'
+    autoload_relative :AK3,   'segments/AK3'
+    autoload_relative :AK4,   'segments/AK4'
+    autoload_relative :AK5,   'segments/AK5'
     autoload_relative :AK9,   'segments/AK9'
     autoload_relative :AMT,   'segments/AMT'
     autoload_relative :BHT,   'segments/BHT'

@@ -1,5 +1,6 @@
-0.1.2 - TBD
+0.1.2 - 2012/01/18
   * Add RepeatingComponent to Outputters.
+  * Add HIPAA_997 to list of supported transaction sets.
 0.1.1 - 2012/01/11
   * Update Parser to better handle Loops and repeating components.
   * Flesh out to_html outputter with a basic layout.
