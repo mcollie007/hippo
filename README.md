@@ -96,6 +96,10 @@ Transaction Sets/Loops and Segments are defined with a very straight forward DSL
         field :name => 'Field4'
         field :name => 'CommonName'
         field :name => 'CommonName'
+        field :name => 'DateField',     :datatype => :date
+        field :name => 'TimeField',     :datatype => :time
+        field :name => 'IntegerField',  :datatype => :integer
+        field :name => 'DecimalField',  :datatype => :decimal
       end
 
       class TestCompoundSegment < Hippo::Segments::Base
@@ -223,8 +227,8 @@ composite field you can optionally pass the index of the field to access.
     ts.TCS do |tcs|
       tcs.Field1    = 'Foo'     # use the field name
       tcs.TCS01_01  = 'Bar'     # use shorthand notation:
-                                #   TCS01 refers to the composite field
-                                #   _01 refers to the first field within the composite
+                                #   TCS01 refers to the first field within the current segment
+                                #   _01 refers to the first field within the composite field
     end
 ```
 
@@ -235,9 +239,9 @@ but if you need to access the second instance of TSS in the transaction set you 
 TSS_02 instead.
 
 ```ruby
-    ts.TCS.Field1 = 'Foo'
-    ts.TSS.Field2 = 'Bar'
-    ts.TSS_02.Field2 = 'Baz'
+    ts.TCS.Field1     = 'Foo'
+    ts.TSS.Field2     = 'Bar'
+    ts.TSS_02.Field2  = 'Baz'
 
     # ts.to_s => 'TSS*Blah*Bar~TCS*Foo**Preset Field 7~TSS*Last Segment*Baz~'
 ```
@@ -248,12 +252,12 @@ on the name provided in the TransactionSet definition.  You can either pass the 
 a Regexp to search with.
 
 ```ruby
-    ts.find\_by\_name('Test Simple Segment #1') do |tss|
+    ts.find_by_name('Test Simple Segment #1') do |tss|
       tss.Field2 = 'Baz'
     end
 
     # which is essentially equivilent (because the search occurs in order of declaration)
-    ts.find\_by\_name(/Segment/) do |tss|
+    ts.find_by_name(/Segment/) do |tss|
       tss.Field2 = 'Baz'
     end
 
@@ -268,6 +272,53 @@ The same technique can be used to reference fields within a segment that have th
 
     # ts.to_s => 'TSS*Blah*Bar***Value1*Value2~TCS*Foo**Preset Field 7~TSS*Last Segment*Baz~'
 ```
+
+Type Conversion
+---------------
+
+As of Hippo version 0.2.0 values are stored in the native format, and coverted back to the
+appropriate string representation when required.  This means that you can set and access date,
+time, integer, and decimal fields without having to convert back and forth between strings.
+
+As part of the type conversion process we are also validating that a fields value is being set
+with a valid value for that particular data type.
+
+Just a few examples using the type conversion:
+
+```ruby
+    seg = Hippo::Segments::TSS.new    # Please review definition from above.
+
+    # Date fields:
+    seg.DateField = Date.new(2012, 01, 20)
+    seg.DateField = "20120120"
+    seg.DateField = Time.new(2012, 01, 20, 10, 15, 20)
+
+    # all of these formats result in the same internal representation
+    puts seg.DateField.inspect # => #<Date: 2012-01-20 ((2455947j,0s,0n),+0s,2299161j)>
+
+    # To set the field back to a blank/empty value simply assign it to nil
+    seg.DateField = nil
+
+    # Time fields:
+    seg.TimeField = "0120"      # => 1:20 am       (HHMM)
+    seg.TimeField = "012023"    # => 1:20:23 am    (HHMMSS)
+    seg.TimeField = "01202322"  # => 1:20:23.22 am (HHMMSSDD)
+    seg.TimeField = Time.now
+
+    # Integer fields:
+    seg.IntegerField = "10"     # => 10
+    seg.IntegerField = 10       # => 10
+    seg.IntegerField = "10blah" # => 10
+
+    # Decimal fields:
+    seg.DecimalField = "123.45"   # => #<BigDecimal:7fe83c315750,'0.12345E3',18(18)>
+    seg.DecimalField = 123.45     # => #<BigDecimal:7fe83c315750,'0.12345E3',18(18)>
+    seg.DecimalField = 123        # => #<BigDecimal:7fe83b9dd4f8,'0.123E3',9(18)>
+    seg.DecimalField = 123.0      # => #<BigDecimal:7fe83b9dd4f8,'0.123E3',9(18)>
+```
+
+__Please Note__: Due to issues with floating point representation of currency values we have
+chosen to use BigDecimal internally to store all fields with a decimal datatype.
 
 For more example please review the test suite.
 

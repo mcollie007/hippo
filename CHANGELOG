@@ -1,3 +1,10 @@
+0.2.0 - 2012/01/21
+  * Updated segment definitions to differentiate between
+    Integer and Decimal.
+  * Add field level datatype conversion. Date, Time, Integer,
+    and Decimal fields will be stored internally as their
+    appropriate type and converted to a properly formatted
+    string representation when needed.
 0.1.2 - 2012/01/18
   * Add RepeatingComponent to Outputters.
   * Add HIPAA_997 to list of supported transaction sets.
