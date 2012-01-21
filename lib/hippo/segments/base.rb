@@ -17,15 +17,15 @@ module Hippo::Segments
       end
 
       def field(field)
-        f = Hippo::Field.new
-        f.sequence = fields.length + 1
-        f.name = field[:name]
-        f.datatype = field[:datatype]
-        f.minimum  = field[:minimum]
-        f.maximum  = field[:maximum]
-        f.options = field[:options]
+        f              = Hippo::Field.new
+        f.sequence     = fields.length + 1
+        f.name         = field[:name]
+        f.datatype     = field[:datatype]
+        f.minimum      = field[:minimum]
+        f.maximum      = field[:maximum]
+        f.options      = field[:options]
         f.restrictions = field[:restrictions]
-        f.separator = field[:separator] || @default_separator || :field_separator
+        f.separator    = field[:separator] || @default_separator || :field_separator
 
         if @composite_block
           f.composite = true
