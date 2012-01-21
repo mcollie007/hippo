@@ -1,3 +1,6 @@
+0.2.1 - 2012/01/21
+  * Fix issue preventing fixed width segments from printing
+    properly. (Non set fields on ISA were empty not padded.)
 0.2.0 - 2012/01/21
   * Updated segment definitions to differentiate between
     Integer and Decimal.

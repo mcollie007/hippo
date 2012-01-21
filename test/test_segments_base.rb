@@ -152,4 +152,27 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
 
     assert_equal 'TSS*******20120121*231101*2*123.45~', seg.to_s
   end
+
+  def test_fixed_width_segment
+    isa = Hippo::Segments::ISA.new
+
+    assert_equal "ISA*  *#{' ' * 10}*  *#{' ' * 10}*  *#{' ' * 15}*  *#{' ' * 15}*#{Date.today.strftime('%y%m%d')}*#{Time.now.strftime('%H%M')}* *     *#{'0' * 9}* * * ~", isa.to_s
+
+    isa.AuthorizationInformationQualifier  = '00'
+    isa.SecurityInformationQualifier       = '00'
+    isa.InterchangeIdQualifier_01          = 'ZZ'
+    isa.InterchangeSenderId                = '593208085'
+    isa.InterchangeIdQualifier_02          = 'ZZ'
+    isa.InterchangeReceiverId              = 'OVERRIDE'
+    isa.InterchangeDate                    = Time.now
+    isa.InterchangeTime                    = Time.now
+    isa.RepetitionSeparator                = Hippo::DEFAULT_REPETITION_SEPARATOR
+    isa.InterchangeControlVersionNumber    = '00501'
+    isa.InterchangeControlNumber           = 12345
+    isa.AcknowledgmentRequested            = '1'
+    isa.InterchangeUsageIndicator          = 'T'
+    isa.ComponentElementSeparator          = Hippo::DEFAULT_COMPOSITE_SEPARATOR
+
+    assert_equal "ISA*00*          *00*          *ZZ*593208085      *ZZ*OVERRIDE       *#{Date.today.strftime('%y%m%d')}*#{Time.now.strftime('%H%M')}*^*00501*000012345*1*T*:~", isa.to_s
+  end
 end

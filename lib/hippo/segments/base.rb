@@ -25,6 +25,7 @@ module Hippo::Segments
         f.maximum      = field[:maximum]
         f.options      = field[:options]
         f.restrictions = field[:restrictions]
+        f.required     = field[:required]  || false
         f.separator    = field[:separator] || @default_separator || :field_separator
 
         if @composite_block

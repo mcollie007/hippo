@@ -21,24 +21,31 @@ module Hippo
       when :decimal then BigDecimal.new(value.to_s)
       when :date    then parse_date(value)
       when :time    then parse_time(value)
-      else value.to_s
+      else value.to_s.strip
       end
     end
 
     def string_value(value)
-      return '' if value.nil? || value == ''
+      return '' if value.nil? && !required
 
       case datatype
       when :binary  then value
       when :integer then value.to_s.rjust(minimum, '0')
-      when :decimal then value.to_s('F').sub(/\.0\z/,'').rjust(minimum, '0')
+      when :decimal then
+        value ||= BigDecimal.new('0')
+
+        value.to_s('F').sub(/\.0\z/,'').rjust(minimum, '0')
       when :date
+        value ||= Date.today
+
         if maximum == 6
           value.strftime('%y%m%d')
         else
           value.strftime('%Y%m%d')
         end
       when :time
+        value ||= Time.now
+
         if maximum == 4 || value.sec == 0
           value.strftime('%H%M')
         else
