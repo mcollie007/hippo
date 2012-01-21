@@ -61,7 +61,7 @@ module Hippo::Segments
 
     field :name                 => 'Weight',
           :sequence             => 8,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 10,
           :required             => false,

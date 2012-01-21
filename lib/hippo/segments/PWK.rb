@@ -21,8 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'ReportCopiesNeeded',
           :sequence             => 3,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 2,
           :required             => false,

@@ -5,7 +5,7 @@ module Hippo::Segments
 
     field   :name                 => 'FunctionalIdentifierCode',
             :sequence             => 1,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 2,
             :maximum              => 2,
             :required             => true,
@@ -29,7 +29,7 @@ module Hippo::Segments
 
     field   :name                 => 'Date',
             :sequence             => 4,
-            :datatype             => :string,
+            :datatype             => :date,
             :minimum              => 8,
             :maximum              => 8,
             :required             => true,
@@ -37,15 +37,15 @@ module Hippo::Segments
 
     field   :name                 => 'Time',
             :sequence             => 5,
-            :datatype             => :string,
+            :datatype             => :time,
             :minimum              => 4,
-            :maximum              => 8,
+            :maximum              => 4,
             :required             => true,
             :data_element_number  => 337
 
     field   :name                 => 'GroupControlNumber',
             :sequence             => 6,
-            :datatype             => :string,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 9,
             :required             => true,
@@ -53,7 +53,7 @@ module Hippo::Segments
 
     field   :name                 => 'ResponsibleAgencyCode',
             :sequence             => 7,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 1,
             :maximum              => 2,
             :required             => true,

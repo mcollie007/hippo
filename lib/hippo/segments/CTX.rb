@@ -33,8 +33,7 @@ module Hippo::Segments
 
     field :name                 => 'SegmentPositionInTransactionSet',
           :sequence             => 3,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 10,
           :required             => false,
@@ -52,8 +51,7 @@ module Hippo::Segments
 
       field :name                 => 'ElementPositionInSegment',
             :sequence             => 1,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 2,
             :required             => true,
@@ -61,8 +59,7 @@ module Hippo::Segments
 
       field :name                 => 'ComponentDataElementPositionInComposite',
             :sequence             => 2,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 2,
             :required             => false,
@@ -70,8 +67,7 @@ module Hippo::Segments
 
       field :name                 => 'RepeatingDataElementPosition',
             :sequence             => 3,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 4,
             :required             => false,
@@ -83,8 +79,7 @@ module Hippo::Segments
 
       field :name                 => 'DataElementReferenceNumber',
             :sequence             => 1,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 4,
             :required             => true,
@@ -92,8 +87,7 @@ module Hippo::Segments
 
       field :name                 => 'DataElementReferenceNumber',
             :sequence             => 2,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 4,
             :required             => false,

@@ -10,8 +10,7 @@ module Hippo::Segments
 
     field :name                 => 'AssignedNumber',
           :sequence             => 1,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 6,
           :required             => true,

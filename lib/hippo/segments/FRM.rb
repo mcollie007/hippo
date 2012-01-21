@@ -37,7 +37,7 @@ module Hippo::Segments
 
     field :name                 => 'PercentDecimalFormat',
           :sequence             => 5,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 6,
           :required             => false,

@@ -13,7 +13,7 @@ module Hippo::Segments
 
     field :name                 => 'MonetaryAmount',
           :sequence             => 2,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 18,
           :required             => false,
@@ -21,7 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'MonetaryAmount',
           :sequence             => 3,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 18,
           :required             => false,
@@ -37,7 +37,7 @@ module Hippo::Segments
 
     field :name                 => 'Rate',
           :sequence             => 5,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 9,
           :required             => false,
@@ -53,7 +53,7 @@ module Hippo::Segments
 
     field :name                 => 'MonetaryAmount',
           :sequence             => 7,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 18,
           :required             => false,
@@ -93,7 +93,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 12,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,

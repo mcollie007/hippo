@@ -73,7 +73,7 @@ module Hippo::Segments
 
     field :name                 => 'MonetaryAmount',
           :sequence             => 2,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 18,
           :required             => false,
@@ -141,7 +141,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 6,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,
@@ -183,8 +183,7 @@ module Hippo::Segments
 
       field :name                 => 'DiagnosisCodePointer',
             :sequence             => 1,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 2,
             :required             => true,
@@ -192,8 +191,7 @@ module Hippo::Segments
 
       field :name                 => 'DiagnosisCodePointer',
             :sequence             => 2,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 2,
             :required             => false,
@@ -201,8 +199,7 @@ module Hippo::Segments
 
       field :name                 => 'DiagnosisCodePointer',
             :sequence             => 3,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 2,
             :required             => false,
@@ -210,8 +207,7 @@ module Hippo::Segments
 
       field :name                 => 'DiagnosisCodePointer',
             :sequence             => 4,
-            :datatype             => :numeric,
-            :decimal              => 0,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 2,
             :required             => false,

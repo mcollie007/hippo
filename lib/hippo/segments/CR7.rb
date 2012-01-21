@@ -13,8 +13,7 @@ module Hippo::Segments
 
     field :name                 => 'Number',
           :sequence             => 2,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 9,
           :required             => true,
@@ -22,8 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'Number',
           :sequence             => 3,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 9,
           :required             => true,

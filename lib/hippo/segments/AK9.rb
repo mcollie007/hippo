@@ -13,8 +13,7 @@ module Hippo::Segments
 
     field :name                 => 'NumberOfTransactionSetsIncluded',
           :sequence             => 2,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 6,
           :required             => true,
@@ -22,8 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'NumberOfReceivedTransactionSets',
           :sequence             => 3,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 6,
           :required             => true,
@@ -31,8 +29,7 @@ module Hippo::Segments
 
     field :name                 => 'NumberOfAcceptedTransactionSets',
           :sequence             => 4,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 6,
           :required             => true,

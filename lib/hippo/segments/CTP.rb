@@ -21,7 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'UnitPrice',
           :sequence             => 3,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 17,
           :required             => false,
@@ -29,7 +29,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 4,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,
@@ -47,7 +47,7 @@ module Hippo::Segments
 
       field :name                 => 'Exponent',
             :sequence             => 2,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 15,
             :required             => false,
@@ -55,7 +55,7 @@ module Hippo::Segments
 
       field :name                 => 'Multiplier',
             :sequence             => 3,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 10,
             :required             => false,
@@ -71,7 +71,7 @@ module Hippo::Segments
 
       field :name                 => 'Exponent',
             :sequence             => 5,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 15,
             :required             => false,
@@ -79,7 +79,7 @@ module Hippo::Segments
 
       field :name                 => 'Multiplier',
             :sequence             => 6,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 10,
             :required             => false,
@@ -95,7 +95,7 @@ module Hippo::Segments
 
       field :name                 => 'Exponent',
             :sequence             => 8,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 15,
             :required             => false,
@@ -103,7 +103,7 @@ module Hippo::Segments
 
       field :name                 => 'Multiplier',
             :sequence             => 9,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 10,
             :required             => false,
@@ -119,7 +119,7 @@ module Hippo::Segments
 
       field :name                 => 'Exponent',
             :sequence             => 11,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 15,
             :required             => false,
@@ -127,7 +127,7 @@ module Hippo::Segments
 
       field :name                 => 'Multiplier',
             :sequence             => 12,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 10,
             :required             => false,
@@ -143,7 +143,7 @@ module Hippo::Segments
 
       field :name                 => 'Exponent',
             :sequence             => 14,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 15,
             :required             => false,
@@ -151,7 +151,7 @@ module Hippo::Segments
 
       field :name                 => 'Multiplier',
             :sequence             => 15,
-            :datatype             => :numeric,
+            :datatype             => :decimal,
             :minimum              => 1,
             :maximum              => 10,
             :required             => false,
@@ -169,7 +169,7 @@ module Hippo::Segments
 
     field :name                 => 'Multiplier',
           :sequence             => 7,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 10,
           :required             => false,
@@ -177,7 +177,7 @@ module Hippo::Segments
 
     field :name                 => 'MonetaryAmount',
           :sequence             => 8,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 18,
           :required             => false,
@@ -201,8 +201,7 @@ module Hippo::Segments
 
     field :name                 => 'MultiplePriceQuantity',
           :sequence             => 11,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 2,
           :required             => false,

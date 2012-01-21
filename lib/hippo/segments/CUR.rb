@@ -21,7 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'ExchangeRate',
           :sequence             => 3,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 4,
           :maximum              => 10,
           :required             => false,

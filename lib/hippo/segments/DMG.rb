@@ -89,7 +89,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 9,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,

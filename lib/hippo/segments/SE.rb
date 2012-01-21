@@ -5,8 +5,7 @@ module Hippo::Segments
 
     field :name                 => 'NumberOfIncludedSegments',
           :sequence             => 1,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 10,
           :required             => true,

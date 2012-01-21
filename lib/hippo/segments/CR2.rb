@@ -5,8 +5,7 @@ module Hippo::Segments
 
     field :name                 => 'Count',
           :sequence             => 1,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 9,
           :required             => false,
@@ -14,7 +13,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 2,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,
@@ -46,7 +45,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 6,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,
@@ -54,7 +53,7 @@ module Hippo::Segments
 
     field :name                 => 'Quantity',
           :sequence             => 7,
-          :datatype             => :numeric,
+          :datatype             => :decimal,
           :minimum              => 1,
           :maximum              => 15,
           :required             => false,

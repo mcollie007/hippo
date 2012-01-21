@@ -5,7 +5,7 @@ module Hippo::Segments
 
     field   :name                 => 'NumberOfTransactionSetsIncluded',
             :sequence             => 1,
-            :datatype             => :string,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 6,
             :required             => true,
@@ -13,7 +13,7 @@ module Hippo::Segments
 
     field   :name                 => 'GroupControlNumber',
             :sequence             => 2,
-            :datatype             => :string,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 9,
             :required             => true,

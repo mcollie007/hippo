@@ -13,8 +13,7 @@ module Hippo::Segments
 
     field :name                 => 'SegmentPositionInTransactionSet',
           :sequence             => 2,
-          :datatype             => :numeric,
-          :decimal              => 0,
+          :datatype             => :integer,
           :minimum              => 1,
           :maximum              => 10,
           :required             => true,

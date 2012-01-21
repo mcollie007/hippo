@@ -6,7 +6,7 @@ module Hippo::Segments
 
     field   :name                 => 'AuthorizationInformationQualifier',
             :sequence             => 1,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 2,
             :maximum              => 2,
             :required             => true,
@@ -22,7 +22,7 @@ module Hippo::Segments
 
     field   :name                 => 'SecurityInformationQualifier',
             :sequence             => 3,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 2,
             :maximum              => 2,
             :required             => true,
@@ -38,7 +38,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeIdQualifier',
             :sequence             => 5,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 2,
             :maximum              => 2,
             :required             => true,
@@ -54,7 +54,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeIdQualifier',
             :sequence             => 7,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 2,
             :maximum              => 2,
             :required             => true,
@@ -70,7 +70,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeDate',
             :sequence             => 9,
-            :datatype             => :string,
+            :datatype             => :date,
             :minimum              => 6,
             :maximum              => 6,
             :required             => true,
@@ -78,7 +78,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeTime',
             :sequence             => 10,
-            :datatype             => :string,
+            :datatype             => :time,
             :minimum              => 4,
             :maximum              => 4,
             :required             => true,
@@ -94,7 +94,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeControlVersionNumber',
             :sequence             => 12,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 5,
             :maximum              => 5,
             :required             => true,
@@ -102,7 +102,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeControlNumber',
             :sequence             => 13,
-            :datatype             => :string,
+            :datatype             => :integer,
             :minimum              => 9,
             :maximum              => 9,
             :required             => true,
@@ -110,7 +110,7 @@ module Hippo::Segments
 
     field   :name                 => 'AcknowledgmentRequested',
             :sequence             => 14,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 1,
             :maximum              => 1,
             :required             => true,
@@ -118,7 +118,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeUsageIndicator',
             :sequence             => 15,
-            :datatype             => :string,
+            :datatype             => :list,
             :minimum              => 1,
             :maximum              => 1,
             :required             => true,

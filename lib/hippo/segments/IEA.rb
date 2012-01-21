@@ -5,7 +5,7 @@ module Hippo::Segments
 
     field   :name                 => 'NumberOfIncludedFunctionalGroups',
             :sequence             => 1,
-            :datatype             => :string,
+            :datatype             => :integer,
             :minimum              => 1,
             :maximum              => 5,
             :required             => true,
@@ -13,7 +13,7 @@ module Hippo::Segments
 
     field   :name                 => 'InterchangeControlNumber',
             :sequence             => 2,
-            :datatype             => :string,
+            :datatype             => :integer,
             :minimum              => 9,
             :maximum              => 9,
             :required             => true,
