@@ -16,6 +16,10 @@ module Hippo::Segments
     field :name => 'Field4'
     field :name => 'CommonName'
     field :name => 'CommonName'
+    field :name => 'DateField', :datatype => :date
+    field :name => 'TimeField', :datatype => :time
+    field :name => 'IntegerField', :datatype => :integer
+    field :name => 'DecimalField', :datatype => :decimal
   end
 
   class TCS < Hippo::Segments::Base

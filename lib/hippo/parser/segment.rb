@@ -21,10 +21,10 @@ module Hippo
             composite_fields.each_with_index do |comp_value, comp_index|
               composite_field = field[comp_index]
 
-              self.values[composite_sequence][composite_field.sequence] = comp_value
+              self.values[composite_sequence][composite_field.sequence] = composite_field.formatted_value(comp_value)
             end
           else
-            self.values[field.sequence] = value
+            self.values[field.sequence] = field.formatted_value(value)
           end
         end
 

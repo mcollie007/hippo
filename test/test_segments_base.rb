@@ -110,4 +110,46 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
       seg.InvalidField = 'Error should be raised.'
     end
   end
+
+  def test_raises_invalid_value_for_date_fields
+    seg = Hippo::Segments::TSS.new
+
+    assert_raises(Hippo::Exceptions::InvalidValue) { seg.DateField = "asdf" }
+    assert_raises(Hippo::Exceptions::InvalidValue) { seg.DateField = "0810" }
+
+    seg.DateField = Date.today
+    seg.DateField = "20120120"
+    seg.DateField = Time.now
+    seg.DateField = nil
+  end
+
+  def test_raises_invalid_value_for_time_fields
+    seg = Hippo::Segments::TSS.new
+
+    assert_raises(Hippo::Exceptions::InvalidValue) { seg.TimeField = "asdf" }
+    assert_raises(Hippo::Exceptions::InvalidValue) { seg.TimeField = "25111201" }
+    assert_raises(Hippo::Exceptions::InvalidValue) { seg.TimeField = Date.today }
+
+    seg.TimeField = "0120"
+    seg.TimeField = Time.now
+    seg.TimeField = nil
+  end
+
+  def test_performs_type_conversion
+    seg = Hippo::Segments::TSS.new
+
+    seg.DateField = '20120121'
+    assert_equal Date.new(2012,01,21), seg.DateField
+
+    seg.TimeField = '231101'
+    assert_equal Time.new(Date.today.year, Date.today.month, Date.today.day, 23,11,01), seg.TimeField
+
+    seg.IntegerField = '2'
+    assert_equal 2, seg.IntegerField
+
+    seg.DecimalField = '123.45'
+    assert_equal BigDecimal.new('123.45'), seg.DecimalField
+
+    assert_equal 'TSS*******20120121*231101*2*123.45~', seg.to_s
+  end
 end

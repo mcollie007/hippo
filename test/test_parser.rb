@@ -62,8 +62,8 @@ class TestParser < MiniTest::Unit::TestCase
   def test_adds_enveloping_to_transaction_set
     transaction_set = @parser.parse_file('samples/005010X231A1_01.edi').first
 
-    assert_equal '445289179', transaction_set.ISA.ISA13
-    assert_equal '1', transaction_set.GS.GS06
+    assert_equal 445289179, transaction_set.ISA.ISA13
+    assert_equal 1, transaction_set.GS.GS06
   end
 
   def test_parses_repeating_loops
@@ -78,7 +78,7 @@ class TestParser < MiniTest::Unit::TestCase
 
     ts.TCS.Field1    = 'Blah'
     ts.TSS_02.Field2 = 'Boo'
-    ts.SE
+    ts.SE.SE01       = ts.segment_count
 
     # ST*Test~TSS*Blah*Bar1*Baz1~TSS*Blah*Bar2*Baz2~TSS*Blah*Bar3*Baz3~TSS*Blah*Bar4*Baz4~TSS*Blah*Bar5*Baz5~TCS*Blah**Preset Field 7~TSS*Last Standalone Segment*Boo~SE**Test
     assert_equal ts.values.to_s, @parser.parse_string(ts.to_s).first.values.to_s

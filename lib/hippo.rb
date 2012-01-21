@@ -1,5 +1,9 @@
 require File.expand_path('hippo/utilities', File.dirname(__FILE__))
 
+require 'bigdecimal'
+require 'time'
+require 'date'
+
 require_relative 'hippo/exceptions'
 require_relative 'hippo/separator'
 require_relative 'hippo/field'

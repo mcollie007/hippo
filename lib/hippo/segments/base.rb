@@ -102,20 +102,18 @@ module Hippo::Segments
           field.each do |comp_field|
             field_value = if values[comp_field.composite_sequence]
                             # some values exist for this composite field
-                            values[comp_field.composite_sequence][comp_field.sequence].to_s
+                            comp_field.string_value(values[comp_field.composite_sequence][comp_field.sequence])
                           else
                             # no values exist for the entire composite field
                             ''
                           end
-            field_value = field_value.ljust(comp_field.maximum) if self.class.fixed_width
 
             output += field_value + @composite_separator
           end
 
           output += @field_separator
         else # standard field
-          field_value = values[field.sequence].to_s
-          field_value = field_value.ljust(field.maximum) if self.class.fixed_width
+          field_value = field.string_value(values[field.sequence])
 
           output += field_value + @field_separator
         end
@@ -146,9 +144,9 @@ module Hippo::Segments
       if method_name.to_s =~ /=\z/
         if field.composite
           self.values[field.composite_sequence] ||= {}
-          self.values[field.composite_sequence][field.sequence] = args[0]
+          self.values[field.composite_sequence][field.sequence] = field.formatted_value(args[0])
         else
-          self.values[field.sequence] = args[0]
+          self.values[field.sequence] = field.formatted_value(args[0])
         end
       else
         if field.composite
