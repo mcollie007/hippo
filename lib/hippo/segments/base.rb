@@ -60,17 +60,17 @@ module Hippo::Segments
     attr_accessor :values, :parent
 
     def segments
-      self
+      [self]
+    end
+
+    def segment_count
+      segments.count
     end
 
     def to_ary
       nil
     end
     alias :to_a :to_ary
-
-    def segment_count
-      1
-    end
 
     def initialize(options = {})
       @parent = options.delete(:parent)
