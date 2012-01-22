@@ -47,6 +47,8 @@ module Hippo::TransactionSets
             break unless segment
             break unless component.valid?(segment)
 
+            segment.parent = self
+
             if component.repeating?
               values[component.sequence] ||= component.initialize_component(self)
               values[component.sequence] << segment
