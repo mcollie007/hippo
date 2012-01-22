@@ -320,7 +320,7 @@ Just a few examples using the type conversion:
 __Please Note__: Due to issues with floating point representation of currency values we have
 chosen to use BigDecimal internally to store all fields with a decimal datatype.
 
-Heirarchy Traversal
+Hierarchy Traversal
 -------------------
 
 There are times with a given transaction set that you may start with a given segment but need
