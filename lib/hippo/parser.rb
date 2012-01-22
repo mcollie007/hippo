@@ -6,6 +6,16 @@ module Hippo
     include Hippo::Separator
     include TransactionSet
 
+    def self.parse_file(input)
+      parser = new
+      parser.parse_string(input)
+    end
+
+    def self.parse_string(input)
+      parser = new
+      parser.parse_string(input)
+    end
+
     def initialize
       super
     end
