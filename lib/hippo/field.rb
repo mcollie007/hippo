@@ -71,6 +71,11 @@ module Hippo
     end
 
     def parse_time(value)
+      if value == ''
+        invalid! if required
+        return nil
+      end
+
       case value.class.to_s
       when 'Time' then value
       when 'String'
@@ -99,6 +104,11 @@ module Hippo
     end
 
     def parse_date(value)
+      if value == ''
+        invalid! if required
+        return nil
+      end
+
       case value.class.to_s
       when "Date" then value
       when "Time" then value.to_date
@@ -106,7 +116,8 @@ module Hippo
         format =  case value
                   when /\A\d{6}\z/ then '%y%m%d'
                   when /\A\d{8}\z/ then '%Y%m%d'
-                  else invalid!
+                  else
+                    invalid!
                   end
 
         Date.parse(value, format)
