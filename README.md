@@ -342,6 +342,8 @@ ts_837 = Hippo::Parser.parse_file('location/to/837/file.837')
 
 # first lets get the index of all of the errored segments
 error_indexes = ts_999.L2000AK2.map{|l| l.L2100AK2.map{|m| m.IK3.IK303}}.flatten
+# or
+error_indexes = ts_999.segments.select{|s| s.class.to_s =~ /IK3/}.collect{|s| s.IK303}
 
 # now lets find those segments in the file being confirmed
 errored_segments = ts_837.segments.values_at(error_indexes)
