@@ -21,7 +21,7 @@ module Hippo
       when :decimal then BigDecimal.new(value.to_s)
       when :date    then parse_date(value)
       when :time    then parse_time(value)
-      else value.to_s.strip
+      else parse_string(value)
       end
     end
 
@@ -31,27 +31,42 @@ module Hippo
       case datatype
       when :binary  then value
       when :integer then value.to_s.rjust(minimum, '0')
-      when :decimal then
-        value ||= BigDecimal.new('0')
+      when :decimal then generate_decimal(value)
+      when :date    then generate_date(value)
+      when :time    then generate_time(value)
+      else generate_string(value)
+      end
+    end
 
-        value.to_s('F').sub(/\.0\z/,'').rjust(minimum, '0')
-      when :date
-        value ||= Date.today
+    def generate_string(value)
+      if required
+        value.to_s.ljust(minimum)
+      else
+        value.to_s
+      end
+    end
 
-        if maximum == 6
-          value.strftime('%y%m%d')
-        else
-          value.strftime('%Y%m%d')
-        end
-      when :time
-        value ||= Time.now
+    def parse_string(value)
+      if value.to_s.empty? && !required
+        nil
+      else
+        value.to_s.strip
+      end
+    end
 
-        if maximum == 4 || value.sec == 0
-          value.strftime('%H%M')
-        else
-          value.strftime('%H%M%S')
-        end
-      else value.to_s.ljust(minimum)
+    def generate_decimal(value)
+      value ||= BigDecimal.new('0')
+
+      value.to_s('F').sub(/\.0\z/,'').rjust(minimum, '0')
+    end
+
+    def generate_time(value)
+      value ||= Time.now
+
+      if maximum == 4 || value.sec == 0
+        value.strftime('%H%M')
+      else
+        value.strftime('%H%M%S')
       end
     end
 
@@ -71,6 +86,16 @@ module Hippo
       end
     rescue
       invalid!
+    end
+
+    def generate_date(value)
+      value ||= Date.today
+
+      if maximum == 6
+        value.strftime('%y%m%d')
+      else
+        value.strftime('%Y%m%d')
+      end
     end
 
     def parse_date(value)
