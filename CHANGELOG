@@ -2,6 +2,9 @@
   * Fix issue with segment parsing.  Make sure to set each segments parent
     properly once we identify that it belongs in the particular transaction
     set.  (This allows traversing via segment.parent.parent.)
+  * Add ancestors method to TransactionSet::Base,TransactionSet::RepeatingComponent,
+    and Segments::Base which returns an array containing each ancestor (parent)
+    from the current segment to the outermost containing element.
   * Fix issue causing non-required fields to be blank filled.
   * Refactor Field#string_value and Field#formatted_value to handle more situations.
   * Add segments method to TransactionSet::Base,TransactionSet::RepeatingComponent,

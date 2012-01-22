@@ -109,6 +109,19 @@ module Hippo::TransactionSets
       segments.count
     end
 
+    def ancestors
+      if parent
+        [parent, parent.ancestors].flatten
+      else
+        []
+      end
+    end
+
+    def to_ary
+      nil
+    end
+    alias :to_a :to_ary
+
     def to_s
       output = ''
 

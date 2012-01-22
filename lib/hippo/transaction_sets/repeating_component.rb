@@ -30,6 +30,14 @@ module Hippo::TransactionSets
       segments.length
     end
 
+    def ancestors
+      if parent
+        parent.ancestors.flatten
+      else
+        []
+      end
+    end
+
     def method_missing(method_name, *args, &block)
       build if self.length == 0
 

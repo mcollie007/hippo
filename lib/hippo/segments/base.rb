@@ -67,6 +67,14 @@ module Hippo::Segments
       segments.count
     end
 
+    def ancestors
+      if parent
+        parent.ancestors.flatten
+      else
+        []
+      end
+    end
+
     def to_ary
       nil
     end

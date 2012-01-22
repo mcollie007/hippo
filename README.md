@@ -320,6 +320,36 @@ Just a few examples using the type conversion:
 __Please Note__: Due to issues with floating point representation of currency values we have
 chosen to use BigDecimal internally to store all fields with a decimal datatype.
 
+Heirarchy Traversal
+-------------------
+
+There are times with a given transaction set that you may start with a given segment but need
+to traverse up to a higher level loop/transaction set container.  The best example of this is
+when dealing with 997 or 999 acknowledgments.  If there are errors in your original transmission
+they are reported on the 997 and 999 as the segment number in error.  We need to then take that
+errored segment and figure out more context.
+
+The first thing we have to do is find the segment in error.  The 999 contains this in the IK3
+segment of the 2100 - AK2/IK3 loop. Then we need to access those segments in the original
+transmitted file.  Finally, we need to access an ancestor that gives enough context to resolve
+the error.
+
+Here is a quick example:
+
+```ruby
+    ts_999 = Hippo::Parser.parse_file('location/to/999/file.999')
+    ts_837 = Hippo::Parser.parse_file('location/to/837/file.837')
+
+    # first lets get the index of all of the errored segments
+    error_indexes = ts_999.L2000AK2.map{|l| l.L2100AK2.map{|m| m.IK3.IK303}}.flatten
+
+    # now lets find those segments in the file being confirmed
+    errored_segments = ts_837.segments.values_at(error_indexes)
+
+    # and finally lets find the claim that they belong to
+    errored_claims  = errored_segments.collect{|s| s.ancestors.select{|a| a.class.to_s =~ /L2000B/}}.flatten
+```
+
 For more example please review the test suite.
 
 License
