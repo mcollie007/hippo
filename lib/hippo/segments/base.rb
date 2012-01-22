@@ -49,6 +49,7 @@ module Hippo::Segments
 
       def segment_identifier(id)
         @identifier = id
+        @fields     = []
       end
 
       def segment_fixed_width
