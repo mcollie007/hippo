@@ -59,7 +59,15 @@ module Hippo::Segments
 
     attr_accessor :values, :parent
 
-    # make totaling segment counts easier...
+    def segments
+      self
+    end
+
+    def to_ary
+      nil
+    end
+    alias :to_a :to_ary
+
     def segment_count
       1
     end

@@ -99,8 +99,12 @@ module Hippo::TransactionSets
       @sequences[segment_identifier] += 1
     end
 
+    def segments
+      values.values.collect(&:segments).flatten
+    end
+
     def segment_count
-      values.values.map(&:segment_count).inject(&:+)
+      segments.count
     end
 
     def to_s

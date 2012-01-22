@@ -20,10 +20,14 @@ module Hippo::TransactionSets
       self.map(&:to_s).join
     end
 
-    def segment_count
-      return 0 unless self.length != 0
+    def segments
+      return [] unless self.length != 0
 
-      self.map(&:segment_count).inject(&:+)
+      self.map(&:segments).flatten
+    end
+
+    def segment_count
+      segments.length
     end
 
     def method_missing(method_name, *args, &block)
