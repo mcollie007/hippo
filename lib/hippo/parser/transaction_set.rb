@@ -17,7 +17,7 @@ module Hippo
         end
       end
 
-      def segments
+      def parsed_segments
         @segments ||= @unparsed_data.split(@segment_separator).collect do |segment_string|
           segment = Hippo::Segments.const_get(segment_string.split(@field_separator).first).new(:parent => self)
 
@@ -32,7 +32,7 @@ module Hippo
 
       def parse(input)
         read(input)
-        populate(segments)
+        populate(parsed_segments)
         self
       end
     end

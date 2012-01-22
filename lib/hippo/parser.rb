@@ -13,10 +13,10 @@ module Hippo
     def initialize_transaction_set(index)
       {
         :segments  => [],
-        :ISA       => find_first_segment(segments[0,index + 1], 'ISA', true),
-        :GS        => find_first_segment(segments[0,index + 1], 'GS', true),
-        :GE        => find_first_segment(segments[index + 1, segments.length - index + 1], 'GE'),
-        :IEA       => find_first_segment(segments[index + 1, segments.length - index + 1], 'IEA')
+        :ISA       => find_first_segment(parsed_segments[0,index + 1], 'ISA', true),
+        :GS        => find_first_segment(parsed_segments[0,index + 1], 'GS', true),
+        :GE        => find_first_segment(parsed_segments[index + 1, parsed_segments.length - index + 1], 'GE'),
+        :IEA       => find_first_segment(parsed_segments[index + 1, parsed_segments.length - index + 1], 'IEA')
       }
     end
 
@@ -24,7 +24,7 @@ module Hippo
       raw_transaction_sets  = []
       inside_transaction    = false
 
-      segments.each_with_index do |segment, index|
+      parsed_segments.each_with_index do |segment, index|
         if segment.identifier == 'ST'
           raw_transaction_sets << initialize_transaction_set(index)
 
