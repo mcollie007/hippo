@@ -1,4 +1,4 @@
-0.2.2 - TBD
+0.2.2 - 2012/01/25
   * Fix issue with segment parsing.  Make sure to set each segments parent
     properly once we identify that it belongs in the particular transaction
     set.  (This allows traversing via segment.parent.parent.)
@@ -13,6 +13,7 @@
   * Refactor TransactionSet::Base#segment_count to use new segments array.
   * Add shortcut methods to Hippo::Parser for parse_file and parse_string.  Now they
     can be called without creating an instance of Parser. (i.e Hippo::Parser.parse_string(s))
+  * Fix issue causing access to empty composite fields to throw an error ([] for NilClass).
 0.2.1 - 2012/01/21
   * Fix issue preventing fixed width segments from printing
     properly. (Non set fields on ISA were empty not padded.)
