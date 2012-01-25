@@ -38,6 +38,14 @@ module Hippo::Segments
         end
       end
 
+      def segment?
+        true
+      end
+
+      def transaction_set?
+        false
+      end
+
       def composite_field(field_name)
         @composite_block = true
         @default_separator = :composite_separator

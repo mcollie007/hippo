@@ -15,8 +15,13 @@ module Hippo::TransactionSets
       @maximum > 1
     end
 
-    def loop?
+    def transaction_set?
       @klass.ancestors.include? Hippo::TransactionSets::Base
+    end
+    alias :loop? :transaction_set?
+
+    def segment?
+      @klass.ancestors.include? Hippo::Segments::Base
     end
 
     def identifier

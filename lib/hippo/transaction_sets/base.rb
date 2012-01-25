@@ -101,6 +101,14 @@ module Hippo::TransactionSets
       @sequences[segment_identifier] += 1
     end
 
+    def segment?
+      false
+    end
+
+    def transaction_set?
+      true
+    end
+
     def segments
       values.values.collect(&:segments).flatten
     end
