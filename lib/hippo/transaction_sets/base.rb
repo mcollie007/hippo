@@ -21,6 +21,32 @@ module Hippo::TransactionSets
       end
       alias segment add_component
       alias loop add_component
+
+
+      def grouped_components
+        return @grouped_components if @grouped_components
+
+        initial_components = components.dup
+        @grouped_components = []
+        last_entry         = nil
+
+        while initial_components.length > 0
+          component = initial_components.first
+
+          if component.segment?
+            @grouped_components << [] if last_entry != :segment
+            @grouped_components.last << component
+            last_entry = :segment
+          else
+            @grouped_components << component
+            last_entry = :transaction_set
+          end
+
+          initial_components.delete(component)
+        end
+
+        @grouped_components
+      end
     end
 
     attr_accessor :values, :parent, :sequences, :ISA, :GS, :GE, :IEA
@@ -38,25 +64,35 @@ module Hippo::TransactionSets
     end
 
     def populate(segments)
-      self.class.components.each_with_index do |component, component_index|
-        if component.klass.ancestors.include? Hippo::Segments::Base
+      self.class.grouped_components.each_with_index do |component, component_index|
+
+        if component.class == Array
           # segments
-          while true do
-            segment = segments.first
+          starting_segment_count = segments.count
+          ending_segment_count   = 0
 
-            break unless segment
-            break unless component.valid?(segment)
+          while starting_segment_count > ending_segment_count
+            starting_segment_count = segments.count
 
-            segment.parent = self
+            component.each do |individual_component|
+              segment = segments.first
 
-            if component.repeating?
-              values[component.sequence] ||= component.initialize_component(self)
-              values[component.sequence] << segment
-            else
-              values[component.sequence] = segment
+              break unless segment
+              next unless individual_component.valid?(segment)
+
+              segment.parent = self
+
+              if individual_component.repeating?
+                values[individual_component.sequence] ||= individual_component.initialize_component(self)
+                values[individual_component.sequence] << segment
+              else
+                values[individual_component.sequence] = segment
+              end
+
+              segments.delete(segment)
             end
 
-            segments.delete(segment)
+            ending_segment_count = segments.count
           end
         else
           # loops
