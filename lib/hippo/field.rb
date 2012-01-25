@@ -18,7 +18,7 @@ module Hippo
       case datatype
       when :binary  then value
       when :integer then value.to_i
-      when :decimal then BigDecimal.new(value.to_s)
+      when :decimal then parse_decimal(value)
       when :date    then parse_date(value)
       when :time    then parse_time(value)
       else parse_string(value)
@@ -58,6 +58,15 @@ module Hippo
       value ||= BigDecimal.new('0')
 
       value.to_s('F').sub(/\.0\z/,'').rjust(minimum, '0')
+    end
+
+    def parse_decimal(value)
+      if value == ''
+        invalid! if required
+        return nil
+      end
+
+      BigDecimal.new(value.to_s)
     end
 
     def generate_time(value)

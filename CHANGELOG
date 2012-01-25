@@ -4,6 +4,8 @@
     all.
   * Add shortcut methods to Segment::Base, TransactionSet::Base, and Component
     to allow easier identification of segments? vs transaction_sets?.
+  * Fix issue causing all :decimal fields to be initialized to 0 even when not
+    required.
 0.2.2 - 2012/01/25
   * Fix issue with segment parsing.  Make sure to set each segments parent
     properly once we identify that it belongs in the particular transaction
