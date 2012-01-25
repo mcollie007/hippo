@@ -67,6 +67,7 @@ module Hippo::TransactionSets
       self.class.grouped_components.each_with_index do |component, component_index|
 
         if component.class == Array
+          #binding.pry
           # segments
           starting_segment_count = segments.count
           ending_segment_count   = 0
@@ -104,11 +105,19 @@ module Hippo::TransactionSets
 
             ending_index    = nil
             starting_index  = component.repeating? ? component_index : component_index + 1
-            remaining_components = self.class.components.slice(starting_index, self.class.components.length - starting_index)
+            remaining_components = self.class.grouped_components.slice(starting_index, self.class.grouped_components.length - starting_index)
             remaining_components.each do |next_component|
               break if ending_index
 
-              ending_index = segments.find_index{|segment| segment != segments.first && next_component.valid?(segment)}
+              ending_index =  segments.find_index do |segment|
+                                if segment == segments.first
+                                  false
+                                elsif next_component.class == Array
+                                   next_component.any?{|nsc| nsc.valid?(segment)}
+                                else
+                                  next_component.valid?(segment)
+                                end
+                              end
             end
 
             child_segments = segments.slice!(0, ending_index || segments.length)

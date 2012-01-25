@@ -97,4 +97,8 @@ class TestParser < MiniTest::Unit::TestCase
 
     assert_equal ts_01.L0002.values.to_s, ts_02.values.to_s
   end
+
+  def test_parse_l2000a
+    l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A.edi'))
+  end
 end
