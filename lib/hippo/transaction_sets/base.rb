@@ -113,7 +113,7 @@ module Hippo::TransactionSets
                                 if segment == segments.first
                                   false
                                 elsif next_component.class == Array
-                                   next_component.any?{|nsc| nsc.valid?(segment)}
+                                   next_component.any?{|subcomponent| subcomponent.valid?(segment)}
                                 else
                                   next_component.valid?(segment)
                                 end
