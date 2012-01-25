@@ -1,3 +1,9 @@
+0.2.3 - TBD
+  * Fix issue preventing parsing when segments are not in the correct order. Now
+    we loop through all segments within a given section to make sure we grab them
+    all.
+  * Add shortcut methods to Segment::Base, TransactionSet::Base, and Component
+    to allow easier identification of segments? vs transaction_sets?.
 0.2.2 - 2012/01/25
   * Fix issue with segment parsing.  Make sure to set each segments parent
     properly once we identify that it belongs in the particular transaction
