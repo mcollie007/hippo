@@ -168,6 +168,7 @@ module Hippo::Segments
         end
       else
         if field.composite
+          self.values[field.composite_sequence] ||= {}
           self.values[field.composite_sequence][field.sequence]
         else
           self.values[field.sequence]

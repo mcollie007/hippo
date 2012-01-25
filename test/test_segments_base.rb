@@ -175,4 +175,10 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
 
     assert_equal "ISA*00*          *00*          *ZZ*593208085      *ZZ*OVERRIDE       *#{Date.today.strftime('%y%m%d')}*#{Time.now.strftime('%H%M')}*^*00501*000012345*1*T*:~", isa.to_s
   end
+
+  def test_access_empty_composite_returns_nil
+    seg = Hippo::Segments::TCS.new
+
+    assert_equal nil, seg.TCS01_01
+  end
 end
