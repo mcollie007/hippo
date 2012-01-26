@@ -64,8 +64,9 @@ module Hippo::TransactionSets
     end
 
     def populate(segments)
-      self.class.grouped_components.each_with_index do |component, component_index|
+      grouped_components = self.class.grouped_components
 
+      grouped_components.each_with_index do |component, component_index|
         if component.class == Array
           #binding.pry
           # segments
@@ -103,24 +104,24 @@ module Hippo::TransactionSets
             break unless initial_segment
             break unless component.valid?(initial_segment)
 
-            ending_index    = nil
-            starting_index  = component.repeating? ? component_index : component_index + 1
-            remaining_components = self.class.grouped_components.slice(starting_index, self.class.grouped_components.length - starting_index)
-            remaining_components.each do |next_component|
-              break if ending_index
+            component_matches_found  = []
+            starting_index = component.repeating? ? component_index : component_index + 1
 
-              ending_index =  segments.find_index do |segment|
-                                if segment == segments.first
-                                  false
-                                elsif next_component.class == Array
-                                   next_component.any?{|subcomponent| subcomponent.valid?(segment)}
-                                else
-                                  next_component.valid?(segment)
-                                end
-                              end
+            grouped_components.slice(starting_index, grouped_components.length - starting_index).each do |next_component|
+              index =  segments.find_index do |segment|
+                          if segment == segments.first
+                            false
+                          elsif next_component.class == Array
+                             next_component.any?{|subcomponent| subcomponent.valid?(segment)}
+                          else
+                            next_component.valid?(segment)
+                          end
+                        end
+
+              component_matches_found << index if index
             end
 
-            child_segments = segments.slice!(0, ending_index || segments.length)
+            child_segments = segments.slice!(0, component_matches_found.min || segments.length)
             values[component.sequence] ||= component.initialize_component(self)
             if component.repeating?
               values[component.sequence].build {|comp| comp.populate(child_segments) }

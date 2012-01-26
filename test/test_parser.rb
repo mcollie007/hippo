@@ -99,6 +99,7 @@ class TestParser < MiniTest::Unit::TestCase
   end
 
   def test_parse_l2000a
-    l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A.edi'))
+    l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A_01.edi'))
+    l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A_02.edi'))
   end
 end
