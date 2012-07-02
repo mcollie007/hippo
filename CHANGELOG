@@ -1,4 +1,6 @@
-0.2.3 - TBD
+0.3.0
+  * Add support for 270/271 transaction sets.
+0.2.3
   * Fix issue preventing parsing when segments are not in the correct order. Now
     we loop through all segments within a given section to make sure we grab them
     all.
