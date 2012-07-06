@@ -35,39 +35,6 @@ module Hippo::TransactionSets
                   'HL.HL04' => '1'
                 }
 
-      #Information Receiver Level
-      loop    Hippo::TransactionSets::HIPAA_270::L2000B,
-                :name           => 'Information Receiver Level',
-                :minimum        => 1,
-                :maximum        => 99999,
-                :position       => 100,
-                :identified_by => {
-                  'HL.HL03' => '21',
-                  'HL.HL04' => '1'
-                }
-
-      #Subscriber Level
-      loop    Hippo::TransactionSets::HIPAA_270::L2000C,
-                :name           => 'Subscriber Level',
-                :minimum        => 1,
-                :maximum        => 99999,
-                :position       => 100,
-                :identified_by => {
-                  'HL.HL03' => '22',
-                  'HL.HL04' => ["0", "1"]
-                }
-
-      #Dependent Level
-      loop    Hippo::TransactionSets::HIPAA_270::L2000D,
-                :name           => 'Dependent Level',
-                :minimum        => 0,
-                :maximum        => 99999,
-                :position       => 100,
-                :identified_by => {
-                  'HL.HL03' => '23',
-                  'HL.HL04' => '0'
-                }
-
       #Transaction Set Trailer
       segment Hippo::Segments::SE,
                 :name           => 'Transaction Set Trailer',

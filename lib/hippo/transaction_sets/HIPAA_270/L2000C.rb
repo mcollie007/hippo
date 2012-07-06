@@ -36,6 +36,17 @@ module Hippo::TransactionSets
                   'NM1.NM102' => ["1", "2"]
                 }
 
+      #Dependent Level
+      loop    Hippo::TransactionSets::HIPAA_270::L2000D,
+                :name           => 'Dependent Level',
+                :minimum        => 0,
+                :maximum        => 99999,
+                :position       => 100,
+                :identified_by => {
+                  'HL.HL03' => '23',
+                  'HL.HL04' => '0'
+                }
+
     end
   end
 end
