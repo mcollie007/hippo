@@ -1,21 +1,19 @@
 module Hippo::TransactionSets
   module HIPAA_271
-
-    autoload :Base,      'hippo/transaction_sets/HIPAA_271/base'
-    autoload :L2000A,    'hippo/transaction_sets/HIPAA_271/L2000A'
-    autoload :L2000B,    'hippo/transaction_sets/HIPAA_271/L2000B'
-    autoload :L2000C,    'hippo/transaction_sets/HIPAA_271/L2000C'
-    autoload :L2000D,    'hippo/transaction_sets/HIPAA_271/L2000D'
-    autoload :L2100A,    'hippo/transaction_sets/HIPAA_271/L2100A'
-    autoload :L2100B,    'hippo/transaction_sets/HIPAA_271/L2100B'
-    autoload :L2100C,    'hippo/transaction_sets/HIPAA_271/L2100C'
-    autoload :L2100D,    'hippo/transaction_sets/HIPAA_271/L2100D'
-    autoload :L2110C,    'hippo/transaction_sets/HIPAA_271/L2110C'
-    autoload :L2110D,    'hippo/transaction_sets/HIPAA_271/L2110D'
-    autoload :L2115C,    'hippo/transaction_sets/HIPAA_271/L2115C'
-    autoload :L2115D,    'hippo/transaction_sets/HIPAA_271/L2115D'
-    autoload :L2120C,    'hippo/transaction_sets/HIPAA_271/L2120C'
-    autoload :L2120D,    'hippo/transaction_sets/HIPAA_271/L2120D'
-
+    autoload_relative :Base,      'HIPAA_271/base'
+    autoload_relative :L2000A,    'HIPAA_271/L2000A'
+    autoload_relative :L2000B,    'HIPAA_271/L2000B'
+    autoload_relative :L2000C,    'HIPAA_271/L2000C'
+    autoload_relative :L2000D,    'HIPAA_271/L2000D'
+    autoload_relative :L2100A,    'HIPAA_271/L2100A'
+    autoload_relative :L2100B,    'HIPAA_271/L2100B'
+    autoload_relative :L2100C,    'HIPAA_271/L2100C'
+    autoload_relative :L2100D,    'HIPAA_271/L2100D'
+    autoload_relative :L2110C,    'HIPAA_271/L2110C'
+    autoload_relative :L2110D,    'HIPAA_271/L2110D'
+    autoload_relative :L2115C,    'HIPAA_271/L2115C'
+    autoload_relative :L2115D,    'HIPAA_271/L2115D'
+    autoload_relative :L2120C,    'HIPAA_271/L2120C'
+    autoload_relative :L2120D,    'HIPAA_271/L2120D'
   end
 end
