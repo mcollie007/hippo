@@ -53,6 +53,7 @@ module Hippo
     autoload_relative :LE,    'segments/LE'
     autoload_relative :LIN,   'segments/LIN'
     autoload_relative :LQ,    'segments/LQ'
+    autoload_relative :LS,    'segments/LS'
     autoload_relative :LX,    'segments/LX'
     autoload_relative :MEA,   'segments/MEA'
     autoload_relative :MIA,   'segments/MIA'
