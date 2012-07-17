@@ -39,6 +39,17 @@ module Hippo::TransactionSets
                   'NM1.NM108' => ["24", "46", "FI", "NI", "PI", "XV", "XX"]
                 }
 
+      #Information Receiver Level
+      loop    Hippo::TransactionSets::HIPAA_271::L2000B,
+                :name           => 'Information Receiver Level',
+                :minimum        => 0,
+                :maximum        => 99999,
+                :position       => 100,
+                :identified_by => {
+                  'HL.HL03' => '21',
+                  'HL.HL04' => ["0", "1"]
+                }
+
     end
   end
 end

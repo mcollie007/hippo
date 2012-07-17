@@ -27,6 +27,17 @@ module Hippo::TransactionSets
                   'NM1.NM108' => ["24", "34", "FI", "PI", "PP", "SV", "XV", "XX"]
                 }
 
+      #Subscriber Level
+      loop    Hippo::TransactionSets::HIPAA_271::L2000C,
+                :name           => 'Subscriber Level',
+                :minimum        => 0,
+                :maximum        => 99999,
+                :position       => 100,
+                :identified_by => {
+                  'HL.HL03' => '22',
+                  'HL.HL04' => ["0", "1"]
+                }
+
     end
   end
 end
