@@ -121,8 +121,9 @@ module Hippo
       end
 
       case value.class.to_s
-      when "Date" then value
-      when "Time" then value.to_date
+      when "Range"  then value
+      when "Date"   then value
+      when "Time"   then value.to_date
       when "String"
         format =  case value
                   when /\A\d{6}\z/ then '%y%m%d'
