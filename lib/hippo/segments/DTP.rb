@@ -21,7 +21,7 @@ module Hippo::Segments
 
     field :name                 => 'DateTimePeriod',
           :sequence             => 3,
-          :datatype             => :string,
+          :datatype             => :date,
           :minimum              => 1,
           :maximum              => 35,
           :required             => true,
