@@ -105,7 +105,9 @@ module Hippo
     def generate_date(value)
       value ||= Date.today
 
-      if maximum == 6
+      if value.class.to_s == 'Range'
+        "#{value.first.strftime('%Y%m%d')}-#{value.last.strftime('%Y%m%d')}"
+      elsif maximum == 6
         value.strftime('%y%m%d')
       else
         value.strftime('%Y%m%d')
@@ -124,7 +126,9 @@ module Hippo
       when "String"
         format =  case value
                   when /\A\d{6}\z/ then '%y%m%d'
-                  when /\A\d{8}\z/ then '%Y%m%d'
+                  when /\A\d{8}\z/ then '%Y%`%d'
+                  when /\A(\d{8})-(\d{8})\z/ then
+                    return Date.parse($1, '%Y%m%d')..Date.parse($2, '%Y%m%d')
                   else
                     invalid!
                   end
