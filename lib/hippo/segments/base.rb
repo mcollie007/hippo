@@ -147,11 +147,11 @@ module Hippo::Segments
 
       # remove extra field separators that aren't needed
       unless self.class.identifier == 'ISA'
-        output = output.gsub(/:{2,}\*/,'*').gsub(/:\*/,'*')
+        output = output.gsub(repeating_composite_separator_regexp, @field_separator)
       end
 
       output += @segment_separator
-      output = output.gsub(/\*+~/,'~')
+      output = output.gsub(repeating_field_separator_at_end_of_segment_regexp, @segment_separator)
     end
 
     def identifier

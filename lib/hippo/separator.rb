@@ -40,5 +40,31 @@ module Hippo
         :repetition_separator => @repetition_separator
       }
     end
+
+    def repeating_field_separator_at_end_of_segment_regexp
+      %r{
+          #{Regexp.escape(@field_separator)}+
+          #{Regexp.escape(@segment_separator)}
+        }x
+    end
+
+    def repeating_composite_separator_regexp
+      %r{
+          #{Regexp.escape(@composite_separator)}+
+          #{Regexp.escape(@field_separator)}
+        }x
+    end
+
+    def empty_field_regexp
+      %r{(?<separators>
+          [
+            #{Regexp.escape(@composite_separator)}
+            #{Regexp.escape(@field_separator)}
+            #{Regexp.escape(@segment_separator)}
+          ])
+          \s+
+          (\g<separators>)
+        }x
+    end
   end
 end
