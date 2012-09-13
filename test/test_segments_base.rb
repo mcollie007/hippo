@@ -7,7 +7,7 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
   def test_empty_segment
     seg = Hippo::Segments::TSS.new
 
-    assert_equal 'TSS~', seg.to_s
+    assert_equal '', seg.to_s
   end
 
   def test_basic_populated_segment

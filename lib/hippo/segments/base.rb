@@ -153,6 +153,8 @@ module Hippo::Segments
 
       output += @segment_separator
       output = output.gsub(repeating_field_separator_at_end_of_segment_regexp, @segment_separator)
+
+      output =~ /\A#{self.class.identifier}~/ ? '' : output
     end
 
     def identifier
