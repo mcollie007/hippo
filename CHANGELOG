@@ -1,3 +1,8 @@
+0.4.0 - 2012/09/13
+  * Do not hard-code separators in Hippo::Segments::Base#to_s.
+  * Properly escape regexps involving separators.
+  * Discard any empty segments when parsing transaction sets.
+  * Remove whitespace from fields containing only whitespace.
 0.3.0
   * Add support for 270/271 transaction sets.
 0.2.3
