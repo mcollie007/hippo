@@ -145,8 +145,7 @@ module Hippo::Segments
         end
       end
 
-      # remove extra field separators that aren't needed
-      unless self.class.identifier == 'ISA'
+      unless self.class.fixed_width
         output = output.gsub(repeating_composite_separator_regexp, @field_separator)
         output = output.gsub(empty_field_regexp,'\1\2')
       end
