@@ -22,7 +22,9 @@ module Hippo
           segment = Hippo::Segments.const_get(segment_string.split(@field_separator).first).new(:parent => self)
 
           segment.parse(segment_string)
-        end
+
+          segment.to_s == '' ? nil : segment
+        end.compact
       end
 
       def read(input = nil)
