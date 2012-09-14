@@ -127,7 +127,7 @@ module Hippo
       when "String"
         format =  case value
                   when /\A\d{6}\z/ then '%y%m%d'
-                  when /\A\d{8}\z/ then '%Y%`%d'
+                  when /\A\d{8}\z/ then '%Y%m%d'
                   when /\A(\d{8})-(\d{8})\z/ then
                     return Date.parse($1, '%Y%m%d')..Date.parse($2, '%Y%m%d')
                   else
