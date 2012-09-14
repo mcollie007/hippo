@@ -1,3 +1,5 @@
+0.4.1 - 2012/09/14
+  * Fix major issue (stupid typo) with Date parsing.
 0.4.0 - 2012/09/13
   * Do not hard-code separators in Hippo::Segments::Base#to_s.
   * Properly escape regexps involving separators.
