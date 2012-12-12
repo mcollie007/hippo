@@ -56,15 +56,26 @@ module Hippo
     end
 
     def empty_field_regexp
-      %r{(?<separators>
-          [
+      %r{([
             #{Regexp.escape(@composite_separator)}
             #{Regexp.escape(@field_separator)}
             #{Regexp.escape(@segment_separator)}
           ])
           \s+
-          (\g<separators>)
+          ([
+            #{Regexp.escape(@composite_separator)}
+            #{Regexp.escape(@field_separator)}
+            #{Regexp.escape(@segment_separator)}
+          ])
         }x
+    end
+
+    def remove_empty_fields(input)
+      while input =~ empty_field_regexp
+        input = input.gsub(empty_field_regexp, '\1\2')
+      end
+
+      input
     end
   end
 end

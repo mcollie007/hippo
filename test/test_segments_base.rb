@@ -181,4 +181,10 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
 
     assert_equal nil, seg.TCS01_01
   end
+
+  def test_segment_parse_for_composite_fields
+    input_string = "STC*A7:755:87*20121127*U*2200******A3:448**REJECTED AT CLEARINGHOUSE PAY-TO PROVIDER PRIMARY ID# IS NOT USED (1235196510) (59141)"
+    seg = Hippo::Segments::STC.new.parse(input_string)
+    assert_equal input_string + '~', seg.to_s
+  end
 end

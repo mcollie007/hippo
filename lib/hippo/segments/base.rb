@@ -146,7 +146,7 @@ module Hippo::Segments
       end
 
       unless self.class.fixed_width
-        output = output.gsub(empty_field_regexp,'\1\2')
+        output = remove_empty_fields(output)
         output = output.gsub(repeating_composite_separator_regexp, @field_separator)
       end
 
