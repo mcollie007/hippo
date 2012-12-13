@@ -99,8 +99,17 @@ class TestParser < MiniTest::Unit::TestCase
   end
 
   def test_parse_l2000a
-    l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A_01.edi'))
-    l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A_02.edi'))
+    files = ['samples/837_L2000A_01.edi', 'samples/837_L2000A_02.edi']
+    files.each do |f|
+      l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read(f))
+
+      # when L2000B HL04 is '0' we must have a L2000C child
+      if l2000a.L2000B.HL.HL04 == '0'
+        assert_nil l2000a.L2000B.L2000C.HL.HL02
+      else
+        assert_equal l2000a.L2000B.HL.HL01, l2000a.L2000B.L2000C.HL.HL02
+      end
+    end
   end
 
   def test_same_child_exists_in_multiple_levels

@@ -55,17 +55,6 @@ module Hippo::TransactionSets
                   'NM1.NM108' => ["PI", "XV"]
                 }
 
-      #Patient Hierarchical Level
-      loop    Hippo::TransactionSets::HIPAA_837::L2000C,
-                :name           => 'Patient Hierarchical Level',
-                :minimum        => 0,
-                :maximum        => 99999,
-                :position       => 10,
-                :identified_by => {
-                  'HL.HL03' => '23',
-                  'HL.HL04' => '0'
-                }
-
       #Claim Information
       loop    Hippo::TransactionSets::HIPAA_837::L2300,
                 :name           => 'Claim Information',
@@ -77,6 +66,20 @@ module Hippo::TransactionSets
                   'CLM.CLM07' => ["A", "B", "C"],
                   'CLM.CLM08' => ["N", "W", "Y"],
                   'CLM.CLM09' => ["I", "Y"]
+                },
+                :parent_context_conditions => {
+                  'HL.HL04' => '0'
+                }
+
+      #Patient Hierarchical Level
+      loop    Hippo::TransactionSets::HIPAA_837::L2000C,
+                :name           => 'Patient Hierarchical Level',
+                :minimum        => 0,
+                :maximum        => 99999,
+                :position       => 10,
+                :identified_by => {
+                  'HL.HL03' => '23',
+                  'HL.HL04' => '0'
                 }
 
     end
