@@ -77,6 +77,28 @@ module Hippo::TransactionSets
                 }
     end
 
+    class L0004 < Hippo::TransactionSets::Base
+      loop_name 'L0004'
+
+      segment Hippo::Segments::TSS,
+                :name => 'Indicator of Child Location',
+                :identified_by => {'TSS01' => ['HAS CHILD LOOP','HAS NO CHILD LOOP']}
+
+      loop Hippo::TransactionSets::Test::L0001,
+                :name           => 'Test Sub-Loop L0001',
+                :identified_by  => {
+                  'TSS.TSS01'   => 'Multiple Parents',
+                },
+                :parent_context_conditions => {
+                  'TSS.TSS01' => 'HAS NO CHILD LOOP'
+                }
+
+      segment Hippo::Segments::TSS,
+                :name => 'Indicator of Child Location',
+                :identified_by => {'TSS01' => 'Multiple Parents'}
+
+    end
+
     class Base < Hippo::TransactionSets::Base
 
       segment Hippo::Segments::ST,

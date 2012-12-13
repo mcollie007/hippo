@@ -78,6 +78,7 @@ module Hippo::TransactionSets
 
               break unless segment
               next unless individual_component.valid?(segment)
+              next unless individual_component.conditions_match?(self, segment)
 
               segment.parent = self
 
@@ -100,6 +101,7 @@ module Hippo::TransactionSets
 
             break unless initial_segment
             break unless component.valid?(initial_segment)
+            break unless component.conditions_match?(self, initial_segment)
 
             component_matches_found  = []
             starting_index = component.repeating? ? component_index : component_index + 1

@@ -102,4 +102,19 @@ class TestParser < MiniTest::Unit::TestCase
     l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A_01.edi'))
     l2000a = Hippo::TransactionSets::HIPAA_837::L2000A.new.parse(File.read('samples/837_L2000A_02.edi'))
   end
+
+  def test_same_child_exists_in_multiple_levels
+    no_child_loop_string = "TSS*HAS NO CHILD LOOP~TSS*Multiple Parents~"
+    ts                   = Hippo::TransactionSets::Test::L0004.new
+
+    ts.parse(no_child_loop_string)
+    assert_equal 'TSS*Multiple Parents~', ts.values[1].TSS.to_s
+
+
+    child_loop_string = "TSS*HAS CHILD LOOP~TSS*Multiple Parents~"
+    ts                   = Hippo::TransactionSets::Test::L0004.new
+
+    ts.parse(child_loop_string)
+    assert_equal 'TSS*Multiple Parents~', ts.values[2].to_s
+  end
 end

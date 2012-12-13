@@ -1,10 +1,11 @@
 module Hippo::TransactionSets
   class Component
-    attr_reader :options, :klass, :sequence, :maximum, :identified_by
+    attr_reader :options, :klass, :sequence, :maximum, :identified_by, :conditions
 
     def initialize(options)
-      @identified_by  = options.delete(:identified_by)  || {}
-      @maximum        = options.delete(:maximum)        || 1
+      @identified_by  = options.delete(:identified_by)              || {}
+      @conditions     = options.delete(:parent_context_conditions)  || {}
+      @maximum        = options.delete(:maximum)                    || 1
       @klass          = options.delete(:klass)
       @sequence       = options.delete(:sequence)
 
@@ -79,6 +80,16 @@ module Hippo::TransactionSets
         segment_id, field_name = path.split('.')
 
         segment.identifier == segment_id && Array(value).include?(segment.send(field_name))
+      end
+    end
+
+    def conditions_match?(instance, segment)
+      if conditions.empty?
+        true
+      else
+        conditions.all? do |method, expected|
+          Array(expected).include?(instance.instance_eval("self." + method))
+        end
       end
     end
   end
