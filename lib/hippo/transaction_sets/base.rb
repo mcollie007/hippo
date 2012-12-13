@@ -66,7 +66,6 @@ module Hippo::TransactionSets
 
       grouped_components.each_with_index do |component, component_index|
         if component.class == Array
-          #binding.pry
           # segments
           starting_segment_count = segments.count
           ending_segment_count   = 0
