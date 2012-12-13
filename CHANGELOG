@@ -1,3 +1,10 @@
+0.5.0 - 2012/12/13
+  * Allow parsing of HIPAA_837::L2000B to properly handle the 'floating' L2300
+    loop.
+  * Make segment/loop inclusion conditional (when :parent_context_conditions
+                                             is used)
+  * Refactor TransactionSets::Base.grouped_components.
+  * Properly handle the removal of empty fields.
 0.4.1 - 2012/09/14
   * Fix major issue (stupid typo) with Date parsing.
 0.4.0 - 2012/09/13
