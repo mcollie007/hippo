@@ -24,29 +24,27 @@ module Hippo::TransactionSets
 
 
       def grouped_components
-        return @grouped_components if @grouped_components
+        @grouped_components ||= build_grouped_components
+      end
 
-        initial_components = components.dup
-        @grouped_components = []
-        last_entry         = nil
+      def build_grouped_components
+        output     = []
+        last_entry = nil
 
-        while initial_components.length > 0
-          component = initial_components.first
-
+        components.each do |component|
           if component.segment?
-            @grouped_components << [] if last_entry != :segment
-            @grouped_components.last << component
+            output << [] if last_entry != :segment
+            output.last << component
             last_entry = :segment
           else
-            @grouped_components << component
+            output << component
             last_entry = :transaction_set
           end
-
-          initial_components.delete(component)
         end
 
-        @grouped_components
+        output
       end
+      private :build_grouped_components
     end
 
     attr_accessor :values, :parent, :sequences, :ISA, :GS, :GE, :IEA
