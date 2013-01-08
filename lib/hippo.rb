@@ -4,6 +4,7 @@ require 'bigdecimal'
 require 'time'
 require 'date'
 
+require_relative 'hippo/version'
 require_relative 'hippo/exceptions'
 require_relative 'hippo/separator'
 require_relative 'hippo/field'
