@@ -1,3 +1,3 @@
 module Hippo
-  VERSION = "0.5.2" unless defined?(Hippo::VERSION)
+  VERSION = "0.5.3" unless defined?(Hippo::VERSION)
 end
