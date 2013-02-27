@@ -55,18 +55,16 @@ module Hippo
         }x
     end
 
+    def regexp_escaped_separators
+      Regexp.escape(@composite_separator) +
+        Regexp.escape(@field_separator)   +
+        Regexp.escape(@segment_separator)
+    end
+
     def empty_field_regexp
-      %r{([
-            #{Regexp.escape(@composite_separator)}
-            #{Regexp.escape(@field_separator)}
-            #{Regexp.escape(@segment_separator)}
-          ])
+      %r{([#{regexp_escaped_separators}])
           \s+
-          ([
-            #{Regexp.escape(@composite_separator)}
-            #{Regexp.escape(@field_separator)}
-            #{Regexp.escape(@segment_separator)}
-          ])
+          ([#{regexp_escaped_separators}])
         }x
     end
 

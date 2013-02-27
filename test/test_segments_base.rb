@@ -187,4 +187,15 @@ class TestSegmentsBase < MiniTest::Unit::TestCase
     seg = Hippo::Segments::STC.new.parse(input_string)
     assert_equal input_string + '~', seg.to_s
   end
+
+  def test_empty_fields_are_removed
+    n1 = Hippo::Segments::N1.new.parse("N1*PE*    *XX*1234567890")
+    assert_equal "N1*PE**XX*1234567890~", n1.to_s
+  end
+
+  def test_remove_empty_fields_doesnt_change_populated_fields
+    original = "N1*PE*SOME RANDOM   NAME HERE*XX*1234567890"
+    n1 = Hippo::Segments::N1.new.parse(original)
+    assert_equal original + '~', n1.to_s
+  end
 end
