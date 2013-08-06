@@ -12,8 +12,11 @@ class TestHTMLOutputter < MiniTest::Unit::TestCase
   end
 
   def test_transaction_to_html_returns_string
-    File.open('/Users/rjackson/Desktop/sample835.html', 'w') {|f| f.write(@sample_835.to_html) }
-    File.open('/Users/rjackson/Desktop/sample837.html', 'w') {|f| f.write(@sample_837.to_html) }
     assert_kind_of String, @sample_835.to_html
+  end
+
+  def test_verify_output_against_known_good_html
+    assert_equal File.read('samples/sample835.html'), @sample_835.to_html
+    assert_equal File.read('samples/sample837.html'), @sample_837.to_html
   end
 end
