@@ -126,4 +126,13 @@ class TestParser < MiniTest::Unit::TestCase
     ts.parse(child_loop_string)
     assert_equal 'TSS*Multiple Parents~', ts.values[2].to_s
   end
+
+  def test_strips_leading_whitespace_from_segment_identifier
+    initial_string = "    ST*Test~\n      TSS*Blah*BOOM~"
+    ts             = Hippo::TransactionSets::Test::Base.new
+
+    ts.parse(initial_string)
+
+    assert_equal ts.TSS.TSS02, 'BOOM'
+  end
 end

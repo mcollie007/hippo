@@ -19,7 +19,8 @@ module Hippo
 
       def parsed_segments
         @segments ||= @unparsed_data.split(@segment_separator).collect do |segment_string|
-          segment = Hippo::Segments.const_get(segment_string.split(@field_separator).first).new(:parent => self)
+          segment_identifier = segment_string.split(@field_separator).first
+          segment = Hippo::Segments.const_get(segment_identifier.lstrip).new(:parent => self)
 
           segment.parse(segment_string)
 
