@@ -1,3 +1,6 @@
+0.5.4 - 2013/08/06
+	* Handle whitespace prefixed segment identifiers. This allows you to parse a
+	file that has been output with indentation (to signify loops/segments).
 0.5.3 - 2013/02/27
 	* Fix issue with repeating whitespace inside a field. (resolves #2)
 0.5.2 - 2013/01/02
