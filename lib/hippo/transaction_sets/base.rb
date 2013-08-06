@@ -4,6 +4,7 @@ module Hippo::TransactionSets
     include Hippo::Parser::TransactionSet
     include Hippo::Outputters::HTML::TransactionSet
     include Hippo::Outputters::PDF::TransactionSet
+    include Hippo::Outputters::PrettyString::TransactionSet
 
     class << self
       attr_accessor :components, :identifier

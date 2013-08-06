@@ -2,6 +2,7 @@ module Hippo::TransactionSets
   class RepeatingComponent < Array
     include Hippo::Outputters::HTML::RepeatingComponent
     include Hippo::Outputters::PDF::RepeatingComponent
+    include Hippo::Outputters::PrettyString::RepeatingComponent
 
     def initialize(component_entry, parent)
       @component_entry = component_entry

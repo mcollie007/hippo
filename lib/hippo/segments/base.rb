@@ -4,6 +4,7 @@ module Hippo::Segments
     include Hippo::Parser::Segment
     include Hippo::Outputters::HTML::Segment
     include Hippo::Outputters::PDF::Segment
+    include Hippo::Outputters::PrettyString::Segment
 
     class << self
       attr_accessor :fields, :identifier, :fixed_width
