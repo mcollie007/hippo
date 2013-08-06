@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/promedical/hippo"
   s.summary     = %q{HIPAA Transaction Set Generator/Parser}
   s.description = %q{HIPAA Transaction Set Generator/Parser}
+  s.license     = 'BSD 2-Clause'
 
   s.rubyforge_project = "hippo"
 

@@ -1,3 +1,5 @@
+0.5.5 - 2013/08/06
+  * Add license to gemspec.
 0.5.4 - 2013/08/06
 	* Handle whitespace prefixed segment identifiers. This allows you to parse a
 	file that has been output with indentation (to signify loops/segments).
