@@ -76,7 +76,7 @@ module Hippo::TransactionSets
                 :position       => 1100,
                 :identified_by => {
                   'INS01' => 'N',
-                  'INS02' => ["01", "19", "20", "21", "39", "40", "53", "G8"]
+                  'INS02' => ["01", "19", "20", "21", "34", "39", "40", "53", "G8"]
                 }
 
       #Dependent Health Care Diagnosis Code
