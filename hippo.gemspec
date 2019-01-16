@@ -4,7 +4,7 @@ require "hippo/version"
 
 Gem::Specification.new do |s|
   s.name        = "hippo"
-  s.version     = Hippo::VERSION
+  s.version     = Hippo::VERSION::STRING
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Robert Jackson", 'Jon Jackson']
   s.email       = ["robertj@promedicalinc.com"]
